@@ -1,0 +1,88 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document settings
+\documentclass{ACGSeminar}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Own Packages
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Own Definitions
+\newcommand{\comment}[1]{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BibTex
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyphenations here
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hyphenation{Sa-tan-arch-aeo-li-deal-co-hell-ish}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title, Author, etc.
+
+\begin{document}
+
+\title{Re: Deep G-Buffers for Stable Global Illumination Approximation}
+
+\author{Ferit Tohidi Far}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract
+
+\begin{abstract}%
+G-Buffers can be used to efficiently render images with an absurd amount of light sources - compared to other global illumination methods like pathtracing. This is possible thanks to a process called "deferred rendering". By using Deep G-Buffers we can speed up the whole process by approximating global illumination instead.
+\end{abstract}
+
+\keywords{g-buffer, deep g-buffer, pathtracing, global illumination, shading}
+\tableofcontents
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction
+\label{cha:introduction}
+\section{Deferred Rendering}
+TODO
+	\subsection{Different global illumination methods (Pathtracing, photonmapping)}
+	\subsection{Why they are inefficient (but pretty)}
+	\subsection{How deffered rendering handles lighting more efficiently}
+
+\section{G-Buffer}
+	\subsection{Frame-Buffer}
+	\subsection{Z-Buffer}
+	\subsection{Position-Buffer}
+	\subsection{Normal-Buffer}
+	\subsection{Diffuse-buffer}
+	\subsection{Computing global illumination using G-Buffers}
+	\subsection{Performance comparison: G-buffers vs Pathtracing}
+	\subsection{Output comparison: G-Buffers vs Pathtracing}
+
+\section{Deep G-Buffer}
+	\subsection{Concept}
+	\subsection{How Deep G-Buffers improve performance}
+	\subsection{Performance comparison: G-buffers vs Deep G-Buffers vs Pathtracing}
+	\subsection{Output comparison: G-Buffers vs Deep G-Buffers vs Pathtracing}
+
+%\section{My Fancy Second Section}
+%My second section is even better than the first one\footnote{Proof omitted.} because it contains a %footnote as well as some citations~\cite{Squarepants03,Knuth97}.%
+%Everything else is explained in Figure~\ref{fig:dummy}. Always m%ake sure that all figures are refer%enced.
+%
+%\begin{figure}[htb!]
+%  \begin{centering}
+%    \includegraphics[width=6cm]{img/thing.jpg}\par
+%  \end{centering}
+%  \caption{A simple dummy picture to demonstrate how to include graphics into your report.}
+%  \label{fig:dummy}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+\label{cha:references}
+\printbibliography
+
+\end{document}
