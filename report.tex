@@ -35,7 +35,8 @@
 % Abstract
 
 \begin{abstract}%
-G-Buffers can be used to efficiently render images with an absurd amount of light sources - compared to other global illumination methods like pathtracing. This is possible thanks to a process called "deferred rendering". By using Deep G-Buffers we can speed up the whole process by approximating global illumination instead.
+G-Buffers can be used to efficiently render images with a large amount of light sources compared to other local illumination methods. This is possible thanks to a 
+process called "deferred rendering". By using Deep G-Buffers we can even approximate global illumination more efficiently than traditional methods like pathtracing. 
 \end{abstract}
 
 \keywords{g-buffer, deep g-buffer, pathtracing, global illumination, shading}
@@ -46,10 +47,13 @@ G-Buffers can be used to efficiently render images with an absurd amount of ligh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Introduction
 \label{cha:introduction}
+\section{Global Illumination}
+	Global Illumination is achieved by taking into account every light, as well as every reflection of every light. To do this there are different methods with the
+	most common ones being pathtracing and photonmapping.
+	\subsection{Pathtracing}
+		
+	\subsection{Photonmapping}
 \section{Deferred Rendering}
-TODO
-	\subsection{Different global illumination methods (Pathtracing, photonmapping)}
-	\subsection{Why they are inefficient (but pretty)}
 	\subsection{How deffered rendering handles lighting more efficiently}
 
 \section{G-Buffer}
@@ -58,6 +62,7 @@ TODO
 	\subsection{Position-Buffer}
 	\subsection{Normal-Buffer}
 	\subsection{Diffuse-buffer}
+	\subsection{Computing local illumination using G-Buffers}
 	\subsection{Computing global illumination using G-Buffers}
 	\subsection{Performance comparison: G-buffers vs Pathtracing}
 	\subsection{Output comparison: G-Buffers vs Pathtracing}
