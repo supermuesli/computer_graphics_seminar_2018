@@ -6,3 +6,6 @@ deferred shading:
   - light-buffer (light sources)
 - use ANY shading method with help of these buffers
 - voila
+
+READING_INFO:
+- pixar_pathtracing_paper: left off @ 2.1
