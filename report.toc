@@ -4,8 +4,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.1}Pathtracing}{2}{subsection.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}Photonmapping}{2}{subsection.1.2}
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Deferred Rendering}{2}{section.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}How deffered rendering handles lighting more efficiently}{2}{subsection.2.1}
@@ -26,16 +24,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.7}Computing global illumination using G-Buffers}{2}{subsection.3.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.8}Performance comparison: G-buffers vs Pathtracing}{2}{subsection.3.8}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.9}Output comparison: G-Buffers vs Pathtracing}{2}{subsection.3.9}
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Deep G-Buffer}{2}{section.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Concept}{2}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2}How Deep G-Buffers improve performance}{2}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Performance comparison: G-buffers vs Deep G-Buffers vs Pathtracing}{2}{subsection.4.3}
+\contentsline {section}{\numberline {5}Performance and Output Comparison}{2}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.4}Output comparison: G-Buffers vs Deep G-Buffers vs Pathtracing}{2}{subsection.4.4}
+\contentsline {subsection}{\numberline {5.1}G-Buffers vs Deep G-Buffers vs Pathtracing}{2}{subsection.5.1}
