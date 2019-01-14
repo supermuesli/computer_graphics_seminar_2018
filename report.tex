@@ -48,12 +48,15 @@ process called "deferred rendering". By using Deep G-Buffers we can even approxi
 % Introduction
 \label{cha:introduction}
 \section{Global Illumination}
-	Global Illumination is achieved by taking into account direct lighting as well as indirect lighting, which essentially means that we compute reflections to a
+	Global Illumination is achieved by taking into account direct light as well as indirect light, which essentially means that it is necessary to compute reflections to a
 	certain degree. The most popular method to do this in 3D animated movies is pathtracing (source pixar paper).
 	\subsection{Pathtracing}
 		
 \section{Deferred Rendering}
-	\subsection{How deffered rendering handles lighting more efficiently}
+	\subsection{How deferred rendering handles lighting more efficiently}
+	The goal of deferred rendering is to postpone the shading stage. Instead one computes necessary geometry buffers (G-Buffer) and caches them for later use.
+	For all practical purposes, G-Buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these G-Buffers, it is possible
+	to compute shading separately.
 	\subsection{Deferred Shading}
 
 \section{Geometry Buffer (G-Buffer)}
