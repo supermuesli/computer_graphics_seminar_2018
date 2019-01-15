@@ -16,5 +16,81 @@
   {}
 \endgroup
 
-\datalist[entry]{nty/global//global/global}\enddatalist
+\datalist[entry]{nty/global//global/global}
+  \entry{DST}{article}{}
+    \name{author}{1}{}{%
+      {{hash=FPFF}{%
+         family={Fabio\bibnamedelima Policarpo},
+         familyi={F\bibinitperiod\bibinitdelim P\bibinitperiod},
+         given={Francisco\bibnamedelima Fonseca},
+         giveni={F\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pontifical Catholic University of Rio de Janeiro ICAD/Igames/VisionLab}%
+    }
+    \strng{namehash}{FPFF1}
+    \strng{fullhash}{FPFF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{FP}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{title}{Deferred Shading Tutorial}
+  \endentry
+
+  \entry{NDGB}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MMDNDLMM}{%
+         family={M.\bibnamedelima Mara},
+         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+         suffix={M.\bibnamedelima McGuire},
+         suffixi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+         given={D.\bibnamedelima Nowrouzezahrai D.\bibnamedelima Luebke},
+         giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod
+  D\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {NVIDIA}%
+    }
+    \strng{namehash}{MMMMDNDL1}
+    \strng{fullhash}{MMMMDNDL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MM16}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Deep G-Buffers for Stable Global Illumination Approximation}
+    \field{journaltitle}{High Performance Graphics}
+    \field{year}{2016}
+  \endentry
+
+  \entry{P2PATH}{article}{}
+    \name{author}{1}{}{%
+      {{hash=PHCWJ}{%
+         family={Per H.\bibnamedelima Christensen},
+         familyi={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim
+  C\bibinitperiod},
+         given={Wojciech\bibnamedelima Jarosz},
+         giveni={W\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {now - the essence of knowledge}%
+    }
+    \strng{namehash}{PHCWJ1}
+    \strng{fullhash}{PHCWJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{PHC14}
+    \field{sortinit}{P}
+    \field{sortinithash}{P}
+    \field{title}{The Path to Path-Traced Movies}
+    \field{volume}{10}
+    \field{journaltitle}{Foundations and Trends R in Computer Graphics and
+  Vision}
+    \field{year}{2014}
+  \endentry
+\enddatalist
 \endinput

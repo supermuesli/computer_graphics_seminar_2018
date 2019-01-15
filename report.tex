@@ -35,11 +35,12 @@
 % Abstract
 
 \begin{abstract}%
-G-Buffers can be used to efficiently render images with a large amount of light sources compared to other local illumination methods. This is possible thanks to a 
-process called "deferred rendering". By using Deep G-Buffers we can even approximate global illumination more efficiently than traditional methods like pathtracing. 
+G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using 
+g-buffers, we are only able to compute local illumination, though. By using deep g-buffers instead we can approximate global illumination, which is way more 
+efficient than traditional global illumination methods like pathtracing, while of course not being physically accurate anymore. 
 \end{abstract}
 
-\keywords{g-buffer, deep g-buffer, pathtracing, global illumination, shading}
+\keywords{g-buffer, deep g-buffer, pathtracing, global illumination, deferred shading, deferred rendering}
 \tableofcontents
 
 \newpage
@@ -48,32 +49,45 @@ process called "deferred rendering". By using Deep G-Buffers we can even approxi
 % Introduction
 \label{cha:introduction}
 \section{Global Illumination}
-	Global Illumination is achieved by taking into account direct light as well as indirect light, which essentially means that it is necessary to compute reflections to a
-	certain degree. The most popular method to do this in 3D animated movies is pathtracing (source pixar paper).
-	\subsection{Pathtracing}
-		
+	Global Illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take
+	into account how light reflects and carries information (in the most basic case: color).
+	\subsection{Physically correct methods}
+	In order to generate physically correct images, which is a requirement for creating photorealistic images, we need to solve the rendering equation.
+	% TODO insert rendering equation here
+	The most popular method for achieving this is pathtracing \cite{P2PATH}.
+	\subsubsection{Pathtracing}
+	\subsection{Computational difficulties of physically correct methods}
+	Since we have to take into account every ray of light and its reflections, the computational difficulty becomes apparent \cite{DST}.
+	% TODO insert time-complexity of pathtracing and time-complexity of deferred-rendering for comparison
+
 \section{Deferred Rendering}
 	\subsection{How deferred rendering handles lighting more efficiently}
-	The goal of deferred rendering is to postpone the shading stage. Instead one computes necessary geometry buffers (G-Buffer) and caches them for later use.
-	For all practical purposes, G-Buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these G-Buffers, it is possible
-	to compute shading separately.
+		The goal of deferred rendering is to postpone the shading stage. %TODO insert information about graphics pipeline of gpu
+		Instead of shading right away, we compute necessary geometry buffers (g-buffers) and cache 
+		them for later use. For all practical purposes, g-buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, 
+		we can now compute the shading separately.
 	\subsection{Deferred Shading}
 
-\section{Geometry Buffer (G-Buffer)}
-	\subsection{Frame-Buffer (Image-Buffer)}
+\section{Geometry-buffer (g-buffer)}
+	Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays.
+	\subsection{Frame-Buffer}
+		The frame-buffer stores color values. 
 	\subsection{Z-Buffer}
+		The z-buffer stores depth values.
 	\subsection{Normal-Buffer}
-	\subsection{Position-Buffer}
-	\subsection{Diffuse-buffer}
-	\subsection{Computing local illumination using G-Buffers}
-	\subsection{Computing global illumination using G-Buffers}
+		The normal-buffer stores surface-normals.
+		Note that there are more possible buffers to choose from, but the three that were mentioned are the most essential in every g-buffer.
+	\subsection{Computing local illumination using g-buffers}
+		After collecting all g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of lights:
+		Point-lights, spot-lights and directional-lights \cite{DST}.
 
 \section{Deep G-Buffer}
 	\subsection{Concept}
+	Store multiple g-buffers \cite{NDGB}.
 	\subsection{How Deep G-Buffers improve performance}
 
 \section{Performance and Output Comparison}
-	\subsection{G-Buffers vs Deep G-Buffers vs Pathtracing}
+	\subsection{Deep G-Buffers vs Pathtracing}
 
 %\section{My Fancy Second Section}
 %My second section is even better than the first one\footnote{Proof omitted.} because it contains a %footnote as well as some citations~\cite{Squarepants03,Knuth97}.%
