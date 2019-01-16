@@ -36,12 +36,14 @@
 
 \begin{abstract}%
 G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using 
-g-buffers, we are only able to compute local illumination, though. By using deep g-buffers instead we can approximate global illumination, which is way more 
-efficient than traditional global illumination methods like pathtracing, while of course not being physically accurate anymore. 
+g-buffers, we are only able to compute local illumination. By using deep g-buffers instead we can approximate global illumination, which is way more 
+efficient than traditional global illumination methods like pathtracing, while of course not being physically accurate. 
 \end{abstract}
 
 \keywords{g-buffer, deep g-buffer, pathtracing, global illumination, deferred shading, deferred rendering}
 \tableofcontents
+
+\label{cha:references}
 
 \newpage
 
@@ -52,10 +54,21 @@ efficient than traditional global illumination methods like pathtracing, while o
 	Global Illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take
 	into account how light reflects and carries information (in the most basic case: color).
 	\subsection{Physically correct methods}
-	In order to generate physically correct images, which is a requirement for creating photorealistic images, we need to solve the rendering equation.
-	% TODO insert rendering equation here
+	In order to generate physically correct images, which is a requirement for creating photorealistic images, we need to solve the rendering equation
+	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega')\delta\omega' $$
+	where 
+	\begin{center}
+		\begin{align*}
+			&L_o(\omega) \text{ is the outgoing light in direction } \omega\text{,}\\
+			&L_e(\omega) \text{ is the emmited light in direction } \omega\text{,}\\
+			&f(\omega, \omega') \text{ is the BRDF} \footnote{BRDF (Bidirectional random distribution function) returns the reflection direction (and refraction?) of a surface.} \text{,}\\
+			&L_i(\omega') \text{ is the incoming light from direction } \omega'\\
+			&\text{and } cos(n, \omega') \text{ is lambert reflectance} \footnote{Lambert reflectance computes the attentuation of light based on its incident angle to the surface.} \text{ .}
+		\end{align*}
+	\end{center}
 	The most popular method for achieving this is pathtracing \cite{P2PATH}.
 	\subsubsection{Pathtracing}
+		Pathtracing solves the rendering equation by 
 	\subsection{Computational difficulties of physically correct methods}
 	Since we have to take into account every ray of light and its reflections, the computational difficulty becomes apparent \cite{DST}.
 	% TODO insert time-complexity of pathtracing and time-complexity of deferred-rendering for comparison
@@ -70,12 +83,33 @@ efficient than traditional global illumination methods like pathtracing, while o
 
 \section{Geometry-buffer (g-buffer)}
 	Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays.
-	\subsection{Frame-Buffer}
-		The frame-buffer stores color values. 
+	\subsection{Frame-Buffer}%
+		The frame-buffer stores color values.% 
+		\begin{figure}[htb!]%
+			\begin{center}%
+				\includegraphics[width=6cm]{img/frame_buffer.png}
+			\end{center}%
+			\caption{Example of a frame-buffer (also called image-buffer)}%
+			\label{fig:frame_buffer}%
+		\end{figure}%
 	\subsection{Z-Buffer}
 		The z-buffer stores depth values.
+		\begin{figure}[htb!]%
+			\begin{center}%
+				\includegraphics[width=6cm]{img/z_buffer.png}
+			\end{center}%
+			\caption{Example of a z-buffer}%
+			\label{fig:z_buffer}%
+		\end{figure}%
 	\subsection{Normal-Buffer}
 		The normal-buffer stores surface-normals.
+		\begin{figure}[htb!]%
+			\begin{center}%
+				\includegraphics[width=6cm]{img/normal_buffer.png}
+			\end{center}%
+			\caption{Example of a normal-buffer}%
+			\label{fig:normal_buffer}%
+		\end{figure}%
 		Note that there are more possible buffers to choose from, but the three that were mentioned are the most essential in every g-buffer.
 	\subsection{Computing local illumination using g-buffers}
 		After collecting all g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of lights:
@@ -86,24 +120,26 @@ efficient than traditional global illumination methods like pathtracing, while o
 	Store multiple g-buffers \cite{NDGB}.
 	\subsection{How Deep G-Buffers improve performance}
 
+\section{Visual effects}
+	The following are visual effects that are sought after, but hard/impossible to achieve physically correctly without using
+	computationally expensive methods like pathtracing. 
+	\subsection{Ambient occlusion}
+		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically runs an edge detector over the z-buffer and paints those edges black. Since it only runs over the z-buffer it is considered screen space.
+		%TODO insert graphics here
+	\subsection{Color bleeding}
+		Color bleeding
+	\subsection{Soft shadows}
+
 \section{Performance and Output Comparison}
 	\subsection{Deep G-Buffers vs Pathtracing}
 
 %\section{My Fancy Second Section}
-%My second section is even better than the first one\footnote{Proof omitted.} because it contains a %footnote as well as some citations~\cite{Squarepants03,Knuth97}.%
+%My second section is even better than the first one\footnote{Proof omitted.} because it contains a %footnote
 %Everything else is explained in Figure~\ref{fig:dummy}. Always m%ake sure that all figures are refer%enced.
 %
-%\begin{figure}[htb!]
-%  \begin{centering}
-%    \includegraphics[width=6cm]{img/thing.jpg}\par
-%  \end{centering}
-%  \caption{A simple dummy picture to demonstrate how to include graphics into your report.}
-%  \label{fig:dummy}
-%\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
-\label{cha:references}
 \printbibliography
 
 \end{document}
