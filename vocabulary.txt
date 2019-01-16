@@ -1,0 +1,24 @@
+occlusion culling:
+- only render objects that are visible to camera (but is somehow supposed to be hard to achieve)
+
+shadow mapping:
+- rasterize the 3d objects from camera pov
+- project the 3d objects from light source pov
+- paint the projected 3d objects, the ones that were not hit are painted black 
+- generated HARD shadows
+- turn into softshadows by blending
+
+screen space ambient occlusion (ssao):
+- run edge detector on z-buffer and paint edges black (shade them)
+
+depth peeling:
+- used to achieve transparency
+- g-buffer with 2 layers required?
+
+tesselation:
+- basically use polygons or other primitives to describe a 3d object (in other words: create a mesh)
+
+deep g-buffer:
+- traditional g-buffer only saves information of closest intersecting objects
+- deep g-buffer with depth N saves information of closest intersecting objects as well as
+  the N-1 closest intersecting objects behind that (think of it as voxels)

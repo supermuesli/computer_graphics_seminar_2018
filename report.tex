@@ -121,22 +121,21 @@ efficient than traditional global illumination methods like pathtracing, while o
 	\subsection{How Deep G-Buffers improve performance}
 
 \section{Visual effects}
-	The following are visual effects that are sought after, but hard/impossible to achieve physically correctly without using
+	The following are visual effects that are sought after, but hard/impossible to achieve physically correct without using
 	computationally expensive methods like pathtracing. 
 	\subsection{Ambient occlusion}
 		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically runs an edge detector over the z-buffer and paints those edges black. Since it only runs over the z-buffer it is considered screen space.
-		%TODO insert graphics here
+		%TODO insert graphics for AO here
 	\subsection{Color bleeding}
-		Color bleeding
+		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
+		to be slightly blue on the reflected area. To have this happen it is obviously necessary to trace rays of some sort. This can be approximated, though, using ... %TODO how is this approximated?
+		%TODO insert graphics for color bleeding here
 	\subsection{Soft shadows}
+
+	\subsection{Transparency}
 
 \section{Performance and Output Comparison}
 	\subsection{Deep G-Buffers vs Pathtracing}
-
-%\section{My Fancy Second Section}
-%My second section is even better than the first one\footnote{Proof omitted.} because it contains a %footnote
-%Everything else is explained in Figure~\ref{fig:dummy}. Always m%ake sure that all figures are refer%enced.
-%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
