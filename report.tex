@@ -55,7 +55,7 @@ efficient than traditional global illumination methods like pathtracing, while o
 	into account how light reflects and carries information (in the most basic case: color).
 	\subsection{Physically correct methods}
 	In order to generate physically correct images, which is a requirement for creating photorealistic images, we need to solve the rendering equation
-	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega')\delta\omega' $$
+	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega') \partial \omega' $$
 	where 
 	\begin{center}
 		\begin{align*}
@@ -117,12 +117,13 @@ efficient than traditional global illumination methods like pathtracing, while o
 
 \section{Deep G-Buffer}
 	\subsection{Concept}
-	Store multiple g-buffers \cite{NDGB}.
-	\subsection{How Deep G-Buffers improve performance}
+		Deep g-buffers use a concept similar to depth peeling. Instead of storing information about the closest surface, we also store information about the n-closest surface (n layer deep g-buffer). \cite{NDGB}.
+	\subsection{How Deep G-Buffers approximate visual effects}
+
 
 \section{Visual effects}
 	The following are visual effects that are sought after, but hard/impossible to achieve physically correct without using
-	computationally expensive methods like pathtracing. 
+	computationally expensive methods. When using pathtracing, we get all of the following effects for free: 
 	\subsection{Ambient occlusion}
 		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically runs an edge detector over the z-buffer and paints those edges black. Since it only runs over the z-buffer it is considered screen space.
 		%TODO insert graphics for AO here
@@ -131,8 +132,13 @@ efficient than traditional global illumination methods like pathtracing, while o
 		to be slightly blue on the reflected area. To have this happen it is obviously necessary to trace rays of some sort. This can be approximated, though, using ... %TODO how is this approximated?
 		%TODO insert graphics for color bleeding here
 	\subsection{Soft shadows}
-
+		We can easily compute hard shadows using shadow mapping. This is done by projecting the scene from the light source's point of view and then projecting the scene from the camera's point of view while only actually painting the points with their respective colors if they were visible, else they are painted black. To get soft shadows, the points in shadow simply get blended together with their surrounding points.
+		%TODO insert graphics for soft and hard shadow
 	\subsection{Transparency}
+		A quick method to achieve transparency is depth peeling. \cite{NOIT}.
+
+	\subsection{Reflection}
+		Reflection ...
 
 \section{Performance and Output Comparison}
 	\subsection{Deep G-Buffers vs Pathtracing}

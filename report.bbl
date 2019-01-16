@@ -17,6 +17,29 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{NOIT}{article}{}
+    \name{author}{1}{}{%
+      {{hash=EC}{%
+         family={Everitt},
+         familyi={E\bibinitperiod},
+         given={Cass},
+         giveni={C\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {NVIDIA}%
+    }
+    \strng{namehash}{EC1}
+    \strng{fullhash}{EC1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Eve}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{Interactive Order-Independent Transparency}
+    \field{journaltitle}{NVIDIA OpenGL Applications Engineering}
+  \endentry
+
   \entry{DST}{article}{}
     \name{author}{1}{}{%
       {{hash=FPFF}{%
