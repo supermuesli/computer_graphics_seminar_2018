@@ -19,7 +19,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hyphenation{Sa-tan-arch-aeo-li-deal-co-hell-ish}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title, Author, etc.
 
@@ -120,13 +119,12 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 		Note that there are more possible buffers to choose from, but the three that were mentioned are the most essential in every g-buffer.
 	\subsection{Computing local illumination using g-buffers}
 		After having collected all our g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of light:
-		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in 3d space from which the light rays are sent. A point-light is a directional-light with a radius.
+		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in 3d space from which the light rays are sent. A point-light is a directional-light with a radius. %TODO explain local illumination
 
 \section{Deep g-buffer}
 	\subsection{Concept}
 		Deep g-buffers use a concept similar to depth peeling. Instead of storing information about the closest surface, in an n layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}.
 	\subsection{How deep g-buffers approximate visual effects}
-
 
 \section{Visual effects}
 	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
@@ -143,13 +141,19 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 		%TODO insert graphics for soft and hard shadow
 	\subsection{Transparency}
 		A quick method to achieve transparency is depth peeling. \cite{NOIT}.
+		%TODO explain depth peeling
 
 	\subsection{Reflection}
 		Reflection ...
+		%TODO explain screen space reflection
 
 	\subsection{Depth of field}
+		Depth of field ...
+		%TODO explain depth of field
 
 	\subsection{Motion blur (in interactive applications)}
+		Motion blur ...
+		%TODO explain motion blur
 
 \section{Performance and output comparison}
 	\subsection{Deep g-buffers vs pathtracing}
