@@ -119,8 +119,8 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 		\end{figure}%
 		Note that there are more possible buffers to choose from, but the three that were mentioned are the most essential in every g-buffer.
 	\subsection{Computing local illumination using g-buffers}
-		After collecting all g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of lights:
-		Point-lights, spot-lights and directional-lights \cite{DST}.
+		After having collected all our g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of light:
+		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in 3d space from which the light rays are sent. A point-light is a directional-light with a radius.
 
 \section{Deep g-buffer}
 	\subsection{Concept}
