@@ -67,28 +67,29 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 		\end{align*}
 	\end{center}
 	\addtocounter{footnote}{-1}
-	\footnotetext{BRDF (Bidirectional random distribution function) basically returns the reflection/refraction direction of a ray on surface.}%
+	\footnotetext{The bidirectional random distribution function basically describes the reflection/refraction of a ray on surface.}%
 	\stepcounter{footnote}
-	\footnotetext{Lambert reflectance describes the attentuation of light based on its incident angle to the surface.}%
+	\footnotetext{Lambert reflectance describes the attentuation of light on diffuse objects based on the lights incident angle.}%
 	The most popular method for achieving this is pathtracing \cite{P2PATH}.
 	\subsubsection{Pathtracing}
-		Pathtracing solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 3 (3 in most cases, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding.
+		Pathtracing solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 3 (3 in most cases, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. What all these visual effects describe are is explained in a later section. %TODO insert actual section number
 	\subsection{Computational difficulties of physically correct methods}
-	Since we have to take into account every ray of light and its reflections, the computational difficulty becomes apparent \cite{DST}.
+	Since we have to take into account thousands of samples of every ray of light with its reflections, the computational difficulty becomes apparent \cite{DST}. Because of this, it is nearly impossible to achieve real time rendering using physically correct methods on an average system. This forces game engines to stick to approximating global illumination and visual effects since it is way more efficient to compute. Add multiple light sources to the scene, and the computational requirements are going to blow up. Deferred rendering, specifically deferred shading, counters this problem at the cost of having to compute transparency using depth peeling.
 	% TODO insert time-complexity of pathtracing and time-complexity of deferred-rendering for comparison
 
 \section{Deferred rendering}
 	\subsection{How deferred rendering handles lighting more efficiently}
+		Graphics pipelines describe each step that has to be done in order to render an image. Within a pipeline it is possible in some cases to defer steps to a later stage. Applications that rely on graphics pipelines like that of OpenGL can profit from this.
+		%TODO insert example of how a graphics pipeline could look, possible an image
 		The goal of deferred rendering is to postpone the shading stage. %TODO insert information about graphics pipeline of gpu
 		Instead of shading right away, we compute necessary geometry buffers (g-buffers) and cache 
-		them for later use. For all practical purposes, g-buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, 
-		we can now compute the shading separately.
+		them for later use. In OpenGL applications this is especially a good idea because in the graphics pipeline each pixel has to go through the vertex- and fragment-shader.... .For all practical purposes, g-buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, it is possible to compute the shading.
 	\subsection{Deferred shading}
 
 \section{Geometry-buffer (g-buffer)}
 	Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays.
 	\subsection{Frame-buffer}%
-		The frame-buffer stores color values.% 
+		Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading is ...} applied to it.% 
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/frame_buffer.png}
@@ -97,7 +98,11 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 			\label{fig:frame_buffer}%
 		\end{figure}%
 	\subsection{Z-buffer}
-		The z-buffer stores depth values.
+		The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in 3d space (worldspace\footnotemark)} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion. 
+		\addtocounter{footnote}{-1}
+		\footnotetext{Worldspace is ...}
+		\stepcounter{footnote}
+		\footnotetext{Screenspace is ...}
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/z_buffer.png}
@@ -107,7 +112,7 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 			\label{fig:z_buffer}%
 		\end{figure}%
 	\subsection{Normal-buffer}
-		The normal-buffer stores surface-normals.
+		The normal-buffer stores surface-normals that are mostly used to determine reflection and refraction directions. They are also used for light attentuation, since they determine the cosine of the surface and the incident light and a larger cosine means lighter light and vice versa (lambert reflectance).
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/normal_buffer.png}
@@ -121,26 +126,24 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 		After having collected all our g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of light:
 		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in 3d space from which the light rays are sent. A point-light is a directional-light with a radius. %TODO explain local illumination
 
-\section{Deep g-buffer}
-	\subsection{Concept}
-		Deep g-buffers use a concept similar to depth peeling. Instead of storing information about the closest surface, in an n layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}.
-	\subsection{How deep g-buffers approximate visual effects}
-
 \section{Visual effects}
 	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
 	computationally expensive methods. When using pathtracing, we get most of the following effects for free: 
 	\subsection{Ambient occlusion}
 		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically runs an edge detector over the z-buffer and paints those edges black. Since it only runs over the z-buffer it is considered screen space.
 		%TODO insert graphics for AO here
+
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
 		to be slightly blue on the reflected area. To have this happen it is obviously necessary to trace rays of some sort. This can be approximated, though, using ... %TODO how is this approximated?
 		%TODO insert graphics for color bleeding here
+
 	\subsection{Soft shadows}
 		We can easily compute hard shadows using shadow mapping. This is done by projecting the scene from the light source's point of view and then projecting the scene from the camera's point of view while only actually painting the points with their respective colors if they are hit by light, else they are painted black. To get soft shadows, the points in shade simply get blended together with their surrounding points.
 		%TODO insert graphics for soft and hard shadow
+
 	\subsection{Transparency}
-		A quick method to achieve transparency is depth peeling. \cite{NOIT}.
+		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time ...\cite{NOIT}.
 		%TODO explain depth peeling
 
 	\subsection{Reflection}
@@ -154,6 +157,12 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 	\subsection{Motion blur (in interactive applications)}
 		Motion blur ...
 		%TODO explain motion blur
+
+\section{Deep g-buffer}
+	\subsection{Concept}
+		Deep g-buffers use a concept similar to depth peeling. Instead of storing information about the closest surface, in an n layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}.
+	\subsection{How deep g-buffers approximate visual effects}
+
 
 \section{Performance and output comparison}
 	\subsection{Deep g-buffers vs pathtracing}

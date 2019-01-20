@@ -401,9 +401,6 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aer6.tfm
-INPUT img/frame_buffer.png
-INPUT ./img/frame_buffer.png
-INPUT ./img/frame_buffer.png
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer7.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
@@ -412,6 +409,9 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer9.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
+INPUT img/frame_buffer.png
+INPUT ./img/frame_buffer.png
+INPUT ./img/frame_buffer.png
 INPUT img/z_buffer.png
 INPUT ./img/z_buffer.png
 INPUT ./img/z_buffer.png
