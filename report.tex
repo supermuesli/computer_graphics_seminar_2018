@@ -35,9 +35,11 @@
 
 \begin{abstract}%
 G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using 
-g-buffers, we are only able to compute local illumination. By using deep g-buffers instead we can approximate global illumination, which is way more 
-efficient than traditional global illumination methods like pathtracing, while of course not being physically accurate. We can make up for it, though, by also
-approximating visual effects like ambient occlusion, color bleeding, reflections, depth of field and motion blur to create an acceptable result.
+only g-buffers, we are only able to compute local illumination, which forces us to find a way to achieve sought after visual and lighting effects like global 
+illumination. By using deep g-buffers we can approximate global illumination in a way that is more efficient than traditional methods like pathtracing, 
+while of course not being physically accurate. We can make up for it, though, by also approximating visual effects like ambient occlusion, color bleeding, reflections, 
+depth of field and motion blur to create an acceptable interactive realtime result, which is - as of now - simply impossible with physically accurate methods on 
+average hardware.
 \end{abstract}
 
 \keywords{nvidia, g-buffer, deep g-buffer, pathtracing, global illumination approximation, deferred shading, deferred rendering}
@@ -54,7 +56,7 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 	Global illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take
 	into account how light reflects and carries information (in the most basic case: color).
 	\subsection{Physically correct methods}
-	In order to generate physically correct images, which is a requirement for creating photorealistic images, we need to solve the rendering equation
+	In order to generate physically correct lighting, which is a requirement for creating photorealistic images, we need to solve the rendering equation
 	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega') \partial \omega' $$
 	where 
 	\begin{center}
@@ -72,14 +74,14 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 	\footnotetext{Lambert reflectance describes the attentuation of light on diffuse objects based on the lights incident angle.}%
 	The most popular method for achieving this is pathtracing \cite{P2PATH}.
 	\subsubsection{Pathtracing}
-		Pathtracing solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 3 (3 in most cases, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. What all these visual effects describe are is explained in a later section. %TODO insert actual section number
+		Pathtracing solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. What all these visual effects describe are is explained in a later section. %TODO insert actual section number
 	\subsection{Computational difficulties of physically correct methods}
 	Since we have to take into account thousands of samples of every ray of light with its reflections, the computational difficulty becomes apparent \cite{DST}. Because of this, it is nearly impossible to achieve real time rendering using physically correct methods on an average system. This forces game engines to stick to approximating global illumination and visual effects since it is way more efficient to compute. Add multiple light sources to the scene, and the computational requirements are going to blow up. Deferred rendering, specifically deferred shading, counters this problem at the cost of having to compute transparency using depth peeling.
 	% TODO insert time-complexity of pathtracing and time-complexity of deferred-rendering for comparison
 
 \section{Deferred rendering}
+	Graphics pipelines describe each step that has to be done in order to render an image. Within a pipeline it is possible in some cases to defer steps to a later stage. Since it is conventional to use GPU's for applications that rely heavily on rendering images and since there is no universal graphics pipeline, because these are dependent on the hardware that is used, it is convenient that there exist API's like OpenGL that try to generalize the steps that need to be taken in order to render an image.
 	\subsection{How deferred rendering handles lighting more efficiently}
-		Graphics pipelines describe each step that has to be done in order to render an image. Within a pipeline it is possible in some cases to defer steps to a later stage. Applications that rely on graphics pipelines like that of OpenGL can profit from this.
 		%TODO insert example of how a graphics pipeline could look, possible an image
 		The goal of deferred rendering is to postpone the shading stage. %TODO insert information about graphics pipeline of gpu
 		Instead of shading right away, we compute necessary geometry buffers (g-buffers) and cache 
@@ -160,11 +162,11 @@ approximating visual effects like ambient occlusion, color bleeding, reflections
 
 \section{Deep g-buffer}
 	\subsection{Concept}
-		Deep g-buffers use a concept similar to depth peeling. Instead of storing information about the closest surface, in an n layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}.
+		Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. Practical observations suggest that the second-closest surface is often not the second-most relevant for shading \cite{NDGB}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that is not to be exceeded when looking for the next-closest surface immediately after the closest one.
 	\subsection{How deep g-buffers approximate visual effects}
 
 
-\section{Performance and output comparison}
+\section{Output comparison}
 	\subsection{Deep g-buffers vs pathtracing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
