@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  22 JAN 2019 03:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  22 JAN 2019 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1325,58 +1325,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2pdfTeX warning (ext4): d
-estination with the same identifier (name{Hfootnote.2}) has been already used, 
-duplicate ignored
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<img/graphics_pipeline.png, id=204, 272.01625pt x 604.2575pt>
+File: img/graphics_pipeline.png Graphic file (type png)
+<use img/graphics_pipeline.png>
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 86.
+(pdftex.def)             Requested size: 89.65771pt x 199.16928pt.
+ [3pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.89 
+l.96 
      ]
-<img/frame_buffer.png, id=202, 1003.75pt x 1003.75pt>
+<img/frame_buffer.png, id=225, 1003.75pt x 1003.75pt>
 File: img/frame_buffer.png Graphic file (type png)
 <use img/frame_buffer.png>
-Package pdftex.def Info: img/frame_buffer.png  used on input line 96.
+Package pdftex.def Info: img/frame_buffer.png  used on input line 103.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/z_buffer.png, id=206, 1003.75pt x 1003.75pt>
+<img/z_buffer.png, id=229, 1003.75pt x 1003.75pt>
 File: img/z_buffer.png Graphic file (type png)
 <use img/z_buffer.png>
-Package pdftex.def Info: img/z_buffer.png  used on input line 109.
+Package pdftex.def Info: img/z_buffer.png  used on input line 116.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
- [3 <./img/frame_buffer.png (PNG copy)>]
-<img/normal_buffer.png, id=217, 1003.75pt x 1003.75pt>
+ [4 <./img/graphics_pipeline.png>]
+<img/normal_buffer.png, id=240, 1003.75pt x 1003.75pt>
 File: img/normal_buffer.png Graphic file (type png)
 <use img/normal_buffer.png>
-Package pdftex.def Info: img/normal_buffer.png  used on input line 119.
+Package pdftex.def Info: img/normal_buffer.png  used on input line 126.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
- [4pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
 7}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.141 
-       <./img/z_buffer.png (PNG copy)>] [5 <./img/normal_buffer.png (PNG copy)>
-] [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 175.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 175.
+l.136 
+       <./img/frame_buffer.png (PNG copy)> <./img/z_buffer.png (PNG copy)>]
+[6 <./img/normal_buffer.png (PNG copy)>] [7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 185.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 185.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 175.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 175.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 185.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 185.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: D3387E40955FC2B1BA0B4149029A8DDC;1653.
+(rerunfilecheck)             Checksum: AA7D3300DFAE5CC7088CA17341CD7BB9;1869.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 175.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 185.
  ) 
 Here is how much of TeX's memory you used:
- 28385 strings out of 492642
- 544444 string characters out of 6135566
- 833889 words of memory out of 5000000
- 31693 multiletter control sequences out of 15000+600000
+ 28400 strings out of 492642
+ 544765 string characters out of 6135566
+ 833890 words of memory out of 5000000
+ 31702 multiletter control sequences out of 15000+600000
  42311 words of font info for 94 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,15n,84p,1566b,1116s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,84p,1579b,1116s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1396,10 +1401,10 @@ m/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
 t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (6 pages, 289557 bytes).
+Output written on report.pdf (7 pages, 330831 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 47 named destinations out of 1000 (max. 500000)
- 316 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 330 PDF objects out of 1000 (max. 8388607)
+ 267 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 345 words of extra memory for PDF output out of 10000 (max. 10000000)
 
