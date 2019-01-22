@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  22 JAN 2019 23:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  22 JAN 2019 23:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1384,15 +1384,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
  (./report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 32797F46725A315E82FED145A323D4F7;1914.
 
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: 0DB93EAF1E0EF2A5D470D3A6B21D77F6;1893
-(rerunfilecheck)             After:  32797F46725A315E82FED145A323D4F7;1914.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1428,7 +1422,7 @@ m/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr
 t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/
 public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (9 pages, 887783 bytes).
+Output written on report.pdf (9 pages, 887994 bytes).
 PDF statistics:
  345 PDF objects out of 1000 (max. 8388607)
  276 compressed objects within 3 object streams
