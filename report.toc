@@ -1,16 +1,16 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Global illumination}{3}{section.1}
+\contentsline {section}{\numberline {1}Global illumination}{2}{section.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Physically correct methods}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.1}Physically correct methods}{2}{subsection.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.1.1}Pathtracing}{3}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Pathtracing}{2}{subsubsection.1.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}Computational difficulties of physically correct methods}{3}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.2}Computational difficulties of physically correct methods}{2}{subsection.1.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Deferred rendering}{3}{section.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}How deferred shading handles lighting more efficiently}{4}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.1}How deferred shading handles lighting more efficiently}{3}{subsection.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Geometry-buffer (g-buffer)}{4}{section.3}
 \defcounter {refsection}{0}\relax 
@@ -18,17 +18,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Z-buffer}{4}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Normal-buffer}{5}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Normal-buffer}{4}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Computing local illumination using g-buffers}{6}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Computing local illumination using g-buffers}{4}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Visual effects}{6}{section.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Ambient occlusion}{6}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Color bleeding}{6}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Color bleeding}{7}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Soft shadows}{6}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Soft shadows}{7}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.4}Transparency}{7}{subsection.4.4}
 \defcounter {refsection}{0}\relax 
@@ -47,8 +47,6 @@
 \contentsline {subsubsection}{\numberline {5.2.1}Global illumination}{7}{subsubsection.5.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {5.2.2}Ambient occlusion}{7}{subsubsection.5.2.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2.3}}{7}{subsubsection.5.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6}Output comparison}{8}{section.6}
 \defcounter {refsection}{0}\relax 

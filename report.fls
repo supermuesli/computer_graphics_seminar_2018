@@ -421,6 +421,9 @@ INPUT ./img/z_buffer.png
 INPUT img/normal_buffer.png
 INPUT ./img/normal_buffer.png
 INPUT ./img/normal_buffer.png
+INPUT img/visual_effects.png
+INPUT ./img/visual_effects.png
+INPUT ./img/visual_effects.png
 INPUT img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
