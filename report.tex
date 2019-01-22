@@ -127,15 +127,14 @@ average hardware.
 			would cause negative RGB values we just take the absolute values.}%
 			\label{fig:normal_buffer}%% TODO update this figure ...
 		\end{figure}%
-	\subsection{Computing local illumination using g-buffers}
+	\subsection{Computing local illumination using g-buffers (deferred shading)}
 		After having collected all our g-buffers we can now work on illumination. To do this we need to define some light sources. We distinguish between three types of light-sources:
 		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in worldspace from which the light rays are sent in all directions. A point-light is a directional-light which is constrained by its radius (basically a sphere of light). Finally, spot-lights are area lights which emit light on another area (like spot-lights in real life do). 
-		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. The differences are essentially that gouraud-shading assigns shaded colors to the vertices of a polygon within the vertex-shader and then interpolates (blends) the colors inbetween the vertices in the fragment-shader, while phong-shading directly computes the shaded colors for each individual fragment in the fragment-shader. Gouraud-shading is a fast way of computing shading since interpolating between three (assuming the polygons are triangles) shaded vertices is quicker than actually computing a color by considering the light sources for each individual fragment as is done by phong-shading, but may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case. 
-		%TODO explain local illumination
+		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. The differences are essentially that gouraud-shading assigns shaded colors to the vertices of a polygon within the vertex-shader and then interpolates (blends) the colors inbetween the vertices in the fragment-shader, while phong-shading directly computes the shaded colors for each individual fragment in the fragment-shader. Gouraud-shading is a fast way of computing shading since interpolating between three (assuming the polygons are triangles) shaded vertices is quicker than actually computing a color by considering the light sources for each individual fragment as is done by phong-shading, but may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case.
 
 \section{Visual effects} \label{visual_effects}
 	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
-	computationally expensive methods. When using pathtracing, we get most of the following effects for free: 
+	computationally expensive methods. When applying pathtracing, we get most of the following effects for free: 
 	\begin{figure}[htb!]%
 	\begin{center}%
 		\includegraphics[width=7cm]{img/visual_effects.png}
@@ -155,11 +154,9 @@ average hardware.
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
 		to be slightly blue on the reflected area. To have this happen it is obviously necessary to trace rays of some sort. This can be approximated, though, using ... %TODO how is this approximated?
-		%TODO insert graphics for color bleeding here
 
 	\subsection{Soft shadows}
 		We can easily compute hard shadows using shadow mapping. This is done by projecting the scene from the light source's point of view and then projecting the scene from the camera's point of view while only actually painting the points with their respective colors if they are hit by light, else they are painted black. To get soft shadows, the points in shade simply get blended together with their surrounding points.
-		%TODO insert graphics for soft and hard shadow
 
 	\subsection{Transparency}
 		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time ...\cite{NOIT}.
@@ -167,6 +164,7 @@ average hardware.
 
 	\subsection{Reflection}
 		Screen space reflections can be efficiently computed through environmental mapping (also called reflection mapping). This is done by projecting the texture that is supposed to be reflected onto the object that reflects it.
+		%TODO be more precise about this
 
 	\subsection{Depth of field}
 		Depth of field ...
@@ -178,7 +176,9 @@ average hardware.
 
 \section{Deep g-buffer}
 	\subsection{Concept}
-		Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. Practical observations suggest that the second-closest surface is often not the second-most relevant for shading \cite{NDGB}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that is not to be exceeded when looking for the next-closest surface immediately after the closest one.
+		Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{NDGB}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one.
+	\subsection{Generating a 2-layer deep g-buffer}
+		A 2-layer deep g-buffer can be efficiently generated in a single pass by ...
 	\subsection{How deep g-buffers approximate visual effects}
 	\subsubsection{Global illumination} 
 		is achieved by ...
