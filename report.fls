@@ -1,4 +1,4 @@
-PWD /home/kashim/Documents/computer_graphics_seminar_2018
+PWD /home/supermuesli/Documents/computer_graphics_seminar_2018
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT report.tex
@@ -421,6 +421,9 @@ INPUT ./img/z_buffer.png
 INPUT img/normal_buffer.png
 INPUT ./img/normal_buffer.png
 INPUT ./img/normal_buffer.png
+INPUT img/ambient_occlusion.png
+INPUT ./img/ambient_occlusion.png
+INPUT ./img/ambient_occlusion.png
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out
