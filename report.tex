@@ -100,11 +100,11 @@ average hardware.
 			\begin{center}%
 				\includegraphics[width=7cm]{img/frame_buffer.png}
 			\end{center}%
-			\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with white walls containing two blue cuboids.}%
+			\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
 			\label{fig:frame_buffer}%% TODO update this figure ...
 		\end{figure}%
 	\subsection{Z-buffer}
-		The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion. 
+		The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling for transparency. 
 		\addtocounter{footnote}{-1}
 		\footnotetext{Worldspace is the space in which the 3d objects are placed.}
 		\stepcounter{footnote}
@@ -114,7 +114,7 @@ average hardware.
 				\includegraphics[width=7cm]{img/z_buffer.png}
 			\end{center}%
 			\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values instead of actual colors they are interpreted as the grayscale value deduced by dividing each
-			distance by the maximum distance from the cameras point of view.}%
+			z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, and then multiplying with 255 to create an RGB color vector.}%
 			\label{fig:z_buffer}% TODO update this figure ...
 		\end{figure}%
 	\subsection{Normal-buffer}
@@ -123,8 +123,7 @@ average hardware.
 			\begin{center}%
 				\includegraphics[width=7cm]{img/normal_buffer.png}
 			\end{center}%
-			\caption{Example of a normal-buffer. Normal vectors are usually normalized, meaning their values range from 0 to 1. Multiplying them with 255 gives us an RGB color. Since negative normals
-			would cause negative RGB values we just take the absolute values.}%
+			\caption{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.}%
 			\label{fig:normal_buffer}%% TODO update this figure ...
 		\end{figure}%
 	\subsection{Computing local illumination using g-buffers (deferred shading)}
@@ -175,8 +174,7 @@ average hardware.
 		%TODO explain motion blur
 
 \section{Deep g-buffer}
-	\subsection{Concept}
-		Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{NDGB}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one.
+	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{NDGB}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{NDGB}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one.
 	\subsection{Generating a 2-layer deep g-buffer}
 		A 2-layer deep g-buffer can be efficiently generated in a single pass by ...
 	\subsection{How deep g-buffers approximate visual effects}
@@ -186,8 +184,7 @@ average hardware.
 		blabalbal ...
 
 
-\section{Output comparison}
-	\subsection{Deep g-buffers vs pathtracing}
+\section{Deep g-buffers vs pathtracing: Global illumination}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
