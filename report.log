@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  23 JAN 2019 05:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  23 JAN 2019 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1213,14 +1213,38 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: subfigure package is loaded.
 ))
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count342
+\lst@gtempboxa=\box92
+\lst@token=\toks45
+\lst@length=\count343
+\lst@currlwidth=\dimen257
+\lst@column=\count344
+\lst@pos=\count345
+\lst@lostspace=\dimen258
+\lst@width=\dimen259
+\lst@newlines=\count346
+\lst@lineno=\count347
+\lst@maxwidth=\dimen260
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
+\c@lstnumber=\count348
+\lst@skipnumbers=\count349
+\lst@framebox=\box93
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2018/09/02 1.7 listings configuration
+))
+Package: listings 2018/09/02 1.7 (Carsten Heinz)
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
 (/usr/share/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
-\@quotelevel=\count342
-\@quotereset=\count343
+\@quotelevel=\count350
+\@quotereset=\count351
  (./report.aux
 
 LaTeX Warning: Label `fig:normal_buffer' multiply defined.
@@ -1228,40 +1252,40 @@ LaTeX Warning: Label `fig:normal_buffer' multiply defined.
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 34.
  (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count344
-\scratchdimen=\dimen257
-\scratchbox=\box92
-\nofMPsegments=\count345
-\nofMParguments=\count346
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count347
-\MPscratchDim=\dimen258
-\MPnumerator=\count348
-\makeMPintoPDFobject=\count349
-\everyMPtoPDFconversion=\toks46
+\scratchcounter=\count352
+\scratchdimen=\dimen261
+\scratchbox=\box94
+\nofMPsegments=\count353
+\nofMParguments=\count354
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count355
+\MPscratchDim=\dimen262
+\MPnumerator=\count356
+\makeMPintoPDFobject=\count357
+\everyMPtoPDFconversion=\toks47
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -1280,8 +1304,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box93
-Package hyperref Info: Link coloring OFF on input line 25.
+\AtBeginShipoutBox=\box95
+Package hyperref Info: Link coloring OFF on input line 34.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1289,11 +1313,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count350
+\c@section@level=\count358
 )
-LaTeX Info: Redefining \ref on input line 25.
-LaTeX Info: Redefining \pageref on input line 25.
-LaTeX Info: Redefining \nameref on input line 25.
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
+LaTeX Info: Redefining \nameref on input line 34.
  (./report.out) (./report.out)
 \@outlinefile=\write6
 \openout6 = `report.out'.
@@ -1309,16 +1333,18 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (./report.bbl)
-Package biblatex Info: Reference section=0 on input line 25.
-Package biblatex Info: Reference segment=0 on input line 25.
+Package biblatex Info: Reference section=0 on input line 34.
+Package biblatex Info: Reference segment=0 on input line 34.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+\c@lstlisting=\count359
+LaTeX Font Info:    Try loading font information for U+msa on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+LaTeX Font Info:    Try loading font information for U+msb on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1326,63 +1352,74 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write7
 \openout7 = `report.toc'.
 
- [1
+ (./report.lof [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<img/graphics_pipeline.png, id=190, 272.01625pt x 604.2575pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
+\tf@lof=\write8
+\openout8 = `report.lof'.
+
+ (./report.loa)
+\tf@loa=\write9
+\openout9 = `report.loa'.
+
+
+[2]
+<img/graphics_pipeline.png, id=226, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
-Package pdftex.def Info: img/graphics_pipeline.png  used on input line 85.
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 96.
 (pdftex.def)             Requested size: 89.65771pt x 199.16928pt.
- [2pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+ [3pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
 2}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.90 	\subsection
-                 {How deferred shading handles lighting more efficiently}]
-[3 <./img/graphics_pipeline.png>]
-<img/frame_buffer.png, id=217, 1003.75pt x 1003.75pt>
+l.101 	\subsection
+                  {How deferred shading handles lighting more efficiently}]
+[4 <./img/graphics_pipeline.png>]
+<img/frame_buffer.png, id=250, 1003.75pt x 1003.75pt>
 File: img/frame_buffer.png Graphic file (type png)
 <use img/frame_buffer.png>
-Package pdftex.def Info: img/frame_buffer.png  used on input line 101.
+Package pdftex.def Info: img/frame_buffer.png  used on input line 112.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/z_buffer.png, id=221, 1003.75pt x 1003.75pt>
+<img/z_buffer.png, id=254, 1003.75pt x 1003.75pt>
 File: img/z_buffer.png Graphic file (type png)
 <use img/z_buffer.png>
-Package pdftex.def Info: img/z_buffer.png  used on input line 114.
+Package pdftex.def Info: img/z_buffer.png  used on input line 125.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/normal_buffer.png, id=222, 1003.75pt x 1003.75pt>
+<img/normal_buffer.png, id=255, 1003.75pt x 1003.75pt>
 File: img/normal_buffer.png Graphic file (type png)
 <use img/normal_buffer.png>
-Package pdftex.def Info: img/normal_buffer.png  used on input line 124.
+Package pdftex.def Info: img/normal_buffer.png  used on input line 135.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
- [4pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.
 7}) has been already used, duplicate ignored
 
 \@EveryShipout@Output ...@Org@Shipout \box \@cclv 
                                                   
-l.133 
+l.144 
        <./img/frame_buffer.png>]
-Underfull \vbox (badness 3601) has occurred while \output is active []
-
- [5 <./img/z_buffer.png (PNG copy)> <./img/normal_buffer.png>]
-<img/visual_effects.png, id=242, 385.44pt x 385.44pt>
+<img/visual_effects.png, id=266, 385.44pt x 385.44pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
-Package pdftex.def Info: img/visual_effects.png  used on input line 139.
+Package pdftex.def Info: img/visual_effects.png  used on input line 150.
 (pdftex.def)             Requested size: 199.16928pt x 199.16547pt.
-<img/ambient_occlusion.png, id=243, 364.36125pt x 305.14pt>
+ [6 <./img/z_buffer.png (PNG copy)> <./img/normal_buffer.png>]
+<img/ambient_occlusion.png, id=273, 364.36125pt x 305.14pt>
 File: img/ambient_occlusion.png Graphic file (type png)
 <use img/ambient_occlusion.png>
-Package pdftex.def Info: img/ambient_occlusion.png  used on input line 148.
+Package pdftex.def Info: img/ambient_occlusion.png  used on input line 159.
 (pdftex.def)             Requested size: 199.16928pt x 166.79385pt.
- [6 <./img/visual_effects.png>] [7 <./img/ambient_occlusion.png>] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 193.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 193.
+ [7 <./img/visual_effects.png> <./img/ambient_occlusion.png>]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 191.
+
+[8] [9] [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 193.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 193.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: E986E48F02E8160B6F0016C49B7FDAF7;1811.
 
@@ -1392,13 +1429,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 193.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
  ) 
 Here is how much of TeX's memory you used:
- 28410 strings out of 492642
- 545018 string characters out of 6135566
- 832889 words of memory out of 5000000
- 31709 multiletter control sequences out of 15000+600000
+ 30041 strings out of 492642
+ 566378 string characters out of 6135566
+ 884219 words of memory out of 5000000
+ 33276 multiletter control sequences out of 15000+600000
  42311 words of font info for 94 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
  62i,15n,84p,1676b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1422,10 +1459,10 @@ st/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (8 pages, 895810 bytes).
+Output written on report.pdf (10 pages, 906354 bytes).
 PDF statistics:
- 336 PDF objects out of 1000 (max. 8388607)
- 265 compressed objects within 3 object streams
- 53 named destinations out of 1000 (max. 500000)
+ 418 PDF objects out of 1000 (max. 8388607)
+ 344 compressed objects within 4 object streams
+ 99 named destinations out of 1000 (max. 500000)
  339 words of extra memory for PDF output out of 10000 (max. 10000000)
 
