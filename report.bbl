@@ -17,6 +17,29 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{PBCB}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CPH}{%
+         family={Christensen},
+         familyi={C\bibinitperiod},
+         given={Per\bibnamedelima H.},
+         giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pixar Animation Studios}%
+    }
+    \strng{namehash}{CPH1}
+    \strng{fullhash}{CPH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Chr}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Point-Based Approximate Color Bleeding}
+    \field{journaltitle}{Pixar Technical Memo #08-01}
+  \endentry
+
   \entry{NOIT}{article}{}
     \name{author}{1}{}{%
       {{hash=EC}{%

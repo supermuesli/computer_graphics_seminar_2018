@@ -124,8 +124,8 @@ average hardware.
 			\begin{center}%
 				\includegraphics[width=7cm]{img/z_buffer.png}
 			\end{center}%
-			\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values instead of actual colors they are interpreted as the grayscale value deduced by dividing each
-			z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, and then multiplying with 255 to create an RGB color vector.}%
+			\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each
+			z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.}%
 			\label{fig:z_buffer}
 		\end{figure}%
 	\subsection{Normal-buffer}
@@ -152,10 +152,11 @@ average hardware.
 		\includegraphics[width=7cm]{img/visual_effects.png}
 	\end{center}%
 	\caption{Diverse visual effects caused by global illumination inside a cornell box. The image was rendered using pathtracing.}%
+	%TODO insert source
 	\label{fig:visual_effects}%
 	\end{figure}%
 	\subsection{Ambient occlusion}
-		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically runs an edge detector over the z-buffer and paints those edges black. Since it only runs over the z-buffer it is considered screen space. Since ambient occlusion is an effect directly caused by global illumination, the method (ambient occlusion) is considered an efficient way of faking global illumination.
+		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). This method basically checks the surrounding z-values of each z-value of the z-buffer. Given a radius $r$ and a sampling count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding z-values within $r$. In simple terms, if the majority (half or more) of the samples (the surrounding z-values) are smaller than the center z-value (the one we are computing $AO$ for), then $AO$ receives a value of $1$, else a value smaller than $1$ but larger or equal to $0$. These float values can then be put in a texture-buffer to be used in post-processing or they can be used directly. To apply ambient occlusion to the final image, the $AO$ values are multiplied with their respective pixels in the final image. Because $0 \leq AO \leq 1$ this can be seen as tweaking the intensity of the color on a specific pixel. Since it only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading the method (ambient occlusion) to be considered an efficient way of faking global illumination.
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/ambient_occlusion.png}
@@ -165,18 +166,17 @@ average hardware.
 		\end{figure}%
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
-		to be slightly blue on the reflected area. To have this happen it is obviously necessary to trace rays of some sort. This can be approximated, though, using ... %TODO how is this approximated?
+		to be slightly blue on the reflected area. To have this happen it would obviously be convenient to trace rays of some sort. Point-based color bleeding approximates this by using point cloud surfels with direct illumination values \cite{PBCB}. As this is somewhat complicated to put into few phrases, we recommend reading the paper "Point-Based Approximate Color Bleeding". On the other hand, we will be presenting a simpler method using deep g-buffers in section 5.
 
 	\subsection{Soft shadows}
-		We can easily compute hard shadows using shadow mapping. This is done by projecting the scene from the light source's point of view and then projecting the scene from the camera's point of view while only actually painting the points with their respective colors if they are hit by light, else they are painted black. To get soft shadows, the points in shade simply get blended together with their surrounding points.
+		We can easily compute hard shadows using shadow mapping. In simple words, this is done by projecting the scene from the light source's point of view and then projecting the scene from the camera's point of view while only actually painting the points with their respective colors if they are hit by light, else they are painted black. To get soft shadows, the points in shade simply get blended together with their surrounding points.
 
 	\subsection{Transparency}
-		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time ...\cite{NOIT}.
-		%TODO explain depth peeling
+		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time, one of which stores the current g-buffer and one of which stores the previous g-buffer. Depending on how many levels of transparency are wished for, let $k$ be the level of transparency, we make $k$ passes on the g-buffers, "peeling" away the previous g-buffers texel\footnote{A texel is essentially a pixel of a texture. G-buffers are stored in texture-buffers inside the GPU, which means their individual pixels can be refered to as texel.} from the current g-buffer if a larger z-value on that texel-position is found. For this to work, the previous g-buffer in the first pass has to be initialized with negative infinity \cite{NOIT}.
 
 	\subsection{Reflection}
 		Screen space mirror reflections can be efficiently computed through environmental mapping (also called reflection mapping). This is done by projecting the texture that is supposed to be reflected onto the object that reflects it.
-		%TODO be more precise about this
+		%TODO be more precise
 
 	\subsection{Depth of field}
 		Depth of field ...
@@ -217,14 +217,14 @@ submit geometry with:
   geometryShader(tri)
     emit T(t, tri) to layer 0
     emit T(t, tri) to layer 1
-  if VARIANT == Delay) or (VARIANT == Predict:
+  if (VARIANT == Delay) or (VARIANT == Predict):
     emit T(t+1, tri) to layer 2
   pixelShader(x, y, z):
     switch (layer):
       case 0: // 1st layer; usual G-buffer pass
         return S(x, y, z)
       case 1: // 2nd G-buffer layer: choose the comparison texel
-        if VARIANT == Delay) or (VARIANT == Predict:
+        if (VARIANT == Delay) or (VARIANT == Predict):
           L = 2 // Comparison layer
           C = (x, y, z) // Comparison texel
         else if VARIANT == Previous:

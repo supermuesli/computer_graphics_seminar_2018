@@ -4,7 +4,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2}{\ignorespaces Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }}{5}{figure.caption.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Example of a z-buffer. Since the z-buffer only stores distances as float values instead of actual colors they are interpreted as the grayscale value deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, and then multiplying with 255 to create an RGB color vector.\relax }}{6}{figure.caption.6}
+\contentsline {figure}{\numberline {3}{\ignorespaces Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.\relax }}{6}{figure.caption.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4}{\ignorespaces Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }}{6}{figure.caption.7}
 \defcounter {refsection}{0}\relax 

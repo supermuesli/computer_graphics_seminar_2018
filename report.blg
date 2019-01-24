@@ -123,45 +123,45 @@ Too many commas in name 1 of "M. Mara, M. McGuire, D. Nowrouzezahrai, D. Luebke"
 while executing---line 2749 of file biblatex.bst
 Too many commas in name 1 of "M. Mara, M. McGuire, D. Nowrouzezahrai, D. Luebke" for entry NDGB
 while executing---line 2749 of file biblatex.bst
-You've used 5 entries,
+You've used 6 entries,
             6268 wiz_defined-function locations,
-            1201 strings with 9114 characters,
-and the built_in function-call counts, 25104 in all, are:
-= -- 1848
-> -- 494
-< -- 235
-+ -- 405
-- -- 118
-* -- 1660
-:= -- 2176
+            1207 strings with 9228 characters,
+and the built_in function-call counts, 30000 in all, are:
+= -- 2177
+> -- 600
+< -- 290
++ -- 485
+- -- 142
+* -- 1969
+:= -- 2541
 add.period$ -- 0
-call.type$ -- 5
-change.case$ -- 160
+call.type$ -- 6
+change.case$ -- 194
 chr.to.int$ -- 30
-cite$ -- 8
-duplicate$ -- 2150
-empty$ -- 2469
-format.name$ -- 206
-if$ -- 5613
+cite$ -- 10
+duplicate$ -- 2656
+empty$ -- 2956
+format.name$ -- 258
+if$ -- 6707
 int.to.chr$ -- 0
-int.to.str$ -- 12
+int.to.str$ -- 15
 missing$ -- 0
-newline$ -- 116
-num.names$ -- 302
-pop$ -- 1365
+newline$ -- 139
+num.names$ -- 373
+pop$ -- 1699
 preamble$ -- 1
-purify$ -- 160
+purify$ -- 194
 quote$ -- 0
-skip$ -- 1023
+skip$ -- 1246
 stack$ -- 0
-substring$ -- 3314
-swap$ -- 617
-text.length$ -- 134
-text.prefix$ -- 5
+substring$ -- 3805
+swap$ -- 763
+text.length$ -- 165
+text.prefix$ -- 7
 top$ -- 1
-type$ -- 158
+type$ -- 192
 warning$ -- 0
-while$ -- 207
+while$ -- 245
 width$ -- 0
-write$ -- 112
+write$ -- 134
 (There were 51 error messages)
