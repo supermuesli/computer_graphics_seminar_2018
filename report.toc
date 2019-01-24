@@ -26,7 +26,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Ambient occlusion}{7}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Color bleeding}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Color bleeding}{7}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3}Soft shadows}{8}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
@@ -40,12 +40,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Deep g-buffer}{8}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Generating a 2-layer deep g-buffer}{8}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.1}Generating a 2-layer deep g-buffer}{9}{subsection.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}How deep g-buffers approximate visual effects}{8}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}How deep g-buffers approximate visual effects}{9}{subsection.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2.1}Global illumination}{8}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.1}Global illumination}{9}{subsubsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2.2}Ambient occlusion}{10}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.2}Ambient occlusion}{9}{subsubsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Deep g-buffers vs pathtracing: Global illumination}{10}{section.6}
+\contentsline {subsubsection}{\numberline {5.2.3}Reflections}{9}{subsubsection.5.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Deep g-buffers vs pathtracing: Global illumination}{9}{section.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Conclusion}{9}{section.7}

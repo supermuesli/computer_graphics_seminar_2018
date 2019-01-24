@@ -22,4 +22,6 @@
 \BOOKMARK [2][-]{subsection.5.2}{How deep g-buffers approximate visual effects}{section.5}% 22
 \BOOKMARK [3][-]{subsubsection.5.2.1}{Global illumination}{subsection.5.2}% 23
 \BOOKMARK [3][-]{subsubsection.5.2.2}{Ambient occlusion}{subsection.5.2}% 24
-\BOOKMARK [1][-]{section.6}{Deep g-buffers vs pathtracing: Global illumination}{}% 25
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Reflections}{subsection.5.2}% 25
+\BOOKMARK [1][-]{section.6}{Deep g-buffers vs pathtracing: Global illumination}{}% 26
+\BOOKMARK [1][-]{section.7}{Conclusion}{}% 27

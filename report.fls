@@ -1,4 +1,4 @@
-PWD /home/supermuesli/Documents/computer_graphics_seminar_2018
+PWD /home/kashim/Documents/computer_graphics_seminar_2018
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT report.tex
@@ -359,8 +359,6 @@ INPUT report.toc
 INPUT report.toc
 INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aebx10.tfm
 OUTPUT report.toc
-INPUT report.lof
-INPUT report.lof
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer17.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
@@ -402,6 +400,8 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer10.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
+INPUT report.lof
+INPUT report.lof
 OUTPUT report.lof
 INPUT report.loa
 INPUT report.loa

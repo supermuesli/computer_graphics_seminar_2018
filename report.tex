@@ -106,13 +106,13 @@ average hardware.
 \section{Geometry-buffer (g-buffer)}
 	Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from, but the three that will be mentioned are the most essential in every g-buffer.
 	\subsection{Frame-buffer}%
-		Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading (also called pixel-shading) aims to shade every single fragment by using some shading technique phong-shading.} applied to it.% 
+		Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading (also called pixel-shading) aims to shade every single fragment by using some shading technique.} applied to it.% 
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/frame_buffer.png}
 			\end{center}%
 			\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
-			\label{fig:frame_buffer}%% TODO update this figure ...
+			\label{fig:frame_buffer}
 		\end{figure}%
 	\subsection{Z-buffer}
 		The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
@@ -126,7 +126,7 @@ average hardware.
 			\end{center}%
 			\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values instead of actual colors they are interpreted as the grayscale value deduced by dividing each
 			z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, and then multiplying with 255 to create an RGB color vector.}%
-			\label{fig:z_buffer}% TODO update this figure ...
+			\label{fig:z_buffer}
 		\end{figure}%
 	\subsection{Normal-buffer}
 		The normal-buffer stores surface-normals that are mostly used to determine reflection and refraction directions. They are also used for light attentuation, since they help determine the cosine of the surface and the incident light and a larger cosine means lighter light and vice versa (lambert reflectance).
@@ -135,12 +135,14 @@ average hardware.
 				\includegraphics[width=7cm]{img/normal_buffer.png}
 			\end{center}%
 			\caption{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.}%
-			\label{fig:normal_buffer}%% TODO update this figure ...
+			\label{fig:normal_buffer}
 		\end{figure}%
 	\subsection{Computing local illumination using g-buffers (deferred shading)}
 		After having collected all our g-buffers we can now work on local illumination. To do this we need to define some light sources. The following are some of the possible light-sources that we can use:
 		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in worldspace from which the light rays are sent in all directions. A point-light is a directional-light which is constrained by its radius (basically a sphere of light). Finally, spot-lights are area lights which emit light on another area (like spot-lights in real life do). 
-		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. The differences are essentially that gouraud-shading assigns shaded colors to the vertices of a polygon within the vertex-shader and then interpolates (blends) the colors inbetween the vertices in the fragment-shader, while phong-shading directly computes the shaded colors for each individual fragment in the fragment-shader. Gouraud-shading is a fast way of computing shading since interpolating between three (assuming the polygons are triangles) shaded vertices is quicker than actually computing a color by considering the light sources for each individual fragment as is done by phong-shading, but may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case.
+		%TODO fix explanation on light sources a little
+		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. Both first compute the normals for each vertex for each polygon in cameraspace within the vertex-shader. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed. The differences are essentially that gouraud-shading computes shaded colors using some illumination-model\footnote{An illumination-model is a way of describing how a light-source effects the color of a fragment that it hits. This will vary depending on the light-source that is used.}, which requires vertex-normals that were just computed, and assigns them to the vertices of their polygons within the vertex-shader and then interpolates (blends) the fragment-colors inbetween the vertices in the fragment-shader, while phong-shading uses its vertex-normals to interpolate the normals of each fragment within the polygons in the vertex-shader and computes shaded colors using some illumination-model, which requires the fragment-normals that were just computed, on each fragment in the fragment-shader. Gouraud-shading is a fast way of computing shading since it only uses the illumination-model on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to applying the illumination-model on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case. This would conclude local illumination, which means we took care of direct lighting.
+		%TODO adjust your explanation by introducing deferred shading (just mention g-buffers in your description)
 
 \section{Visual effects} \label{visual_effects}
 	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
@@ -236,11 +238,16 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 		where $t$ is the frame-index 
+		%TODO explain the one-pass algorithm for creating deep g-buffers
 	\subsection{How deep g-buffers approximate visual effects}
 	\subsubsection{Global illumination} 
+		%TODO explain how deep-gbuffers do global illumination
 		is achieved by ...
 	\subsubsection{Ambient occlusion}
 		blabalbal ...
+		%TODO explain how deep-gbuffers do ambient occlusion
+	\subsubsection{Reflections}
+		%TODO explain how deep-gbuffers do mirror reflections
 
 \section{Deep g-buffers vs pathtracing: Global illumination}
 \section{Conclusion}
