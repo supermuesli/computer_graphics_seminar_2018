@@ -17,6 +17,52 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{DOF2}{article}{}
+    \name{author}{1}{}{%
+      {{hash=iaT}{%
+         prefix={insert\bibnamedelima authors},
+         prefixi={i\bibinitperiod\bibinitdelim a\bibinitperiod},
+         family={...},
+         familyi={\bibinitperiod},
+         given={TODO},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Research Gate}%
+    }
+    \strng{namehash}{Tia1}
+    \strng{fullhash}{Tia1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{...}
+    \field{title}{High-Quality Parallel Depth-of-Field Using Line Samples}
+  \endentry
+
+  \entry{AOM}{article}{}
+    \name{author}{1}{}{%
+      {{hash=AFP}{%
+         family={Aalund},
+         familyi={A\bibinitperiod},
+         given={Frederik\bibnamedelima P.},
+         giveni={F\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Technical University of Denmark, Informatics}%
+      {Mathematical Modelling}%
+    }
+    \strng{namehash}{AFP1}
+    \strng{fullhash}{AFP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Aal}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{A Comparative Study of Screen-Space Ambient Occlusion
+  Methods}
+  \endentry
+
   \entry{PBCB}{article}{}
     \name{author}{1}{}{%
       {{hash=CPH}{%
@@ -37,7 +83,7 @@
     \field{sortinit}{C}
     \field{sortinithash}{C}
     \field{title}{Point-Based Approximate Color Bleeding}
-    \field{journaltitle}{Pixar Technical Memo #08-01}
+    \field{journaltitle}{Pixar Technical Memo 08-01}
   \endentry
 
   \entry{NOIT}{article}{}
@@ -85,31 +131,126 @@
     \field{title}{Deferred Shading Tutorial}
   \endentry
 
-  \entry{NDGB}{article}{}
+  \entry{RAD}{article}{}
     \name{author}{1}{}{%
-      {{hash=MMDNDLMM}{%
-         family={M.\bibnamedelima Mara},
-         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
-         suffix={M.\bibnamedelima McGuire},
-         suffixi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
-         given={D.\bibnamedelima Nowrouzezahrai D.\bibnamedelima Luebke},
-         giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod
-  D\bibinitperiod\bibinitdelim L\bibinitperiod},
+      {{hash=JFHAvD}{%
+         family={John F.\bibnamedelima Hughes},
+         familyi={J\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim
+  H\bibinitperiod},
+         given={Andries van\bibnamedelima Dam},
+         giveni={A\bibinitperiod\bibinitdelim v\bibinitperiod\bibinitdelim
+  D\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {NVIDIA}%
+      {Brown University}%
     }
-    \strng{namehash}{MMMMDNDL1}
-    \strng{fullhash}{MMMMDNDL1}
+    \strng{namehash}{JFHAvD1}
+    \strng{fullhash}{JFHAvD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelalpha}{MM16}
+    \field{labelalpha}{JFH}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{title}{Introduction to Radiosity}
+    \field{journaltitle}{EECS 487: Interactive Computer Graphics}
+  \endentry
+
+  \entry{MFEKB}{article}{}
+    \name{author}{1}{}{%
+      {{hash=LBALJLDCCTSSPC}{%
+         family={Louis\bibnamedelima Bavoil},
+         familyi={L\bibinitperiod\bibinitdelim B\bibinitperiod},
+         suffix={Steven P.\bibnamedelima Callahan},
+         suffixi={S\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
+  C\bibinitperiod},
+         given={Aaron Lefohn Joao L. D. Comba Claudio T.\bibnamedelima Silva},
+         giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod J\bibinitperiod
+  L\bibinitperiod D\bibinitperiod C\bibinitperiod C\bibinitperiod
+  T\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {Scientific Computing}%
+      {Imaging Institute, University of Utah}%
+    }
+    \strng{namehash}{LBSPCALJLDCCTS1}
+    \strng{fullhash}{LBSPCALJLDCCTS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{LB}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{title}{Multi-Fragment Effects on the GPU using the k-Buffer}
+  \endentry
+
+  \entry{Mara2016DeepGBuffer}{inproceedings}{}
+    \name{author}{4}{}{%
+      {{hash=MM}{%
+         family={Mara},
+         familyi={M\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={McGuire},
+         familyi={M\bibinitperiod},
+         given={Morgan},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ND}{%
+         family={Nowrouzezahrai},
+         familyi={N\bibinitperiod},
+         given={Derek},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={Luebke},
+         familyi={L\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{MM+1}
+    \strng{fullhash}{MMMMNDLD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{Mar+16}
     \field{sortinit}{M}
     \field{sortinithash}{M}
+    \field{booktitle}{Proceedings of the High Performance Graphics 2016}
+    \field{note}{HPG}
+    \field{pages}{11}
     \field{title}{Deep G-Buffers for Stable Global Illumination Approximation}
-    \field{journaltitle}{High Performance Graphics}
+    \verb{url}
+    \verb http://casual-effects.com/research/Mara2016DeepGBuffer/index.html
+    \endverb
     \field{year}{2016}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{MOB}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MMWRCZ}{%
+         family={Matthias M.\bibnamedelima Wloka},
+         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim
+  W\bibinitperiod},
+         given={Robert C.\bibnamedelima Zeleznik},
+         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim
+  Z\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Brown University}%
+    }
+    \strng{namehash}{MMWRCZ1}
+    \strng{fullhash}{MMWRCZ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MMW}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Interactive Real-Time Motion Blur}
   \endentry
 
   \entry{P2PATH}{article}{}

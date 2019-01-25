@@ -1,4 +1,4 @@
-PWD /home/supermuesli/Documents/computer_graphics_seminar_2018
+PWD /home/kashim/Documents/computer_graphics_seminar_2018
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
 INPUT report.tex
@@ -439,6 +439,17 @@ INPUT ./img/visual_effects.png
 INPUT img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
+INPUT img/raytraced_depth_of_field.png
+INPUT ./img/raytraced_depth_of_field.png
+INPUT ./img/raytraced_depth_of_field.png
+INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aecsc10.tfm
+INPUT /usr/share/texmf-dist/tex/latex/ae/t1aett.fd
+INPUT /usr/share/texmf-dist/tex/latex/ae/t1aett.fd
+INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aett10.tfm
+INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aecsc10.vf
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aett10.vf
+INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out
@@ -447,6 +458,7 @@ OUTPUT report.run.xml
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
@@ -461,3 +473,4 @@ INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
