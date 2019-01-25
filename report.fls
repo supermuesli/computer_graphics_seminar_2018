@@ -439,6 +439,9 @@ INPUT ./img/visual_effects.png
 INPUT img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
 INPUT ./img/ambient_occlusion.png
+INPUT img/cube_map.png
+INPUT ./img/cube_map.png
+INPUT ./img/cube_map.png
 INPUT img/raytraced_depth_of_field.png
 INPUT ./img/raytraced_depth_of_field.png
 INPUT ./img/raytraced_depth_of_field.png

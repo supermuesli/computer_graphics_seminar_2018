@@ -182,8 +182,15 @@ average hardware.
 		%TODO explain how to construct the final transparent image
 
 	\subsection{Reflection}
-		Screen space reflections can be efficiently computed through environmental mapping (also called reflection mapping). The idea is to project the texture that is supposed to be reflected onto the object that reflects it. This is done by using cube-maps, which render the scene from a . The issue with this is that it lacks the ability to self-reflect.
-		%TODO explain how cube-maps do reflections
+		Screen space reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. \\\\
+		In all other cases, we rely on cube mapping (also called environmental mapping or reflection mapping). Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its inner center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
+		\begin{figure}[htb!]%
+			\begin{center}%
+				\includegraphics[width=7cm]{img/cube_map.png}
+			\end{center}%
+			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera.}%
+			\label{fig:cube_map}%
+		\end{figure}%
 
 	\subsection{Depth of field}
 		Depth of field is an effect that arises when the lens of a camera is larger than just a pinhole. This allows for more light to pass through the lens and light-rays start to intersect each other, causing the resulting image to look blurry along certain distances. A raytracer could simply achieve this by sampling its camera rays over a circle. For a rasterizer it is much more complicated. This effect could be achieved using stochastic point samples along the lens in 4D \cite{DOF2}. As this is also difficult to briefly summarize, we recommend reading the paper "High-Quality Parallel Depth-of-Field Using Line Samples". 
@@ -205,7 +212,7 @@ average hardware.
 	\subsection{Generating a 2-layer deep g-buffer}
 		NVIDIA proposes two ways of generating a 2-layer deep g-buffer, one of which is straight forward to help demonstrate the idea and one of which is efficient. \\\\
 		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer and $S(x, y, z)$ returns other g-buffers needed for shading. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
-		However, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. $t$ is the index of the frame. This is needed because 
+		However, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. $t$ is the index of the frame. We need to predict the z-values of future frames before they have even been rendered to since this algorithm renders to both layers simultaneously.
 		\begin{algorithm} \label{alg:two_pass_strawman} \caption{Strawman two-pass generation algorithm for generating 2-layer deep g-buffers}
 		\begin{lstlisting}[frame=single]
 //1st pass

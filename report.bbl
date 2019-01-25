@@ -229,6 +229,31 @@
     \warn{\item Invalid format of field 'month'}
   \endentry
 
+  \entry{REFL}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MKGCTNTT}{%
+         family={Masanori\bibnamedelima Kakimoto},
+         familyi={M\bibinitperiod\bibinitdelim K\bibinitperiod},
+         suffix={Tomoaki\bibnamedelima Tatsukawa},
+         suffixi={T\bibinitperiod\bibinitdelim T\bibinitperiod},
+         given={Geng Chun Tomoyuki\bibnamedelima Nishita},
+         giveni={G\bibinitperiod\bibinitdelim C\bibinitperiod
+  T\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {SGI Japan, Ltd., The University of Tokyo}%
+    }
+    \strng{namehash}{MKTTGCTN1}
+    \strng{fullhash}{MKTTGCTN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MK}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{REAL-TIME REFLECTION AND REFRACTION ON A PER-VERTEX BASIS}
+  \endentry
+
   \entry{MOB}{article}{}
     \name{author}{1}{}{%
       {{hash=MMWRCZ}{%
