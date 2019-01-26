@@ -148,7 +148,7 @@ average hardware.
 		Gouraud-shading is a fast way of computing shading since it only uses the illumination-model on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to applying the illumination-model on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case. This would conclude local illumination, which means we took care of direct lighting. \\\\
 		In the context of deferred shading, all of this is done in the second pass (the shading or lighting pass). By now it should become apparent why shading in a single pass is inefficient, since all of these illumination computations would be in vein if the visibility test does not pass anyway. The g-buffers that we collect in the first pass (the geometry pass) make this possible. 
 
-\section{Visual effects} \label{visual_effects}
+\section{Visual effects} 
 	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
 	computationally expensive methods. When applying pathtracing, we get most of the following effects for free: 
 	\begin{figure}[htb!]%
@@ -168,7 +168,7 @@ average hardware.
 				\includegraphics[width=7cm]{img/ambient_occlusion.png}
 			\end{center}%
 			\caption{How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.}%
-			\label{fig:normal_buffer}%
+			\label{fig:ambient_occlusion}%
 		\end{figure}%
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
@@ -188,7 +188,7 @@ average hardware.
 			\begin{center}%
 				\includegraphics[width=7cm]{img/cube_map.png}
 			\end{center}%
-			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera.}%
+			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.}%
 			\label{fig:cube_map}%
 		\end{figure}%
 

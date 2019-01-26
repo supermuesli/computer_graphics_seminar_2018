@@ -12,6 +12,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6}{\ignorespaces How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.\relax }}{8}{figure.caption.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera.\relax }}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {7}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{9}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {8}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{10}{figure.caption.11}

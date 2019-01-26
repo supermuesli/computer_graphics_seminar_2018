@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  25 JAN 2019 18:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  26 JAN 2019 02:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,11 +1245,7 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 )
 \@quotelevel=\count350
 \@quotereset=\count351
- (./report.aux
-
-LaTeX Warning: Label `fig:normal_buffer' multiply defined.
-
-)
+ (./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
@@ -1266,7 +1262,8 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 34.
- (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 34.
@@ -1373,7 +1370,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
-<img/graphics_pipeline.png, id=242, 272.01625pt x 604.2575pt>
+<img/graphics_pipeline.png, id=243, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
 Package pdftex.def Info: img/graphics_pipeline.png  used on input line 96.
@@ -1400,17 +1397,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--107
  []
 
 [4 <./img/graphics_pipeline.png>]
-<img/frame_buffer.png, id=267, 1003.75pt x 1003.75pt>
+<img/frame_buffer.png, id=268, 1003.75pt x 1003.75pt>
 File: img/frame_buffer.png Graphic file (type png)
 <use img/frame_buffer.png>
 Package pdftex.def Info: img/frame_buffer.png  used on input line 114.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/z_buffer.png, id=271, 1003.75pt x 1003.75pt>
+<img/z_buffer.png, id=272, 1003.75pt x 1003.75pt>
 File: img/z_buffer.png Graphic file (type png)
 <use img/z_buffer.png>
 Package pdftex.def Info: img/z_buffer.png  used on input line 127.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/normal_buffer.png, id=272, 1003.75pt x 1003.75pt>
+<img/normal_buffer.png, id=273, 1003.75pt x 1003.75pt>
 File: img/normal_buffer.png Graphic file (type png)
 <use img/normal_buffer.png>
 Package pdftex.def Info: img/normal_buffer.png  used on input line 137.
@@ -1438,12 +1435,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 143--150
 l.150 
        <./img/frame_buffer.png>] [6 <./img/z_buffer.png (PNG copy)> <./img/norm
 al_buffer.png>]
-<img/visual_effects.png, id=290, 385.44pt x 385.44pt>
+<img/visual_effects.png, id=291, 385.44pt x 385.44pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
 Package pdftex.def Info: img/visual_effects.png  used on input line 156.
 (pdftex.def)             Requested size: 199.16928pt x 199.16547pt.
-<img/ambient_occlusion.png, id=292, 364.36125pt x 305.14pt>
+<img/ambient_occlusion.png, id=293, 364.36125pt x 305.14pt>
 File: img/ambient_occlusion.png Graphic file (type png)
 <use img/ambient_occlusion.png>
 Package pdftex.def Info: img/ambient_occlusion.png  used on input line 168.
@@ -1459,7 +1456,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--173
  []
 
 [7 <./img/visual_effects.png>] [8 <./img/ambient_occlusion.png>]
-<img/cube_map.png, id=312, 2055.68pt x 2312.64pt>
+<img/cube_map.png, id=313, 2055.68pt x 2312.64pt>
 File: img/cube_map.png Graphic file (type png)
 <use img/cube_map.png>
 Package pdftex.def Info: img/cube_map.png  used on input line 189.
@@ -1469,7 +1466,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--194
 
  []
 
-<img/raytraced_depth_of_field.png, id=314, 331.2375pt x 331.2375pt>
+<img/raytraced_depth_of_field.png, id=315, 331.2375pt x 331.2375pt>
 File: img/raytraced_depth_of_field.png Graphic file (type png)
 <use img/raytraced_depth_of_field.png>
 Package pdftex.def Info: img/raytraced_depth_of_field.png  used on input line 1
@@ -1532,7 +1529,10 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 LaTeX Warning: There were undefined references.
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package biblatex Warning: Please rerun LaTeX.
 
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
@@ -1541,12 +1541,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 282.
  ) 
 Here is how much of TeX's memory you used:
  30114 strings out of 492642
- 567892 string characters out of 6135566
- 882219 words of memory out of 5000000
+ 567899 string characters out of 6135566
+ 882218 words of memory out of 5000000
  33323 multiletter control sequences out of 15000+600000
  44761 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,15n,84p,1151b,1300s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,84p,1151b,1292s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1569,10 +1569,10 @@ s/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (12 pages, 1990774 bytes).
+Output written on report.pdf (12 pages, 1991270 bytes).
 PDF statistics:
- 485 PDF objects out of 1000 (max. 8388607)
- 402 compressed objects within 5 object streams
+ 486 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
  116 named destinations out of 1000 (max. 500000)
  365 words of extra memory for PDF output out of 10000 (max. 10000000)
 
