@@ -211,8 +211,19 @@ average hardware.
 	How to pick $\Delta z$ ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, it is possible that important visual information might be missed. On the other hand, if $\Delta z$ is too small, it is possible that unnecessary information might be picked up. According to NVIDIA, $\Delta z = 50cm$ seems to consistently deliver stable results, at least in the renders done in their paper.
 	\subsection{Generating a 2-layer deep g-buffer}
 		NVIDIA proposes two ways of generating a 2-layer deep g-buffer, one of which is straight forward to help demonstrate the idea and one of which is efficient. \\\\
-		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer and $S(x, y, z)$ returns other g-buffers needed for shading. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
-		However, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. $t$ is the index of the frame. We need to predict the z-values of future frames before they have even been rendered to since this algorithm renders to both layers simultaneously.
+		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection\footnote{Each object has a model-view-matrix that describes at which location, at what which angle and at which size it has to appear in the scene.} and skinning-transformations\footnote{Skinning is a term from computer animation that assigns joints to an object that can move.}). In the first pass we simply collect the first layers g-buffers and in the second pass we peel away the first layers g-buffers to receive the second layer. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
+		This is essentially two-pass depth peeling, however, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. \\\\
+		In order to save a pass over the geometry, we rely on an oracle that predicts the first layers z-buffer before it is even rendered. Using that prediction, we can compute fragments for the second layer by peeling the first layer. In total, there are four variants to go about this. $t$ is the index of the frame.
+		\begin{enumerate}
+			\item \textbf{DELAY VARIANT} manages to predict the first layers z-buffer by adding a frame of latency, meaning that what is happening in the scene (animations, object movements and such) and what is being rendered on the screen is out of sync by one frame. This way, the next frames transformation $T_{t+1}$ is known at render time, enabling us to predict first layer z-buffers perfectly (since we do not really predict it anyway). The downside to this is, obviously, the frame latency.
+
+			\item \textbf{PREVIOUS VARIANT} approximates the first layer z-buffer by taking the previous frames first layer z-buffer. This will deliver good results if camera- and object-movement are minimal, but even then, the errors would appear in the second layer, which is not visible to begin with (excluding transparent objects). It does not guarantee minimum separation.
+
+			\item \textbf{PREDICT VARIANT} uses velocities from the underlying physics simulation or animation to predict the next transformation $T_{t+1}$. Alternatively, extrapolation over the change in vertices from the previous and current frame would also work. Accurate velocity prediction will deliver accurate results without latency. In the other case, drawbacks are equivalent to that of the \textbf{PREVIOUS VARIANT}
+
+			\item \textbf{REPROJECT VARIANT} blabala..
+
+		\end{enumerate} 
 		\begin{algorithm} \label{alg:two_pass_strawman} \caption{Strawman two-pass generation algorithm for generating 2-layer deep g-buffers}
 		\begin{lstlisting}[frame=single]
 //1st pass
@@ -260,7 +271,6 @@ submit geometry with:
         return // We only reach this case for Delay and Predict
 		\end{lstlisting}
 		\end{algorithm}
-		%TODO explain the one-pass algorithm for creating deep g-buffers
 	\subsection{How deep g-buffers approximate visual effects}
 	\subsubsection{Global illumination} 
 		To fake global illumination we use screen space ambient occlusion and multi bounce indirect illumination. \cite{RAD}
