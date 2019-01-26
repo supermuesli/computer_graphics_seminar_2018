@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  26 JAN 2019 02:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  26 JAN 2019 09:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1528,12 +1528,6 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
@@ -1542,11 +1536,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 282.
 Here is how much of TeX's memory you used:
  30114 strings out of 492642
  567899 string characters out of 6135566
- 882218 words of memory out of 5000000
+ 882219 words of memory out of 5000000
  33323 multiletter control sequences out of 15000+600000
  44761 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,15n,84p,1151b,1292s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,84p,1151b,1291s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1569,7 +1563,7 @@ s/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 ></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (12 pages, 1991270 bytes).
+Output written on report.pdf (12 pages, 1991142 bytes).
 PDF statistics:
  486 PDF objects out of 1000 (max. 8388607)
  403 compressed objects within 5 object streams

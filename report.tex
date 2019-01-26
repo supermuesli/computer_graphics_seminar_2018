@@ -263,13 +263,14 @@ submit geometry with:
 		%TODO explain the one-pass algorithm for creating deep g-buffers
 	\subsection{How deep g-buffers approximate visual effects}
 	\subsubsection{Global illumination} 
+		To fake global illumination we use screen space ambient occlusion and multi bounce indirect illumination. \cite{RAD}
 		%TODO explain how deep-gbuffers do global illumination
-		is achieved by ... \cite{RAD}
 	\subsubsection{Ambient occlusion}
-		blabalbal ...
+		Scalable ambient obscurance is extended to work with deep g-buffers by ...
 		%TODO explain how deep-gbuffers do ambient occlusion
 	\subsubsection{Reflections}
-		%TODO explain how deep-gbuffers do mirror reflections
+		Screen space reflections are adapted to deep g-buffers by using reflection raytracing... 
+		%TODO explain reflection ray tracing
 
 \section{Deep g-buffers vs pathtracing: Global illumination}
 \section{Conclusion}
