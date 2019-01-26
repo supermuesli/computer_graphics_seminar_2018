@@ -63,6 +63,28 @@
   Methods}
   \endentry
 
+  \entry{RSM}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CDMS}{%
+         family={Carsten\bibnamedelima Dachsbacher},
+         familyi={C\bibinitperiod\bibinitdelim D\bibinitperiod},
+         given={Marc\bibnamedelima Stamminger},
+         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {University of Erlangen-Nuremberg,}%
+    }
+    \strng{namehash}{CDMS1}
+    \strng{fullhash}{CDMS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CD}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{Reflective Shadow Maps}
+  \endentry
+
   \entry{PBCB}{article}{}
     \name{author}{1}{}{%
       {{hash=CPH}{%
@@ -129,6 +151,32 @@
     \field{sortinit}{F}
     \field{sortinithash}{F}
     \field{title}{Deferred Shading Tutorial}
+  \endentry
+
+  \entry{TSTMT}{article}{}
+    \name{author}{1}{}{%
+      {{hash=JBCEDAA}{%
+         family={J.\bibnamedelima Bulas-Cruz},
+         familyi={J\bibinitperiod\bibinitdelim
+  B\bibinitperiod-C\bibinitperiod},
+         suffix={A.T.\bibnamedelima Ali},
+         suffixi={A\bibinitperiod\bibinitdelim A\bibinitperiod},
+         given={E.L.\bibnamedelima Dagless},
+         giveni={E\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Advanced Computing Research Centre University of Bristol}%
+    }
+    \strng{namehash}{JBCAAED1}
+    \strng{fullhash}{JBCAAED1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{JBC}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{title}{A Temporal Smoothing Technique for Real-Time Motion
+  Detection}
   \endentry
 
   \entry{RAD}{article}{}
@@ -276,6 +324,30 @@
     \field{sortinit}{M}
     \field{sortinithash}{M}
     \field{title}{Interactive Real-Time Motion Blur}
+  \endentry
+
+  \entry{SAO}{article}{}
+    \name{author}{1}{}{%
+      {{hash=MMDLMM}{%
+         family={Morgan\bibnamedelima McGuire},
+         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+         suffix={Michael\bibnamedelima Mara},
+         suffixi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
+         given={David\bibnamedelima Luebke},
+         giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {NVIDIA, Williams College}%
+    }
+    \strng{namehash}{MMMMDL1}
+    \strng{fullhash}{MMMMDL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{MM}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{title}{Scalable Ambient Obscurance}
   \endentry
 
   \entry{P2PATH}{article}{}
