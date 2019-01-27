@@ -108,6 +108,52 @@
     \field{journaltitle}{Pixar Technical Memo 08-01}
   \endentry
 
+  \entry{Cohen}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CMF}{%
+         family={Cohen},
+         familyi={C\bibinitperiod},
+         given={Michael\bibnamedelima F.},
+         giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=GDP}{%
+         family={Greenberg},
+         familyi={G\bibinitperiod},
+         given={Donald\bibnamedelima P.},
+         giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \keyw{depth buffer, diffuse reflections, form-factors, hidden surface,
+  radiosity}
+    \strng{namehash}{CMFGDP1}
+    \strng{fullhash}{CMFGDP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CG85}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{doi}
+    \verb 10.1145/325165.325171
+    \endverb
+    \field{issn}{0097-8930}
+    \field{number}{3}
+    \field{pages}{31\bibrangedash 40}
+    \field{title}{The Hemi-cube: A Radiosity Solution for Complex Environments}
+    \verb{url}
+    \verb http://doi.acm.org/10.1145/325165.325171
+    \endverb
+    \field{volume}{19}
+    \list{location}{1}{%
+      {New York, NY, USA}%
+    }
+    \field{journaltitle}{SIGGRAPH Comput. Graph.}
+    \field{month}{07}
+    \field{year}{1985}
+  \endentry
+
   \entry{NOIT}{article}{}
     \name{author}{1}{}{%
       {{hash=EC}{%
