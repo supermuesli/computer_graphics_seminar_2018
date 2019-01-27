@@ -1,17 +1,21 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces The OpenGL graphics pipeline. All steps are mandatory, but the ones within blue boxes are also programmable and the ones with dashed borders can be deferred or forwarded. Note that the vertex-shader and geometry-shader do not neccesarily compute any shading or colors, but can be programmed to do so. They are called shaders for historical reasons, which might be a little irritating.\relax }}{4}{figure.caption.4}
+\contentsline {figure}{\numberline {1}{\ignorespaces How radiosity globally illuminates a scene. With each iteration there are more light emitters, meaning that there are more possible patches that can be illuminated. In the first iteration, the only light-emitters are the windows (not visible in the frame). After 16 iterations the scene is sufficiently saturated.\relax }}{4}{figure.caption.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }}{5}{figure.caption.5}
+\contentsline {figure}{\numberline {2}{\ignorespaces The OpenGL graphics pipeline. All steps are mandatory, but the ones within blue boxes are also programmable and the ones with dashed borders can be deferred or forwarded. Note that the vertex-shader and geometry-shader do not neccesarily compute any shading or colors, but can be programmed to do so. They are called shaders for historical reasons, which might be a little irritating.\relax }}{5}{figure.caption.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.\relax }}{6}{figure.caption.6}
+\contentsline {figure}{\numberline {3}{\ignorespaces A scene that was rendered using deferred shading. The objects are locally illuminated by point-lights using g-buffers.\relax }}{5}{figure.caption.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4}{\ignorespaces Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }}{6}{figure.caption.7}
+\contentsline {figure}{\numberline {4}{\ignorespaces Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }}{6}{figure.caption.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5}{\ignorespaces Diverse visual effects caused by global illumination inside a cornell box. The image was rendered using pathtracing.\relax }}{7}{figure.caption.8}
+\contentsline {figure}{\numberline {5}{\ignorespaces Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.\relax }}{7}{figure.caption.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.\relax }}{8}{figure.caption.9}
+\contentsline {figure}{\numberline {6}{\ignorespaces Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }}{7}{figure.caption.9}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{9}{figure.caption.10}
+\contentsline {figure}{\numberline {7}{\ignorespaces Diverse visual effects caused by global illumination inside a cornell box. The image was rendered using pathtracing.\relax }}{8}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{10}{figure.caption.11}
+\contentsline {figure}{\numberline {8}{\ignorespaces How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.\relax }}{9}{figure.caption.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{10}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {10}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{11}{figure.caption.13}

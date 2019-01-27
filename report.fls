@@ -413,9 +413,9 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aer6.tfm
-INPUT img/graphics_pipeline.png
-INPUT ./img/graphics_pipeline.png
-INPUT ./img/graphics_pipeline.png
+INPUT img/radiosity.png
+INPUT ./img/radiosity.png
+INPUT ./img/radiosity.png
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer7.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi7.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
@@ -424,6 +424,12 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
 INPUT /usr/share/texmf-dist/fonts/vf/public/ae/aer9.vf
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmu10.tfm
+INPUT img/graphics_pipeline.png
+INPUT ./img/graphics_pipeline.png
+INPUT ./img/graphics_pipeline.png
+INPUT img/wiki_deferred_shading.png
+INPUT ./img/wiki_deferred_shading.png
+INPUT ./img/wiki_deferred_shading.png
 INPUT img/frame_buffer.png
 INPUT ./img/frame_buffer.png
 INPUT ./img/frame_buffer.png
@@ -474,6 +480,7 @@ INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb
