@@ -21,3 +21,5 @@
 \contentsline {figure}{\numberline {10}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{10}{figure.caption.13}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {11}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{11}{figure.caption.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {12}{\ignorespaces An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.\relax }}{15}{figure.caption.15}

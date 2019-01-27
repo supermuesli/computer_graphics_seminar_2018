@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  27 JAN 2019 06:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  27 JAN 2019 19:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1332,6 +1332,11 @@ Package biblatex Info: ... file 'report.bbl' found.
  (./report.bbl
 
 Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'RTAII':
+(biblatex)                - Invalid format of field 'month'.
+
+
+Package biblatex Warning: BibTeX reported the following issues
 (biblatex)                with 'Mara2016DeepGBuffer':
 (biblatex)                - Invalid format of field 'month'.
 
@@ -1370,12 +1375,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--69
 
  []
 
-<img/pathtracing.png, id=250, 803.0pt x 501.875pt>
+<img/pathtracing.png, id=254, 803.0pt x 501.875pt>
 File: img/pathtracing.png Graphic file (type png)
 <use img/pathtracing.png>
 Package pdftex.def Info: img/pathtracing.png  used on input line 91.
 (pdftex.def)             Requested size: 199.16928pt x 124.48056pt.
-<img/radiosity.png, id=254, 1041.8925pt x 261.97874pt>
+<img/radiosity.png, id=258, 1041.8925pt x 261.97874pt>
 File: img/radiosity.png Graphic file (type png)
 <use img/radiosity.png>
 Package pdftex.def Info: img/radiosity.png  used on input line 100.
@@ -1387,7 +1392,7 @@ Package pdftex.def Info: img/radiosity.png  used on input line 100.
                                                   
 l.107 
       ]
-<img/graphics_pipeline.png, id=274, 272.01625pt x 604.2575pt>
+<img/graphics_pipeline.png, id=278, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
 Package pdftex.def Info: img/graphics_pipeline.png  used on input line 112.
@@ -1408,24 +1413,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--123
  []
 
 [4 <./img/pathtracing.png> <./img/radiosity.png (PNG copy)>]
-<img/wiki_deferred_shading.png, id=282, 481.8pt x 361.35pt>
+<img/wiki_deferred_shading.png, id=286, 481.8pt x 361.35pt>
 File: img/wiki_deferred_shading.png Graphic file (type png)
 <use img/wiki_deferred_shading.png>
 Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 126.
 
 (pdftex.def)             Requested size: 199.16928pt x 149.373pt.
-<img/frame_buffer.png, id=284, 1003.75pt x 1003.75pt>
+<img/frame_buffer.png, id=288, 1003.75pt x 1003.75pt>
 File: img/frame_buffer.png Graphic file (type png)
 <use img/frame_buffer.png>
 Package pdftex.def Info: img/frame_buffer.png  used on input line 138.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
  [5 <./img/graphics_pipeline.png>]
-<img/z_buffer.png, id=294, 1003.75pt x 1003.75pt>
+<img/z_buffer.png, id=298, 1003.75pt x 1003.75pt>
 File: img/z_buffer.png Graphic file (type png)
 <use img/z_buffer.png>
 Package pdftex.def Info: img/z_buffer.png  used on input line 151.
 (pdftex.def)             Requested size: 199.16928pt x 199.1689pt.
-<img/normal_buffer.png, id=295, 1003.75pt x 1003.75pt>
+<img/normal_buffer.png, id=299, 1003.75pt x 1003.75pt>
 File: img/normal_buffer.png Graphic file (type png)
 <use img/normal_buffer.png>
 Package pdftex.def Info: img/normal_buffer.png  used on input line 161.
@@ -1456,12 +1461,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 167--174
 Underfull \vbox (badness 1430) has occurred while \output is active []
 
  [7 <./img/z_buffer.png (PNG copy)> <./img/normal_buffer.png>]
-<img/visual_effects.png, id=314, 385.44pt x 385.44pt>
+<img/visual_effects.png, id=318, 385.44pt x 385.44pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
 Package pdftex.def Info: img/visual_effects.png  used on input line 180.
 (pdftex.def)             Requested size: 199.16928pt x 199.16547pt.
-<img/ambient_occlusion.png, id=316, 364.36125pt x 305.14pt>
+<img/ambient_occlusion.png, id=320, 364.36125pt x 305.14pt>
 File: img/ambient_occlusion.png Graphic file (type png)
 <use img/ambient_occlusion.png>
 Package pdftex.def Info: img/ambient_occlusion.png  used on input line 192.
@@ -1477,7 +1482,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 187--197
  []
 
 [8] [9 <./img/visual_effects.png> <./img/ambient_occlusion.png>]
-<img/cube_map.png, id=336, 2055.68pt x 2312.64pt>
+<img/cube_map.png, id=340, 2055.68pt x 2312.64pt>
 File: img/cube_map.png Graphic file (type png)
 <use img/cube_map.png>
 Package pdftex.def Info: img/cube_map.png  used on input line 213.
@@ -1487,7 +1492,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--218
 
  []
 
-<img/raytraced_depth_of_field.png, id=338, 331.2375pt x 331.2375pt>
+<img/raytraced_depth_of_field.png, id=342, 331.2375pt x 331.2375pt>
 File: img/raytraced_depth_of_field.png Graphic file (type png)
 <use img/raytraced_depth_of_field.png>
 Package pdftex.def Info: img/raytraced_depth_of_field.png  used on input line 2
@@ -1542,18 +1547,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 308--311
 
  []
 
-LaTeX Font Info:    Try loading font information for T1+aett on input line 324.
 
-(/usr/share/texmf-dist/tex/latex/ae/t1aett.fd
+Underfull \hbox (badness 10000) in paragraph at lines 316--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--329
+
+ []
+
+[14]
+<img/deep_g_buffer_render.png, id=445, 1072.75781pt x 300.3722pt>
+File: img/deep_g_buffer_render.png Graphic file (type png)
+<use img/deep_g_buffer_render.png>
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 341.
+(pdftex.def)             Requested size: 455.24408pt x 127.46628pt.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 350.
+
+ (/usr/share/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
-) [14] [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 326.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 326.
+) [15 <./img/deep_g_buffer_render.png (PNG copy)>] [16]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 352.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 326.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 326.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 352.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 352.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: EE9671DA8E738C86DB7E84EC4F79A299;1964.
+(rerunfilecheck)             Checksum: E7E29F6AE353ADFE2259FAE76E44BD1C;1964.
 
 
 LaTeX Warning: There were undefined references.
@@ -1561,16 +1602,16 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 326.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 352.
  ) 
 Here is how much of TeX's memory you used:
- 30164 strings out of 492642
- 568931 string characters out of 6135566
- 887218 words of memory out of 5000000
- 33352 multiletter control sequences out of 15000+600000
+ 30176 strings out of 492642
+ 569239 string characters out of 6135566
+ 887219 words of memory out of 5000000
+ 33360 multiletter control sequences out of 15000+600000
  44761 words of font info for 98 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,15n,84p,1151b,1265s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,15n,84p,1151b,1293s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1594,10 +1635,10 @@ s/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb>
-Output written on report.pdf (15 pages, 2274704 bytes).
+Output written on report.pdf (16 pages, 3250675 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 134 named destinations out of 1000 (max. 500000)
- 380 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 555 PDF objects out of 1000 (max. 8388607)
+ 463 compressed objects within 5 object streams
+ 137 named destinations out of 1000 (max. 500000)
+ 385 words of extra memory for PDF output out of 10000 (max. 10000000)
 

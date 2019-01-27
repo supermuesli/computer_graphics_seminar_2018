@@ -205,7 +205,7 @@ average hardware.
 		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time, one of which stores the current g-buffer and one of which stores the previous g-buffer. Depending on how many levels of transparency are wished for, let $k$ be the level of transparency, we make $k$ passes on the g-buffers, "peeling" away the previous g-buffers texel\footnote{A texel is essentially a pixel of a texture. G-buffers are stored in texture-buffers inside the GPU, which means their individual pixels can be refered to as texel.} from the current g-buffer if a larger z-value on that texel-position is found. For this to work, the previous z-buffer in the first pass has to be initialized with negative infinity \cite{NOIT}.
 		%TODO explain how to construct the final transparent image
 
-	\subsection{Reflection}
+	\subsection{Reflection} \label{sec:reflection}
 		Screen space reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. \\\\
 		In all other cases, we rely on cube mapping (also called environmental mapping or reflection mapping). Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its inner center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
 		\begin{figure}[htb!]%
@@ -296,28 +296,54 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 	\subsection{Global illumination using 2-layer deep g-buffer} 
-		To fake global illumination we combine direct-light $direct$, ambient-light \footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $ambient$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the reciproke of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $radiosity$ and screen space reflections $reflections$ by \cite{RSM} \cite{TSTMT}
-		$$ direct + AV \cdot ambient + radiosity + reflection $$
+		To fake global illumination we combine direct-light $DIRECT$, ambient-light\footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $AMBIENT$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the complement of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $RADIOSITY$ and screen space reflections $REFLECTIONS$ by \cite{RSM} \cite{TSTMT}
+		$$ DIRECT + AV \cdot AMBIENT + RADIOSITY + REFLECTIONS $$
 		
 	\subsection{Screen space ambient occlusion using 2-layer deep g-buffer}
-		Scalable ambient obscurance \cite{SAO} is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
+		Scalable ambient obscurance \cite{SAO}, which is an ambient occlusion method, is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
 		$$ AO(X) = \sqrt{\frac{\pi}{N} \Sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
 		for the ambient occlusion factor $AO$ where $N$ is the sample count, $R(Z, i)$ returns the position of the $i'th$ sample surface using the z-buffer $Z$ and
 		$$ A_{i}^{j} = O(X, R(Z[j], i))$$
 		where $X$ is the position of the z-value that is being checked, $Y$ the position of the sample (a surrounding z-value) and
 		$$ O(X, Y) = (1 - \frac{v \cdot v}{r^2}) \cdot max(\frac{v \cdot n_X - \beta}{\sqrt{v \cdot v + \epsilon}}, 0) $$
 		evaluates if the z-value at $Y$ is occluded by z-value at $X$, where $r$ is the sample radius, $v = Y - X$ the direction vector from position $X$ to position $Y$ and $n_X$ is the normal-vector in the normal-buffer at position $X$. \\\\
-		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff. 
+		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff \cite{Mara2016DeepGBuffer}. 
 		
 	\subsection{Screen space radiosity using 2-layer deep g-buffer}
-		We extend screen space radiosity to 2-layer deep g-buffers by  ... 
+		We extend screen space radiosity \cite{RTAII} to 2-layer deep g-buffers. We have 
+		$$ E(X) = \int_{\Omega} \frac{B(Y)}{\pi} max(n_X \cdot \omega, 0) d\omega$$
+		for the incident irradiance at $X$ caused by the outgoing diffuse radiance $B(Y)$ from the closest point $Y$ in direction $\omega = Y - X$. This can be \textbf{numerically estimated} by
+		$$ E(X) = \frac{2\pi}{M} \Sigma_{samples} B(Y) max(\omega \cdot n_X, 0)$$
+		where $\omega$ is normalized. \\\\
+		We sample $N$ points $Y$ from both g-buffer layers while only using the $M$ points for which
+		$$ (\omega \cdot n_X) > 0 $$
+		and
+		$$ (\omega \cdot n_Y) < 0 $$. Skipping this test will cause bias (noise), but at the same time makes it possible to take more samples, which in return reduces variance. This is up to the users preference. \\\\
+		$$ B(X) = E(X) \cdot p_X \cdot boost(p_x) $$
+		is the reflected outgoing radiance caused by the incident irradiance at $X$, where $p_X$ is the diffuse reflectivity at $X$, which is amplified by 
+		$$ boost(p) = \frac{max_{\lambda}p[\lambda] - min_{\lambda}p[\lambda]}{max_{\lambda}p[\lambda]} $$ 
+		where $\lambda$ is the wavelength or color channel. Choosing $boost(p) = 1$, for instance, will conserve energy. Else it can be used to boost the scattering of radiance of a saturated surface, which will cause a stronger color bleed. \\\\
+		Since not all points in the deep g-buffer produce robust approximations for indirect shading, we compute a confidence value $0 \leq M/N \leq 1$ that indicates how many samples contribute to the final result, with a larger confidence value implying stronger influence. According to the confidence value, we linearly interpolate between a precomuted lighting solution and indirect deep g-buffer illumination. \\\\
+		Iteratively repeating the above steps across frames will result in multi bounce indirect illumination, causing soft shadows and color bleeding and diffuse global illumination. This is done by computing one bounce per frame, using the previous frames irradiance-buffer $E_{t-1}$, which would simulate $n$ bounces in $n$ frames. Obviously this method is prone to ghosting, but its effect can be reduced by damping the forwarded irradiance-buffer by a factor $0 < \delta \leq 1$, which in simple words "underestiamtes" illumination. Compensation for this is provided by some environmental lighting from static light probes. The same accumulation procedure is done across deep g-buffer layers. \\\\
+		Finally, to account for any remaining noise due to undersampling, \textbf{temporal filtering} is applied by
+		$$ E_t = E(1 - \alpha) + reproject(E_{t-1}) \alpha $$
+		if for the pixel the reprojected point is within $1cm$ of either layer, else
+		$$ E_t = E $$
+		with the purpose of detecting faulty velocity approximations and discarding accordingly. Nvidia recommends $\alpha = 0.85$ in most occasions, as $\alpha \geq 0.95$ causes lighting latency and artifacts.
 
-	\subsection{Screen space Reflections using 2-layer deep g-buffer}
-		Screen space reflections are adapted to deep g-buffers by using reflection raytracing... 
-		%TODO explain reflection ray tracing
+	\subsection{Screen space reflections using 2-layer deep g-buffer}
+		Screen space reflections are adapted to deep g-buffers by reflection raytracing. Each point in cameraspace is projected into the two g-buffer layers via reflection rays, where points with a maximum distance of $\Delta z$ within both layers are treated as a hit. The outgoing radiance is set equal to the incoming radiance along the reflection direction. If this procedure fails, e.g. if after a maximum distance of $d > \Delta z$ there is still no hit, or if the reflection ray reaches void space, one performs a switch to environmental mapping as described in section \ref{sec:reflection}.
 
 \section{Conclusion}
 	Deep g-buffers seem to do a good job at faking global illumination in real time. The resulting renders speak for themselves. As stated by NVIDIA, deep g-buffers also have potential to be used for transparency, depth of field and motion blur.
+	\begin{figure}[htb!]%
+		\begin{center}%
+			\includegraphics[width=16cm]{img/deep_g_buffer_render.png}
+		\end{center}%
+		\caption{An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.}%
+		%TODO insert source https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/
+		\label{fig:deep_g_buffer_render}%
+	\end{figure}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography

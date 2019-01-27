@@ -154,6 +154,35 @@
     \field{year}{1985}
   \endentry
 
+  \entry{RTAII}{article}{}
+    \name{author}{1}{}{%
+      {{hash=CSFRNHOH}{%
+         family={Cyril\bibnamedelima Soler},
+         familyi={C\bibinitperiod\bibinitdelim S\bibinitperiod},
+         suffix={Olivier\bibnamedelima Hoel},
+         suffixi={O\bibinitperiod\bibinitdelim H\bibinitperiod},
+         given={Franck Rochet Nicolas\bibnamedelima Holzschuch},
+         giveni={F\bibinitperiod\bibinitdelim R\bibinitperiod
+  N\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {INSTITUT NATIONAL DE RECHERCHE EN INFORMATIQUE ET EN AUTOMATIQUE}%
+    }
+    \strng{namehash}{CSOHFRNH1}
+    \strng{fullhash}{CSOHFRNH1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CS09}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{title}{A Fast Deferred Shading Pipeline for Real Time Approximate
+  Indirect Illumination}
+    \field{journaltitle}{SIGGRAPH Comput. Graph.}
+    \field{year}{2009}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+
   \entry{NOIT}{article}{}
     \name{author}{1}{}{%
       {{hash=EC}{%

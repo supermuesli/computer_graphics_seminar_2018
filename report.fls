@@ -454,6 +454,9 @@ INPUT ./img/cube_map.png
 INPUT img/raytraced_depth_of_field.png
 INPUT ./img/raytraced_depth_of_field.png
 INPUT ./img/raytraced_depth_of_field.png
+INPUT img/deep_g_buffer_render.png
+INPUT ./img/deep_g_buffer_render.png
+INPUT ./img/deep_g_buffer_render.png
 INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aecsc10.tfm
 INPUT /usr/share/texmf-dist/tex/latex/ae/t1aett.fd
 INPUT /usr/share/texmf-dist/tex/latex/ae/t1aett.fd
