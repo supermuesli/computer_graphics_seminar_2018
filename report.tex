@@ -94,7 +94,7 @@ average hardware.
 			\label{fig:pathtracing}%
 		\end{figure}%
 	\subsubsection{Radiosity}
-		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination can will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{Cohen}.
+		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{Cohen}.
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=16cm]{img/radiosity.png}
@@ -296,12 +296,12 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 	\subsection{Global illumination using 2-layer deep g-buffer} 
-		To fake global illumination we combine direct-light $direct$, ambient-light \footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $Ambient$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the reciproke of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $radiosity$ and screen space reflections $reflections$ by \cite{RSM} \cite{TSTMT}
-		$$ direct + AV \cdot Ambient + radiosity + reflection $$
+		To fake global illumination we combine direct-light $direct$, ambient-light \footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $ambient$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the reciproke of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $radiosity$ and screen space reflections $reflections$ by \cite{RSM} \cite{TSTMT}
+		$$ direct + AV \cdot ambient + radiosity + reflection $$
 		
 	\subsection{Screen space ambient occlusion using 2-layer deep g-buffer}
 		Scalable ambient obscurance \cite{SAO} is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
-		$$ AO(X) = \sqrt{\frac{\pi}{N} \sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
+		$$ AO(X) = \sqrt{\frac{\pi}{N} \Sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
 		for the ambient occlusion factor $AO$ where $N$ is the sample count, $R(Z, i)$ returns the position of the $i'th$ sample surface using the z-buffer $Z$ and
 		$$ A_{i}^{j} = O(X, R(Z[j], i))$$
 		where $X$ is the position of the z-value that is being checked, $Y$ the position of the sample (a surrounding z-value) and

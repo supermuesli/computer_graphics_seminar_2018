@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  27 JAN 2019 05:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  27 JAN 2019 06:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1558,12 +1558,6 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
@@ -1600,7 +1594,7 @@ s/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb>
-Output written on report.pdf (15 pages, 2274649 bytes).
+Output written on report.pdf (15 pages, 2274704 bytes).
 PDF statistics:
  542 PDF objects out of 1000 (max. 8388607)
  452 compressed objects within 5 object streams
