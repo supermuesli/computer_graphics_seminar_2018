@@ -85,9 +85,16 @@ average hardware.
 	\footnotetext{Lambert reflectance describes the attentuation of light on diffuse objects based on the lights incident angle.}%
 	The most popular method for achieving this is pathtracing \cite{P2PATH}.
 	\subsubsection{Pathtracing} 
-		solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Each pixel is sampled thousands - possibly hundreds of thousands - of times to reduce the noise that is induced by diffuse reflections, resulting in a photorealistic render.
+		solves the rendering equation by first sending camera rays through each individual pixel of the image plane and then tracing the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but it is dependent on the complexity of the scene) allows for global illumination. The reflections and refractions are essentially determined by the BRDF, which not only means that objects can be transparent, but we also get caustics\footnote{Caustics are areas with concentrated light. This happens due to light refracting.}. With each sxurface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Each pixel is sampled thousands - possibly hundreds of thousands - of times to reduce the noise that is induced by diffuse reflections, resulting in a photorealistic render.
+		\begin{figure}[htb!]%
+			\begin{center}%
+				\includegraphics[width=7cm]{img/pathtracing.png}
+			\end{center}%
+			\caption{A photorealistic computer generated image using pathtracing.}%
+			\label{fig:pathtracing}%
+		\end{figure}%
 	\subsubsection{Radiosity}
-		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it splits the objects in cameraspace into patches and treats each of those as a light emitter. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination can will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD}.
+		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination can will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD}.
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=16cm]{img/radiosity.png}
@@ -289,9 +296,9 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 	\subsection{Global illumination using 2-layer deep g-buffer} 
-		To fake global illumination we combine ambient-light\footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.}, screen space ambient visibility\footnote{Ambient visibility $AV$ is the reciproke of the ambient occlusion factor, e.g. $1-AO$} as well as multi bounce diffuse indirect illumination. \cite{RSM} \cite{TSTMT}
-		%TODO explain how deep-gbuffers do global illumination
-
+		To fake global illumination we combine direct-light $direct$, ambient-light \footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $Ambient$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the reciproke of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $radiosity$ and screen space reflections $reflections$ by \cite{RSM} \cite{TSTMT}
+		$$ direct + AV \cdot Ambient + radiosity + reflection $$
+		
 	\subsection{Screen space ambient occlusion using 2-layer deep g-buffer}
 		Scalable ambient obscurance \cite{SAO} is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
 		$$ AO(X) = \sqrt{\frac{\pi}{N} \sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
@@ -302,10 +309,10 @@ submit geometry with:
 		evaluates if the z-value at $Y$ is occluded by z-value at $X$, where $r$ is the sample radius, $v = Y - X$ the direction vector from position $X$ to position $Y$ and $n_X$ is the normal-vector in the normal-buffer at position $X$. \\\\
 		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff. 
 		
-	\subsection{Screen space radiosity}
+	\subsection{Screen space radiosity using 2-layer deep g-buffer}
 		We extend screen space radiosity to 2-layer deep g-buffers by  ... 
 
-	\subsection{Reflections using 2-layer deep g-buffer}
+	\subsection{Screen space Reflections using 2-layer deep g-buffer}
 		Screen space reflections are adapted to deep g-buffers by using reflection raytracing... 
 		%TODO explain reflection ray tracing
 

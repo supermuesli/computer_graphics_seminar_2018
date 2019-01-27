@@ -22,6 +22,6 @@
 \BOOKMARK [2][-]{subsection.5.1}{Generating a 2-layer deep g-buffer}{section.5}% 22
 \BOOKMARK [2][-]{subsection.5.2}{Global illumination using 2-layer deep g-buffer}{section.5}% 23
 \BOOKMARK [2][-]{subsection.5.3}{Screen space ambient occlusion using 2-layer deep g-buffer}{section.5}% 24
-\BOOKMARK [2][-]{subsection.5.4}{Screen space radiosity}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.5}{Reflections using 2-layer deep g-buffer}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.4}{Screen space radiosity using 2-layer deep g-buffer}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.5}{Screen space Reflections using 2-layer deep g-buffer}{section.5}% 26
 \BOOKMARK [1][-]{section.6}{Conclusion}{}% 27

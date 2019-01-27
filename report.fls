@@ -413,6 +413,9 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/ae/aer6.tfm
+INPUT img/pathtracing.png
+INPUT ./img/pathtracing.png
+INPUT ./img/pathtracing.png
 INPUT img/radiosity.png
 INPUT ./img/radiosity.png
 INPUT ./img/radiosity.png
