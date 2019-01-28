@@ -17,28 +17,6 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
-  \entry{DOF2}{article}{}
-    \name{author}{1}{}{%
-      {{hash=iaT}{%
-         prefix={insert\bibnamedelima authors},
-         prefixi={i\bibinitperiod\bibinitdelim a\bibinitperiod},
-         family={...},
-         familyi={\bibinitperiod},
-         given={TODO},
-         giveni={T\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Research Gate}%
-    }
-    \strng{namehash}{Tia1}
-    \strng{fullhash}{Tia1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelalpha}{...}
-    \field{title}{High-Quality Parallel Depth-of-Field Using Line Samples}
-  \endentry
-
   \entry{AOM}{article}{}
     \name{author}{1}{}{%
       {{hash=AFP}{%
@@ -63,26 +41,63 @@
   Methods}
   \endentry
 
-  \entry{RSM}{article}{}
-    \name{author}{1}{}{%
-      {{hash=CDMS}{%
-         family={Carsten\bibnamedelima Dachsbacher},
-         familyi={C\bibinitperiod\bibinitdelim D\bibinitperiod},
-         given={Marc\bibnamedelima Stamminger},
-         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+  \entry{MFEKB}{inproceedings}{}
+    \name{author}{5}{}{%
+      {{hash=BL}{%
+         family={Bavoil},
+         familyi={B\bibinitperiod},
+         given={Louis},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=CSP}{%
+         family={Callahan},
+         familyi={C\bibinitperiod},
+         given={Steven\bibnamedelima P.},
+         giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=LA}{%
+         family={Lefohn},
+         familyi={L\bibinitperiod},
+         given={Aaron},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CJaLD}{%
+         family={Comba},
+         familyi={C\bibinitperiod},
+         given={Jo\~{a}o L.\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim a\bibinitperiod
+  L\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+      {{hash=SCT}{%
+         family={Silva},
+         familyi={S\bibinitperiod},
+         given={Cl\'{a}udio\bibnamedelima T.},
+         giveni={C\bibinitperiod\bibinitdelim T\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {University of Erlangen-Nuremberg,}%
+      {ACM}%
     }
-    \strng{namehash}{CDMS1}
-    \strng{fullhash}{CDMS1}
+    \keyw{CSG, blending, fragment processing, graphics hardware, transparency,
+  visibility ordering, volume rendering}
+    \strng{namehash}{BL+1}
+    \strng{fullhash}{BLCSPLACJaLDSCT1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelalpha}{CD}
-    \field{sortinit}{C}
-    \field{sortinithash}{C}
-    \field{title}{Reflective Shadow Maps}
+    \field{labelalpha}{Bav+07}
+    \field{sortinit}{B}
+    \field{sortinithash}{B}
+    \field{booktitle}{Proceedings of the 2007 Symposium on Interactive 3D
+  Graphics and Games}
+    \field{isbn}{978-1-59593-628-8}
+    \field{pages}{97\bibrangedash 104}
+    \field{series}{I3D '07}
+    \field{title}{Multi-fragment Effects on the GPU Using the K-buffer}
+    \list{location}{1}{%
+      {Seattle, Washington}%
+    }
+    \field{year}{2007}
+    \warn{\item Can't use 'location' + 'address'}
   \endentry
 
   \entry{PBCB}{article}{}
@@ -108,7 +123,45 @@
     \field{journaltitle}{Pixar Technical Memo 08-01}
   \endentry
 
-  \entry{Cohen}{article}{}
+  \entry{P2PATH}{article}{}
+    \name{author}{2}{}{%
+      {{hash=CPH}{%
+         family={Christensen},
+         familyi={C\bibinitperiod},
+         given={Per\bibnamedelima H.},
+         giveni={P\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=JW}{%
+         family={Jarosz},
+         familyi={J\bibinitperiod},
+         given={Wojciech},
+         giveni={W\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Now Publishers Inc.}%
+    }
+    \strng{namehash}{CPHJW1}
+    \strng{fullhash}{CPHJW1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{CJ16}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \field{issn}{1572-2740}
+    \field{number}{2}
+    \field{pages}{103\bibrangedash 175}
+    \field{title}{The Path to Path-Traced Movies}
+    \field{volume}{10}
+    \list{location}{1}{%
+      {Hanover, MA, USA}%
+    }
+    \field{journaltitle}{Found. Trends. Comput. Graph. Vis.}
+    \field{month}{10}
+    \field{year}{2016}
+  \endentry
+
+  \entry{RAD3}{article}{}
     \name{author}{2}{}{%
       {{hash=CMF}{%
          family={Cohen},
@@ -135,16 +188,10 @@
     \field{labelalpha}{CG85}
     \field{sortinit}{C}
     \field{sortinithash}{C}
-    \verb{doi}
-    \verb 10.1145/325165.325171
-    \endverb
     \field{issn}{0097-8930}
     \field{number}{3}
     \field{pages}{31\bibrangedash 40}
     \field{title}{The Hemi-cube: A Radiosity Solution for Complex Environments}
-    \verb{url}
-    \verb http://doi.acm.org/10.1145/325165.325171
-    \endverb
     \field{volume}{19}
     \list{location}{1}{%
       {New York, NY, USA}%
@@ -181,6 +228,45 @@
     \field{journaltitle}{SIGGRAPH Comput. Graph.}
     \field{year}{2009}
     \warn{\item Invalid format of field 'month'}
+  \endentry
+
+  \entry{RSM}{misc}{}
+    \name{author}{2}{}{%
+      {{hash=DC}{%
+         family={Dachsbacher},
+         familyi={D\bibinitperiod},
+         given={Carsten},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=SM}{%
+         family={Stamminger},
+         familyi={S\bibinitperiod},
+         given={Marc},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {ACM}%
+    }
+    \keyw{hardware-assisted rendering, indirect illumination}
+    \strng{namehash}{DCSM1}
+    \strng{fullhash}{DCSM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{labelalpha}{DS05}
+    \field{sortinit}{D}
+    \field{sortinithash}{D}
+    \field{booktitle}{Proceedings of the 2005 Symposium on Interactive 3D
+  Graphics and Games}
+    \field{isbn}{1-59593-013-2}
+    \field{pages}{203\bibrangedash 231}
+    \field{series}{I3D '05}
+    \field{title}{Reflective Shadow Maps}
+    \list{location}{1}{%
+      {Washington, District of Columbia}%
+    }
+    \field{year}{2005}
+    \warn{\item Can't use 'location' + 'address'}
   \endentry
 
   \entry{NOIT}{article}{}
@@ -279,34 +365,6 @@
     \field{journaltitle}{EECS 487: Interactive Computer Graphics}
   \endentry
 
-  \entry{MFEKB}{article}{}
-    \name{author}{1}{}{%
-      {{hash=LBALJLDCCTSSPC}{%
-         family={Louis\bibnamedelima Bavoil},
-         familyi={L\bibinitperiod\bibinitdelim B\bibinitperiod},
-         suffix={Steven P.\bibnamedelima Callahan},
-         suffixi={S\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim
-  C\bibinitperiod},
-         given={Aaron Lefohn Joao L. D. Comba Claudio T.\bibnamedelima Silva},
-         giveni={A\bibinitperiod\bibinitdelim L\bibinitperiod J\bibinitperiod
-  L\bibinitperiod D\bibinitperiod C\bibinitperiod C\bibinitperiod
-  T\bibinitperiod\bibinitdelim S\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{2}{%
-      {Scientific Computing}%
-      {Imaging Institute, University of Utah}%
-    }
-    \strng{namehash}{LBSPCALJLDCCTS1}
-    \strng{fullhash}{LBSPCALJLDCCTS1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelalpha}{LB}
-    \field{sortinit}{L}
-    \field{sortinithash}{L}
-    \field{title}{Multi-Fragment Effects on the GPU using the k-Buffer}
-  \endentry
-
   \entry{Mara2016DeepGBuffer}{inproceedings}{}
     \name{author}{4}{}{%
       {{hash=MM}{%
@@ -345,9 +403,6 @@
     \field{note}{HPG}
     \field{pages}{11}
     \field{title}{Deep G-Buffers for Stable Global Illumination Approximation}
-    \verb{url}
-    \verb http://casual-effects.com/research/Mara2016DeepGBuffer/index.html
-    \endverb
     \field{year}{2016}
     \warn{\item Invalid format of field 'month'}
   \endentry
@@ -401,55 +456,110 @@
     \field{title}{Interactive Real-Time Motion Blur}
   \endentry
 
-  \entry{SAO}{article}{}
-    \name{author}{1}{}{%
-      {{hash=MMDLMM}{%
-         family={Morgan\bibnamedelima McGuire},
-         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
-         suffix={Michael\bibnamedelima Mara},
-         suffixi={M\bibinitperiod\bibinitdelim M\bibinitperiod},
-         given={David\bibnamedelima Luebke},
-         giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod},
+  \entry{SAO}{inproceedings}{}
+    \name{author}{3}{}{%
+      {{hash=MM}{%
+         family={McGuire},
+         familyi={M\bibinitperiod},
+         given={Morgan},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=MM}{%
+         family={Mara},
+         familyi={M\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=LD}{%
+         family={Luebke},
+         familyi={L\bibinitperiod},
+         given={David},
+         giveni={D\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {NVIDIA, Williams College}%
+      {Eurographics Association}%
     }
-    \strng{namehash}{MMMMDL1}
-    \strng{fullhash}{MMMMDL1}
+    \strng{namehash}{MMMMLD1}
+    \strng{fullhash}{MMMMLD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelalpha}{MM}
+    \field{labelalpha}{MML12}
     \field{sortinit}{M}
     \field{sortinithash}{M}
+    \field{booktitle}{Proceedings of the Fourth ACM SIGGRAPH / Eurographics
+  Conference on High-Performance Graphics}
+    \field{isbn}{978-3-905674-41-5}
+    \field{pages}{97\bibrangedash 103}
+    \field{series}{EGGH-HPG'12}
     \field{title}{Scalable Ambient Obscurance}
+    \list{location}{1}{%
+      {Paris, France}%
+    }
+    \field{year}{2012}
+    \warn{\item Can't use 'location' + 'address'}
   \endentry
 
-  \entry{P2PATH}{article}{}
-    \name{author}{1}{}{%
-      {{hash=PHCWJ}{%
-         family={Per H.\bibnamedelima Christensen},
-         familyi={P\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim
-  C\bibinitperiod},
-         given={Wojciech\bibnamedelima Jarosz},
-         giveni={W\bibinitperiod\bibinitdelim J\bibinitperiod},
+  \entry{DOF2}{inproceedings}{}
+    \name{author}{6}{}{%
+      {{hash=TS}{%
+         family={Tzeng},
+         familyi={T\bibinitperiod},
+         given={Stanley},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=PA}{%
+         family={Patney},
+         familyi={P\bibinitperiod},
+         given={Anjul},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Davidson},
+         familyi={D\bibinitperiod},
+         given={Andrew},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=EMS}{%
+         family={Ebeida},
+         familyi={E\bibinitperiod},
+         given={Mohamed\bibnamedelima S.},
+         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=MSA}{%
+         family={Mitchell},
+         familyi={M\bibinitperiod},
+         given={Scott\bibnamedelima A.},
+         giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=OJD}{%
+         family={Owens},
+         familyi={O\bibinitperiod},
+         given={John\bibnamedelima D.},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
-      {now - the essence of knowledge}%
+      {Eurographics Association}%
     }
-    \strng{namehash}{PHCWJ1}
-    \strng{fullhash}{PHCWJ1}
+    \strng{namehash}{TS+1}
+    \strng{fullhash}{TSPADAEMSMSAOJD1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{labelalpha}{PHC14}
-    \field{sortinit}{P}
-    \field{sortinithash}{P}
-    \field{title}{The Path to Path-Traced Movies}
-    \field{volume}{10}
-    \field{journaltitle}{Foundations and Trends R in Computer Graphics and
-  Vision}
-    \field{year}{2014}
+    \field{labelalpha}{Tze+12}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{booktitle}{Proceedings of the Fourth ACM SIGGRAPH / Eurographics
+  Conference on High-Performance Graphics}
+    \field{isbn}{978-3-905674-41-5}
+    \field{pages}{23\bibrangedash 31}
+    \field{series}{EGGH-HPG'12}
+    \field{title}{High-quality Parallel Depth-of-field Using Line Samples}
+    \list{location}{1}{%
+      {Paris, France}%
+    }
+    \field{year}{2012}
+    \warn{\item Can't use 'location' + 'address'}
   \endentry
 \enddatalist
 \endinput
