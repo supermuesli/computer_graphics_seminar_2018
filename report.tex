@@ -33,7 +33,7 @@
 
 \begin{document}
 
-\title{Re: Deep G-Buffers for Stable Global Illumination Approximation}
+\title{Deep G-Buffers for Stable Global Illumination Approximation}
 
 \author{Ferit Tohidi Far}
 
@@ -43,12 +43,7 @@
 % Abstract
 
 \begin{abstract}%
-G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using 
-only g-buffers, we are only able to compute local illumination, which forces us to find a way to achieve sought after visual and lighting effects like global 
-illumination. By using deep g-buffers we can approximate global illumination in a way that is more efficient than traditional methods like pathtracing, 
-while of course not being physically accurate. We can make up for it, though, by also approximating visual effects like ambient occlusion, color bleeding, reflections, 
-depth of field and motion blur to create an acceptable interactive realtime result, which is - as of now - simply impossible with physically accurate methods on 
-average hardware.
+G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using g-buffers, we are only able to compute local illumination, meaning it is necessary to apply further techniques to approximate visual effects that would have been exerted in a globally illuminated scene. With multiple depth-layers of information about the scene, we are able to make an even better approximation of the illumination as opposed to using just a single layer. Depth-peeling while collecting G-Buffers for each layer would deliver the best approximation, but would also be hard to compute. As a tradeoff, we will be using two layers of information and store them in a Deep G-Buffer, since two layers have proven to be sufficient. This way we can achieve real-time global illumination on moderate hardware.
 \end{abstract}
 
 \keywords{nvidia, g-buffer, deep g-buffer, pathtracing, global illumination approximation, deferred shading, deferred rendering}
@@ -341,7 +336,6 @@ submit geometry with:
 			\includegraphics[width=16cm]{img/deep_g_buffer_render.png}
 		\end{center}%
 		\caption{An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.}%
-		%TODO insert source https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/
 		\label{fig:deep_g_buffer_render}%
 	\end{figure}%
 
