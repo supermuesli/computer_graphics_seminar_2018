@@ -94,19 +94,22 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\caption{How radiosity globally illuminates a scene. With each iteration there are more light emitters, meaning that there are more possible patches that can be illuminated. In the first iteration, the only light-emitters are the windows (not visible in the frame). After 16 iterations the scene is sufficiently saturated.}%
 			\label{fig:radiosity}%
 		\end{figure}%
-	\subsection{Computational difficulties of physically correct methods}
-	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. Radiosity can be preprocessed and quickly loaded to illuminate a scene, but thus would require large amounts of memory for non-static scenes. Because of this, it is nearly impossible to achieve real time rendering using physically correct methods on an average system. This forces game engines to stick to \textbf{faking} global illumination and visual effects since it is way more efficient to compute. Adding multiple light sources to the scene will still be challenging to average systems with traditional rendering (forward rendering) as described by modern graphics pipelines. Deferred rendering, specifically deferred shading, counters this problem at the cost of having to compute transparency using depth peeling and having no straight forward anti-aliasing\footnote{Anti-aliasing is a method that tries to smoothen out pixelated-looking edges.}.
+	\subsection{Computational difficulties of physically based methods}
+	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. Radiosity can be preprocessed and quickly loaded to illuminate a scene, but thus would require large amounts of memory for non-static scenes. Because of this, it is nearly impossible to achieve real time rendering using physically based methods on an average system. This forces game engines to stick to achieving global illumination and visual effects through the application of plausible-looking and efficiently computable but physically inaccurate techniques. Adding multiple light sources to the scene will still be challenging to average systems with traditional rendering (forward rendering) as described by modern graphics pipelines. Deferred rendering, specifically deferred shading, counters this problem at the cost of having to compute transparency using depth peeling and having no straight forward anti-aliasing.
+	%TODO maybe explain anti aliasing
 
-\section{Deferred rendering}
-	Graphics pipelines describe each step that has to be taken in order to render an image. Within a pipeline it is possible in some cases to defer steps to a later stage. It is conventional to use GPU's for applications that rely heavily on rendering images. There is no universal graphics pipeline, because these are dependent on the GPU that is used, which means it is convenient that there exist API's like OpenGL that try to generalize the steps that need to be taken in order to render an image and map them to compatible GPU's. This means that most GPU dependent applications abide by the graphics pipeline as described by, for instance, OpenGL (figure \ref{fig:graphics_pipeline}).
+\section{Traditional rendering (rasterization)}
+	Graphics pipelines describe each step that has to be taken in order to render an image. It is conventional to use GPU's for applications that rely heavily on rendering images. There is no universal graphics pipeline, because these are dependent on the GPU that is used, which means it is convenient that there exist API's like OpenGL that try to generalize the steps that need to be taken in order to render an image and map them to compatible GPU's. This means that most GPU dependent applications abide by the graphics pipeline as described by, for instance, OpenGL (figure \ref{fig:graphics_pipeline}).
 	\begin{figure}[htb!]%
 	\begin{center}%
 		\includegraphics[height=7cm]{img/graphics_pipeline.png}
 	\end{center}%
-	\caption{The OpenGL graphics pipeline. All steps are mandatory, but the ones within blue boxes are also programmable and the ones with dashed borders can be deferred or forwarded. Note that the vertex-shader and geometry-shader do not neccesarily compute any shading or colors, but can be programmed to do so. They are called shaders for historical reasons, which might be a little irritating.}%
+	\caption{The OpenGL graphics pipeline. The steps within blue boxes are programmable and the ones with dashed borders can be deferred or forwarded.}%
 	\label{fig:graphics_pipeline}%
 	\end{figure}%
-	\subsection{How deferred shading handles lighting more efficiently}
+	\subsection{Forward rendering}
+		With forward rendering ... TODO
+	\subsection{Deferred rendering}
 		The goal of deferred shading is to defer the shading stage. Instead of shading right away, we compute necessary geometry buffers (g-buffers) in a first pass that we call "geometry pass" and cache 
 		them for later use in the second pass which we call "shading (or lighting) pass". \\\\
 		With forward rendering we would have to compute the shading for every fragment of every object for all light-sources in a single pass. The shading is applied regardless wether the fragment is visible at the end or not, since the visibility test is performed at the end. This means that the time complexity of computing forward shading is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
@@ -119,42 +122,42 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\end{center}%
 		\caption{A scene that was rendered using deferred shading. The objects are locally illuminated by point-lights using g-buffers.}%
 		\label{fig:deferred_shading}%
-		\end{figure}%
+	\end{figure}%
 
-\section{Geometry-buffer (g-buffer)}
-	Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from, but the three that will be mentioned are the most essential in every g-buffer.
-	\subsection{Frame-buffer}%
-		Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading (also called pixel-shading) aims to shade every single fragment by using some shading technique.} applied to it.% 
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/frame_buffer.png}
-			\end{center}%
-			\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
-			\label{fig:frame_buffer}
-		\end{figure}%
-	\subsection{Z-buffer}
-		The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
-		\addtocounter{footnote}{-1}
-		\footnotetext{Worldspace is the space in which the 3d objects are placed.}
-		\stepcounter{footnote}
-		\footnotetext{Screenspace is the space in which the individual pixels of the projected 3d models are defined.}
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/z_buffer.png}
-			\end{center}%
-			\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each
-			z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.}%
-			\label{fig:z_buffer}
-		\end{figure}%
-	\subsection{Normal-buffer}
-		The normal-buffer stores surface-normals that are mostly used for shading and to determine reflection and refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/normal_buffer.png}
-			\end{center}%
-			\caption{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.}%
-			\label{fig:normal_buffer}
-		\end{figure}%
+	\subsection{Geometry-buffer (g-buffer)}
+		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from, but the three that will be mentioned are the most essential in every g-buffer.
+		\subsubsection{Frame-buffer}%
+			Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading (also called pixel-shading) aims to shade every single fragment by using some shading technique.} applied to it.% 
+			\begin{figure}[htb!]%
+				\begin{center}%
+					\includegraphics[width=7cm]{img/frame_buffer.png}
+				\end{center}%
+				\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
+				\label{fig:frame_buffer}
+			\end{figure}%
+		\subsubsection{Z-buffer}
+			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
+			\addtocounter{footnote}{-1}
+			\footnotetext{Worldspace is the space in which the 3d objects are placed.}
+			\stepcounter{footnote}
+			\footnotetext{Screenspace is the space in which the individual pixels of the projected 3d models are defined.}
+			\begin{figure}[htb!]%
+				\begin{center}%
+					\includegraphics[width=7cm]{img/z_buffer.png}
+				\end{center}%
+				\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each
+				z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.}%
+				\label{fig:z_buffer}
+			\end{figure}%
+		\subsubsection{Normal-buffer}
+			The normal-buffer stores surface-normals that are mostly used for shading and to determine reflection and refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
+			\begin{figure}[htb!]%
+				\begin{center}%
+					\includegraphics[width=7cm]{img/normal_buffer.png}
+				\end{center}%
+				\caption{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.}%
+				\label{fig:normal_buffer}
+			\end{figure}%
 	\subsection{Computing local illumination using g-buffers (deferred shading)}
 		For any illumination to happen we first need to define some light sources. The following are some of the possible light-sources that we can use:
 		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in worldspace from which the light rays are sent in all directions. A point-light is a directional-light which is constrained by its radius (basically a sphere of light). Finally, spot-lights are area lights which emit light on another area (like spot-lights in real life do). 
