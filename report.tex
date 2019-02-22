@@ -48,8 +48,8 @@ G-buffers can be used to efficiently render images with large amounts of light s
 
 \keywords{nvidia, g-buffer, deep g-buffer, pathtracing, global illumination approximation, deferred shading, deferred rendering}
 \tableofcontents
-\listoffigures
-\listofalgorithms
+%\listoffigures
+%\listofalgorithms
 
 \label{cha:references}
 
@@ -114,7 +114,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		them for later use in the second pass which we call "shading (or lighting) pass". \\\\
 		With forward rendering we would have to compute the shading for every fragment of every object for all light-sources in a single pass. The shading is applied regardless wether the fragment is visible at the end or not, since the visibility test is performed at the end. This means that the time complexity of computing forward shading is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
 		If we apply deffered shading, however, we do not force ourselves to shade every fragment as soon as it has been computed, instead we wait until we find the closest fragment so to say. Finding the closest fragment is called "solving the visibility problem". This is solved during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found, which solves the visibility problem. Now all the fragments that we shade are only going to be shaded once, which means for the time complexity that the shading is done in $O(amount_{pixels} \cdot amount_{lights})$, allowing us to render more light-sources at the expense of passing around g-buffers (note that fragments are \textbf{potential} pixels). \\\\
-		For all practical purposes, g-buffers have to at least consist of a frame-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, it is possible to render an image with basic shading.
+		For all practical purposes, g-buffers have to at least consist of a albedo-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, it is possible to render an image with basic shading.
 
 		\begin{figure}[htb!]%
 		\begin{center}%
@@ -126,27 +126,24 @@ G-buffers can be used to efficiently render images with large amounts of light s
 
 	\subsection{Geometry-buffer (g-buffer)}
 		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from, but the three that will be mentioned are the most essential in every g-buffer.
-		\subsubsection{Frame-buffer}%
-			Color-values of fragments are stored in the frame-buffer. It basically stores the rendered image without fragment-shading\footnote{Fragment-shading (also called pixel-shading) aims to shade every single fragment by using some shading technique.} applied to it.% 
+		\subsubsection{Albedo-buffer}%
+			%TODO maybe explain fragmentshading
+			Color-values of fragments are stored in the albedo-buffer. It basically stores the rendered image without fragment-shading applied to it.% 
 			\begin{figure}[htb!]%
 				\begin{center}%
 					\includegraphics[width=7cm]{img/frame_buffer.png}
 				\end{center}%
-				\caption{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
+				\caption{Example of a albedo-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
 				\label{fig:frame_buffer}
 			\end{figure}%
 		\subsubsection{Z-buffer}
-			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments\footnote{A fragment is a point on a surface in worldspace\footnotemark} have the same x and y coordinates in screenspace\footnotemark, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
-			\addtocounter{footnote}{-1}
-			\footnotetext{Worldspace is the space in which the 3d objects are placed.}
-			\stepcounter{footnote}
-			\footnotetext{Screenspace is the space in which the individual pixels of the projected 3d models are defined.}
+			%TODO maybe explain screenspace and worldspace
+			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
 			\begin{figure}[htb!]%
 				\begin{center}%
 					\includegraphics[width=7cm]{img/z_buffer.png}
 				\end{center}%
-				\caption{Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each
-				z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.}%
+				\caption{Example of a z-buffer. The darker a pixel, the further away it is from the cameras point of view.}%
 				\label{fig:z_buffer}
 			\end{figure}%
 		\subsubsection{Normal-buffer}
@@ -162,8 +159,23 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		For any illumination to happen we first need to define some light sources. The following are some of the possible light-sources that we can use:
 		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in worldspace from which the light rays are sent in all directions. A point-light is a directional-light which is constrained by its radius (basically a sphere of light). Finally, spot-lights are area lights which emit light on another area (like spot-lights in real life do). 
 		%TODO fix explanation on light sources a little
+		%Directional light - produced by a light source an infinite distance from the scene., All of the light rays emanating from the light strike the polygons in the scene from a single parallel direction, and with equal intensity everywhere.
+		%Sunlight is for all intents and purposes a directional light.
+		%Characterized by color, intensity, and direction.
+		%Point light - a light that gives off equal amounts of light in all directions. Polygons, and parts of polygons which are closer to the light appear brighter than those that are further away. The angle at which light from a point light source hits an object is a function of the positions of both the object and the light source. The intensity of the light source hitting the object is a function of the distance between them. Different graphics programs may ( or may not ) allow the programmer to adjust the falloff function in different ways.
+		%A bare bulb hanging from a cord is essentially a point light.
+		%Characterized by color, intensity, location, and falloff function.
+		%Spotlight - light that radiates light in a cone with more light in the center of the cone, gradually tapering off towards the sides of the cone. The simplest spotlight would just be a point light that is restricted to a certain angle around its primary axis of direction - Think of something like a flashlight or car headlight as opposed to a bare bulb hanging on a wire. More advanced spotlights have a falloff function making the light more intense at the center of the cone and softer at the edges.
+		%Characterized as a point light, an axis of direction, a radius about that axis, and possibly a radial falloff function.
+		%
+		%
+		%
+		%
+		%
+		%
 		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. \\\\
-		Both first compute the normals for each vertex for each polygon in cameraspace within the vertex-shader. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed. The differences are essentially that gouraud-shading computes shaded colors using some illumination-model\footnote{An illumination-model is a way of describing how a light-source effects the color of a fragment that it hits. This will vary depending on the light-source that is used.}, which requires vertex-normals that were just computed, and assigns them to the vertices of their polygons within the vertex-shader and then interpolates (blends) the fragment-colors inbetween the vertices in the fragment-shader, while phong-shading uses its vertex-normals to interpolate the normals of each fragment within the polygons in the vertex-shader and computes shaded colors using some illumination-model, which requires the fragment-normals that were just computed, on each fragment in the fragment-shader. \\\\
+		%maybe explain illumination model
+		Both first compute the normals for each vertex for each polygon in cameraspace within the vertex-shader. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed. The differences are essentially that gouraud-shading computes shaded colors using some illumination-model, which requires vertex-normals that were just computed, and assigns them to the vertices of their polygons within the vertex-shader and then interpolates (blends) the fragment-colors inbetween the vertices in the fragment-shader, while phong-shading uses its vertex-normals to interpolate the normals of each fragment within the polygons in the vertex-shader and computes shaded colors using some illumination-model, which requires the fragment-normals that were just computed, on each fragment in the fragment-shader. \\\\
 		Gouraud-shading is a fast way of computing shading since it only uses the illumination-model on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to applying the illumination-model on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case. This would conclude local illumination, which means we took care of direct lighting. \\\\
 		In the context of deferred shading, all of this is done in the second pass (the shading or lighting pass). By now it should become apparent why shading in a single pass is inefficient, since all of these illumination computations would be in vein if the visibility test does not pass anyway. The g-buffers that we collect in the first pass (the geometry pass) make this possible. 
 
@@ -197,7 +209,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		We can easily compute hard shadows in screen space using shadow mapping. A shadow map is a buffer that contains the distances between the light source and all pixels (visible fragments) of the scene. Having created the shadow map we check if the entry in the z-buffer is larger than the entry in the shadow map. If so, then the fragment is in shadow and is painted black. If not, then the fragment keeps its color and we can proceed to compute its local illumination. This can be extended to soft shadows simply by blending together fragments in shadow with their surrounding fragments.
 
 	\subsection{Transparency}
-		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time, one of which stores the current g-buffer and one of which stores the previous g-buffer. Depending on how many levels of transparency are wished for, let $k$ be the level of transparency, we make $k$ passes on the g-buffers, "peeling" away the previous g-buffers texel\footnote{A texel is essentially a pixel of a texture. G-buffers are stored in texture-buffers inside the GPU, which means their individual pixels can be refered to as texel.} from the current g-buffer if a larger z-value on that texel-position is found. For this to work, the previous z-buffer in the first pass has to be initialized with negative infinity \cite{NOIT}.
+		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time, one of which stores the current g-buffer and one of which stores the previous g-buffer. Depending on how many levels of transparency are wished for, let $k$ be the level of transparency, we make $k$ passes on the g-buffers, "peeling" away the previous g-buffers texel\footnote{Pixel of a texture} from the current g-buffer if a larger z-value on that texel-position is found. For this to work, the previous z-buffer in the first pass has to be initialized with negative infinity \cite{NOIT}.
 		%TODO explain how to construct the final transparent image
 
 	\subsection{Reflection} \label{sec:reflection}
@@ -226,11 +238,12 @@ G-buffers can be used to efficiently render images with large amounts of light s
 
 \section{Deep g-buffer}
 	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{Mara2016DeepGBuffer}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. \\\\
-	Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{Mara2016DeepGBuffer}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one. Setting $\Delta z = 0$ makes the generated 2-layer z-buffer of the deep g-buffer turn into a 2-layer k-buffer\footnote{A k-buffer is a k-layer z-buffer that stores the z-values of the k-closest polygons in order. Unlike with deep g-buffers, the minimum separation constraint is not met.} \cite{MFEKB}. \\\\
+	Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{Mara2016DeepGBuffer}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one. Setting $\Delta z = 0$ makes the generated 2-layer z-buffer of the deep g-buffer turn into a 2-layer k-buffer\footnote{K-layer z-buffer that stores the z-values of the k-closest polygons in order} \cite{MFEKB}. \\\\
 	How to pick $\Delta z$ ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, it is possible that important visual information might be missed. On the other hand, if $\Delta z$ is too small, it is possible that unnecessary information might be picked up. According to NVIDIA, $\Delta z = 50cm$ seems to consistently deliver stable results, at least in the renders done in their paper.
 	\subsection{Generating a 2-layer deep g-buffer}
+		%maybe explain skinning and modelview transformation
 		NVIDIA proposes two ways of generating a 2-layer deep g-buffer, one of which is straight forward to help demonstrate the idea and one of which is efficient. \\\\
-		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection\footnote{Each object has a model-view-matrix that describes at which location, at what which angle and at which size it has to appear in the scene.} and skinning-transformations\footnote{Skinning is a term from computer animation that assigns joints to an object that can move.}). In the first pass we simply collect the first layers g-buffers and in the second pass we peel away the first layers g-buffers to receive the second layer. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
+		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection and skinning-transformations). In the first pass we simply collect the first layers g-buffers and in the second pass we peel away the first layers g-buffers to receive the second layer. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
 		This is essentially two-pass depth peeling, however, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. \\\\
 		In order to save a pass over the geometry, we rely on an oracle that predicts the first layers z-buffer before it is even rendered. Using that prediction, we can compute fragments for the second layer by peeling the first layer. In total, there are four variants to go about this. $t$ is the index of the frame.
 		\begin{enumerate}
@@ -291,7 +304,8 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 	\subsection{Global illumination using 2-layer deep g-buffer} 
-		To fake global illumination we combine direct-light $DIRECT$, ambient-light\footnote{Ambient-light is the minimal amount of light a fragment can emit. This is used to help create the illusion of indirect illumination, as the fragment would otherwise be pitch black.} $AMBIENT$, screen space ambient visibility\footnote{Ambient visibility $AV$ is the complement of the ambient occlusion factor, e.g. $1-AO$} $AV$ as well as screen space radiosity $RADIOSITY$ and screen space reflections $REFLECTIONS$ by \cite{RSM} \cite{TSTMT}
+		%maybe explain ambient light
+		To fake global illumination we combine direct-light $DIRECT$, ambient-light $AMBIENT$, screen space ambient visibility\footnote{$AV = 1-AO$} $AV$ as well as screen space radiosity $RADIOSITY$ and screen space reflections $REFLECTIONS$ by \cite{RSM} \cite{TSTMT}
 		$$ DIRECT + AV \cdot AMBIENT + RADIOSITY + REFLECTIONS $$
 		
 	\subsection{Screen space ambient occlusion using 2-layer deep g-buffer}
