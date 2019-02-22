@@ -58,6 +58,7 @@
 \abx@aux@segm{0}{0}{DST}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A scene that was rendered using deferred shading. The objects are locally illuminated by point-lights using g-buffers.\relax }}{6}{figure.caption.5}}
 \newlabel{fig:deferred_shading}{{4}{6}{A scene that was rendered using deferred shading. The objects are locally illuminated by point-lights using g-buffers.\relax }{figure.caption.5}{}}
+<<<<<<< HEAD
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example of a albedo-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }}{6}{figure.caption.6}}
 \newlabel{fig:frame_buffer}{{5}{6}{Example of a albedo-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }{figure.caption.6}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Z-buffer}{6}{subsubsection.2.3.2}}
@@ -67,6 +68,17 @@
 \newlabel{fig:z_buffer}{{6}{7}{Example of a z-buffer. The darker a pixel, the further away it is from the cameras point of view.\relax }{figure.caption.7}{}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }}{7}{figure.caption.8}}
 \newlabel{fig:normal_buffer}{{7}{7}{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }{figure.caption.8}{}}
+=======
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }}{6}{figure.caption.6}}
+\newlabel{fig:frame_buffer}{{5}{6}{Example of a frame-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Z-buffer}{6}{subsubsection.2.3.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Normal-buffer}{6}{subsubsection.2.3.3}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.\relax }}{7}{figure.caption.7}}
+\newlabel{fig:z_buffer}{{6}{7}{Example of a z-buffer. Since the z-buffer only stores distances as float values deduced by dividing each z-value by the distance of the furthest away object from the cameras point of view, which is the maximum z-value, they are interpreted as a grayscale value which is turned into an RGB vector by multiplying $(z, z, z)$ with $255$.\relax }{figure.caption.7}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }}{7}{figure.caption.8}}
+\newlabel{fig:normal_buffer}{{7}{7}{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.\relax }{figure.caption.8}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Computing local illumination using g-buffers (deferred shading)}{7}{subsection.2.4}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \citation{AOM}
 \abx@aux@cite{AOM}
 \abx@aux@segm{0}{0}{AOM}
@@ -80,6 +92,14 @@
 \citation{NOIT}
 \abx@aux@cite{NOIT}
 \abx@aux@segm{0}{0}{NOIT}
+<<<<<<< HEAD
+=======
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.\relax }}{9}{figure.caption.10}}
+\newlabel{fig:ambient_occlusion}{{9}{9}{How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.\relax }{figure.caption.10}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Color bleeding}{9}{subsection.3.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Soft shadows}{9}{subsection.3.3}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Transparency}{9}{subsection.3.4}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \citation{REFL}
 \abx@aux@cite{REFL}
 \abx@aux@segm{0}{0}{REFL}
@@ -96,6 +116,14 @@
 \citation{MOB}
 \abx@aux@cite{MOB}
 \abx@aux@segm{0}{0}{MOB}
+<<<<<<< HEAD
+=======
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Reflection}{10}{subsection.3.5}}
+\newlabel{sec:reflection}{{3.5}{10}{Reflection}{subsection.3.5}{}}
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{10}{figure.caption.11}}
+\newlabel{fig:cube_map}{{10}{10}{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }{figure.caption.11}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Depth of field}{10}{subsection.3.6}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \citation{Mara2016DeepGBuffer}
 \abx@aux@cite{Mara2016DeepGBuffer}
 \abx@aux@segm{0}{0}{Mara2016DeepGBuffer}
@@ -104,6 +132,7 @@
 \citation{MFEKB}
 \abx@aux@cite{MFEKB}
 \abx@aux@segm{0}{0}{MFEKB}
+<<<<<<< HEAD
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }}{10}{figure.caption.11}}
 \newlabel{fig:cube_map}{{10}{10}{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.\relax }{figure.caption.11}{}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Depth of field}{10}{subsection.3.6}}
@@ -111,6 +140,12 @@
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4}Deep g-buffer}{10}{section.4}}
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{11}{figure.caption.12}}
 \newlabel{fig:depth_of_field}{{11}{11}{Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }{figure.caption.12}{}}
+=======
+\@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }}{11}{figure.caption.12}}
+\newlabel{fig:depth_of_field}{{11}{11}{Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.\relax }{figure.caption.12}{}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}Motion blur}{11}{subsection.3.7}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {4}Deep g-buffer}{11}{section.4}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Generating a 2-layer deep g-buffer}{11}{subsection.4.1}}
 \citation{RSM}
 \abx@aux@cite{RSM}
@@ -124,17 +159,31 @@
 \newlabel{alg:two_pass_strawman}{{\caption@xref {alg:two_pass_strawman}{ on input line 259}}{12}{Generating a 2-layer deep g-buffer}{Item.4}{}}
 \@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Strawman two-pass generation algorithm for generating 2-layer deep g-buffers\relax }}{12}{algorithm.1}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Global illumination using 2-layer deep g-buffer}{12}{subsection.4.2}}
+<<<<<<< HEAD
+=======
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Screen space ambient occlusion using 2-layer deep g-buffer}{12}{subsection.4.3}}
+\newlabel{alg:two_pass_strawman}{{\caption@xref {alg:two_pass_strawman}{ on input line 244}}{13}{Generating a 2-layer deep g-buffer}{Item.4}{}}
+\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Strawman two-pass generation algorithm for generating 2-layer deep g-buffers\relax }}{13}{algorithm.1}}
+\newlabel{alg:one_pass_strawman}{{\caption@xref {alg:one_pass_strawman}{ on input line 265}}{13}{Generating a 2-layer deep g-buffer}{lstnumber.-1.16}{}}
+\@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces An improved one-pass algorithm for generating 2-layer deep g-buffers\relax }}{13}{algorithm.2}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \citation{Mara2016DeepGBuffer}
 \abx@aux@segm{0}{0}{Mara2016DeepGBuffer}
 \citation{RTAII}
 \abx@aux@cite{RTAII}
 \abx@aux@segm{0}{0}{RTAII}
+<<<<<<< HEAD
 \newlabel{alg:one_pass_strawman}{{\caption@xref {alg:one_pass_strawman}{ on input line 280}}{13}{Generating a 2-layer deep g-buffer}{lstnumber.-1.16}{}}
 \@writefile{loa}{\defcounter {refsection}{0}\relax }\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces An improved one-pass algorithm for generating 2-layer deep g-buffers\relax }}{13}{algorithm.2}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Screen space ambient occlusion using 2-layer deep g-buffer}{13}{subsection.4.3}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Screen space radiosity using 2-layer deep g-buffer}{13}{subsection.4.4}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Screen space reflections using 2-layer deep g-buffer}{14}{subsection.4.5}}
 \@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}}
+=======
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Screen space radiosity using 2-layer deep g-buffer}{14}{subsection.4.4}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Screen space reflections using 2-layer deep g-buffer}{15}{subsection.4.5}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{15}{section.5}}
+>>>>>>> d91090f35068cb6183db6e1f8a5c0e21c83e78e8
 \@writefile{lof}{\defcounter {refsection}{0}\relax }\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.\relax }}{15}{figure.caption.13}}
 \newlabel{fig:deep_g_buffer_render}{{12}{15}{An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.\relax }{figure.caption.13}{}}
 \abx@aux@refcontextdefaultsdone
