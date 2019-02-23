@@ -77,7 +77,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	The most popular method for approximating this integral is monte-carlo pathtracing\cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
 	%TODO: diffuse lambert reflectance
 	\subsubsection{Pathtracing} 
-		Monte-carlo integration makes use of a simple concept: the integral of a function $f$ is $$ lim_{n \rightarrow \infty}\frac{\sum_{i}^{n} f(i)}{n} $$. We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is also possible to achieve caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render.
+		Monte-carlo integration makes use of a simple concept: the integral of a function $f$ is $$ n $$. We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is also possible to achieve caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render.
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/pathtracing.png}
@@ -95,7 +95,8 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\label{fig:radiosity}%
 		\end{figure}%
 	\subsection{Computational difficulties of physically based methods}
-	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. Radiosity can be preprocessed and quickly loaded to illuminate a scene, but thus would require large amounts of memory for non-static scenes. Because of this, it is nearly impossible to achieve real time rendering using physically based methods on an average system. This forces game engines to stick to achieving global illumination and visual effects through the application of plausible-looking and efficiently computable but physically inaccurate techniques. Adding multiple light sources to the scene will still be challenging to average systems with traditional rendering (forward rendering) as described by modern graphics pipelines. Deferred rendering, specifically deferred shading, counters this problem at the cost of having to compute transparency using depth peeling and having no straight forward anti-aliasing.
+	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. Radiosity can be preprocessed and quickly loaded to illuminate a scene, but thus would require large amounts of memory for non-static scenes. Because of this, it is nearly impossible to achieve real time rendering using physically based methods on an average system. This forces game engines to stick to achieving global illumination and visual effects through the application of plausible-looking and efficiently computable but physically inaccurate techniques. \\
+	Adding multiple light sources to a scene still proves to be challenge to average systems when traditional rendering (forward rendering) as described by modern graphics pipelines is applied. Deferred rendering counters this problem at the cost of having to compute transparency using depth peeling and having no straight forward anti-aliasing.
 	%TODO maybe explain anti aliasing
 
 \section{Traditional rendering (rasterization)}
@@ -104,55 +105,53 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	\begin{center}%
 		\includegraphics[height=7cm]{img/graphics_pipeline.png}
 	\end{center}%
-	\caption{The OpenGL graphics pipeline. The steps within blue boxes are programmable and the ones with dashed borders can be deferred or forwarded.}%
+	\caption{The OpenGL graphics pipeline. The steps within blue boxes are programmable.}%
 	\label{fig:graphics_pipeline}%
 	\end{figure}%
 	\subsection{Forward rendering}
-		With forward rendering ... TODO
+		With forward rendering, for each object in the scene, we would render its fragments to the frame-buffer if they pass the z-test (if it is the current frontmost fragment). Since this is done for each object, it is likely that many fragments will overlap other fragments. However, we already computed all the lighting and shading for that fragment, so if it is not going to be visible anyway, than those computations were effectively wasted. This means that the more lights we add to the scene, the more lighting computations are going to be in vain.
 	\subsection{Deferred rendering}
-		The goal of deferred shading is to defer the shading stage. Instead of shading right away, we compute necessary geometry buffers (g-buffers) in a first pass that we call "geometry pass" and cache 
-		them for later use in the second pass which we call "shading (or lighting) pass". \\\\
-		With forward rendering we would have to compute the shading for every fragment of every object for all light-sources in a single pass. The shading is applied regardless wether the fragment is visible at the end or not, since the visibility test is performed at the end. This means that the time complexity of computing forward shading is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
-		If we apply deffered shading, however, we do not force ourselves to shade every fragment as soon as it has been computed, instead we wait until we find the closest fragment so to say. Finding the closest fragment is called "solving the visibility problem". This is solved during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found, which solves the visibility problem. Now all the fragments that we shade are only going to be shaded once, which means for the time complexity that the shading is done in $O(amount_{pixels} \cdot amount_{lights})$, allowing us to render more light-sources at the expense of passing around g-buffers (note that fragments are \textbf{potential} pixels). \\\\
-		For all practical purposes, g-buffers have to at least consist of a albedo-buffer, a normal-buffer and a z-buffer. Using only these g-buffers, it is possible to render an image with basic shading.
+		The goal of deferred rendering is to defer lighting and shading calculations until after the frontmost fragments are determined. This is done by computing necessary geometry buffers (g-buffers) in a first pass that is called "geometry pass" and storing them in a texture-buffer instead of rendering to the screen. In the second pass (lighting pass) all lighting computations are performed and accumulated with the texture-buffer, which is then rendered to the screen. \\\\
+		With forward rendering we would have to compute the lighting for every fragment of every object for all light-sources in a single pass. This means that the time complexity of computing forward lighting is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
+		If we apply deffered rendering, however, we do not force ourselves to light every fragment as soon as it has been computed. Finding the closest fragment is called "solving the visibility problem". This is done during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found. Now all the fragments that we light are only going to be lighted once, which means for the time complexity that the lighting is done in $O(amount_{pixels} \cdot amount_{lights})$, allowing us to render more light-sources at the expense of passing around g-buffers (note that fragments are \textbf{potential} pixels). \\\\
+		For all practical purposes, g-buffers have to at least consist of an albedo-buffer, a normal-buffer and a z-buffer. Using at least these g-buffers, it is possible to render an image with basic shading.
 
 		\begin{figure}[htb!]%
 		\begin{center}%
 			\includegraphics[width=7cm]{img/wiki_deferred_shading.png}
 		\end{center}%
-		\caption{A scene that was rendered using deferred shading. The objects are locally illuminated by point-lights using g-buffers.}%
+		\caption{A scene that was rendered using deferred lighting. The objects are locally illuminated by point-lights using g-buffers.}%
 		\label{fig:deferred_shading}%
 	\end{figure}%
 
-	\subsection{Geometry-buffer (g-buffer)}
-		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from, but the three that will be mentioned are the most essential in every g-buffer.
+	\subsection{Geometry-buffer (G-buffer)}
+		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
 		\subsubsection{Albedo-buffer}%
-			%TODO maybe explain fragmentshading
-			Color-values of fragments are stored in the albedo-buffer. It basically stores the rendered image without fragment-shading applied to it.% 
+			Unshaded color-values of frontmost fragments are stored in the albedo-buffer.% 
 			\begin{figure}[htb!]%
 				\begin{center}%
-					\includegraphics[width=7cm]{img/frame_buffer.png}
+					\includegraphics[width=7cm]{img/wiki_frame_buffer.png}
 				\end{center}%
-				\caption{Example of a albedo-buffer (also called image-buffer). It shows a cornell box with pitch black walls containing two yellow cuboids.}%
+				\caption{Example of an albedo-buffer. It shows a scene containing a torus, a sphere, a cuboid and a cone, all standing on a plane.}%
 				\label{fig:frame_buffer}
 			\end{figure}%
 		\subsubsection{Z-buffer}
 			%TODO maybe explain screenspace and worldspace
-			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace visual effects like screen space ambient occlusion and depth peeling. 
+			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace techniques like SSAO\footnote{Screen space ambient occlusion} and depth-peeling. 
 			\begin{figure}[htb!]%
 				\begin{center}%
-					\includegraphics[width=7cm]{img/z_buffer.png}
+					\includegraphics[width=7cm]{img/wiki_z_buffer.png}
 				\end{center}%
-				\caption{Example of a z-buffer. The darker a pixel, the further away it is from the cameras point of view.}%
+				\caption{Example of a z-buffer. The lighter a pixel, the further away it is from the cameras point of view.}%
 				\label{fig:z_buffer}
 			\end{figure}%
 		\subsubsection{Normal-buffer}
 			The normal-buffer stores surface-normals that are mostly used for shading and to determine reflection and refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
 			\begin{figure}[htb!]%
 				\begin{center}%
-					\includegraphics[width=7cm]{img/normal_buffer.png}
+					\includegraphics[width=7cm]{img/wiki_normal_buffer.png}
 				\end{center}%
-				\caption{Example of a normal-buffer. Normal vectors in this buffer are normalized, meaning their component values range from -1 to 1. Since negative normals would cause negative RGB values, we add $(1, 1, 1)$ and scale with $255/2$, which results in a usable RGB color.}%
+				\caption{Example of a normal-buffer. The x, y and z components of a normal-vector correspond to an RGB color.}%
 				\label{fig:normal_buffer}
 			\end{figure}%
 	\subsection{Computing local illumination using g-buffers (deferred shading)}
