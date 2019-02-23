@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{graphicx}
 
 \title{Deep G-Buffers for stable Global Illumination Approximation}
@@ -152,17 +152,100 @@
 			\item \textbf{depth-peeling method}
 			\item collect first layer g-buffer as usual
 			\item compute second layer g-buffer by stripping the first layer
-			\item takes two passes over scene geometry
+			\item takes two passes over scene geometry\pause
+			\item instead use oracle and do it in a single pass!
 		\end{itemize}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Generating a 2-layer deep g-buffer (oracle)}
+		\frametitle{Generating a 2-layer deep g-buffer}
 		\begin{itemize}
-			\item \textbf{oracle method}
-			\item collect first layer g-buffer as usual
-			\item compute second layer g-buffer by stripping the first layer
-			\item takes two passes over scene geometry
+			\item \textbf{use some oracle to predict first layer z-buffer}
+			\item remember that we are running some simulation/animation
+			\item frames are computed per time-step
+			\item after a time-step, the object locations won't change \textbf{that much}
+			\item we even have knowledge of position and velocity updates
+			\item exploit this by recycling information from the previous frame and adjusting it a little
+			\item 4 different variants available
+			
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (previous variant)}
+		\begin{itemize}
+			\item \textbf{previous variant}
+			\item recycle first layer z-buffer of previous frame
+			\item the smaller the position updates, the smaller the error
+			\item even then, errors would only appear in the second layer (invisible unless transparent)
+			\item does not guarantee minimum separation
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (delay variant)}
+		\begin{itemize}
+			\item \textbf{delay variant}
+			\item introduce a frame of latency
+			\item frame and animation/simulation are out of sync by one frame
+			\item use first layer z-buffer of precomputed latency frame 
+			\item drawback: one frame of latency
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (predict variant)}
+		\begin{itemize}
+			\item \textbf{predict variant}
+			\item use velocities from animation/simulation
+			\item predict position updates of objects
+			\item 
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (reproject variant)}
+		\begin{itemize}
+			\item \textbf{reproject variant}
+			\item performs minimum separation test against previous frame's first layer z-buffer
+			\item visibility test done using previous z-buffer ("in the past")
+			\item same source of error as predict variant, but not as bad (velocities are perfect)
+			\item delivers most stables performance out of the 4 variants
+			
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Global illumination approximation using Deep G-Buffers}
+		\begin{itemize}
+			\item compute ambient occlusion 
+			\item compute some radiosity steps
+			\item compute screen space reflections
+			\item apply direct and ambient light
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Ambient occlusion with Deep G-Buffers}
+		\begin{itemize}
+			\item 
+			
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Reflections with Deep G-Buffers}
+		\begin{itemize}
+			\item 
+			
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Radiosity with Deep G-Buffers}
+		\begin{itemize}
+			\item temporal filtering for undersampling noise reduction
+			
 		\end{itemize}
 	\end{frame}	
 

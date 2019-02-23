@@ -74,7 +74,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			&\text{and } cos(n, \omega') \text{ is lambert reflectance}  \text{ .}
 		\end{align*}
 	\end{center}
-	The most popular method for approximating this integral is monte-carlo pathtracing\cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
+	The most popular method for approximating this integral is monte-carlo pathtracing (figure \ref{fig:pathtracing}) \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
 	%TODO: diffuse lambert reflectance
 	\subsubsection{Pathtracing} 
 		Monte-carlo integration makes use of a simple concept: the integral of a function $f$ is $$ n $$. We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is also possible to achieve caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render.
@@ -116,47 +116,33 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		If we apply deffered rendering, however, we do not force ourselves to light every fragment as soon as it has been computed. Finding the closest fragment is called "solving the visibility problem". This is done during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found. Now all the fragments that we light are only going to be lighted once, which means for the time complexity that the lighting is done in $O(amount_{pixels} \cdot amount_{lights})$, allowing us to render more light-sources at the expense of passing around g-buffers (note that fragments are \textbf{potential} pixels). \\\\
 		For all practical purposes, g-buffers have to at least consist of an albedo-buffer, a normal-buffer and a z-buffer. Using at least these g-buffers, it is possible to render an image with basic shading.
 
-		\begin{figure}[htb!]%
-		\begin{center}%
-			\includegraphics[width=7cm]{img/wiki_deferred_shading.png}
-		\end{center}%
-		\caption{A scene that was rendered using deferred lighting. The objects are locally illuminated by point-lights using g-buffers.}%
-		\label{fig:deferred_shading}%
-	\end{figure}%
-
 	\subsection{Geometry-buffer (G-buffer)}
+		\begin{figure}[]
+			\subfigure[A scene that was rendered using deferred lighting. The objects are locally illuminated by point-lights using g-buffers.]{\includegraphics[width=.24\textwidth]{img/wiki_deferred_shading.png}}%
+			\subfigure[Example of an albedo-buffer. It shows a scene containing a torus, a sphere, a cuboid and a cone, all standing on a plane.]{\includegraphics[width=.24\textwidth]{img/wiki_frame_buffer.png}}%
+			\subfigure[Example of a z-buffer. The lighter a pixel, the further away it is from the cameras point of view.]{\includegraphics[width=.24\textwidth]{img/wiki_z_buffer.png}}%
+			\subfigure[Example of a normal-buffer. The x, y and z components of a normal-vector correspond to an RGB color.]{\includegraphics[width=.24\textwidth]{img/wiki_normal_buffer.png}}%
+			\caption{G-Buffers}
+			\label{fig:deferred_shading}%
+		\end{figure}
+
 		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
 		\subsubsection{Albedo-buffer}%
 			Unshaded color-values of frontmost fragments are stored in the albedo-buffer.% 
-			\begin{figure}[htb!]%
-				\begin{center}%
-					\includegraphics[width=7cm]{img/wiki_frame_buffer.png}
-				\end{center}%
-				\caption{Example of an albedo-buffer. It shows a scene containing a torus, a sphere, a cuboid and a cone, all standing on a plane.}%
-				\label{fig:frame_buffer}
-			\end{figure}%
 		\subsubsection{Z-buffer}
 			%TODO maybe explain screenspace and worldspace
 			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace techniques like SSAO\footnote{Screen space ambient occlusion} and depth-peeling. 
-			\begin{figure}[htb!]%
-				\begin{center}%
-					\includegraphics[width=7cm]{img/wiki_z_buffer.png}
-				\end{center}%
-				\caption{Example of a z-buffer. The lighter a pixel, the further away it is from the cameras point of view.}%
-				\label{fig:z_buffer}
-			\end{figure}%
 		\subsubsection{Normal-buffer}
 			The normal-buffer stores surface-normals that are mostly used for shading and to determine reflection and refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
-			\begin{figure}[htb!]%
-				\begin{center}%
-					\includegraphics[width=7cm]{img/wiki_normal_buffer.png}
-				\end{center}%
-				\caption{Example of a normal-buffer. The x, y and z components of a normal-vector correspond to an RGB color.}%
-				\label{fig:normal_buffer}
-			\end{figure}%
-	\subsection{Computing local illumination using g-buffers (deferred shading)}
-		For any illumination to happen we first need to define some light sources. The following are some of the possible light-sources that we can use:
-		Point-lights, spot-lights and directional-lights \cite{DST}. The simplest one is directional-light. We simply specify an origin in worldspace from which the light rays are sent in all directions. A point-light is a directional-light which is constrained by its radius (basically a sphere of light). Finally, spot-lights are area lights which emit light on another area (like spot-lights in real life do). 
+	\subsection{Geometry pass}
+		collect g-buffars TODO
+	\subsection{Lighting pass}
+		For any illumination to happen we first need to define some light sources. The following are most commonly used\cite{DST}:
+		\begin{itemize}
+			\item \textbf{Point-lights} are defined by an origin in worldspace and a radius (like a sphere of light).
+			\item \textbf{Spot-lights} 
+			\item \textbf{Directional lights} can have a source that is infinitely far away, thus no fall-off has to be accounted for. The light basically shines in the same direction from everywhere.
+		\end{itemize} 
 		%TODO fix explanation on light sources a little
 		%Directional light - produced by a light source an infinite distance from the scene., All of the light rays emanating from the light strike the polygons in the scene from a single parallel direction, and with equal intensity everywhere.
 		%Sunlight is for all intents and purposes a directional light.
@@ -202,7 +188,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\end{figure}%
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
-		to be slightly blue on the reflected area. To have this happen it would obviously be convenient to trace rays of some sort. Point-based color bleeding approximates this by using point cloud surfels with direct illumination values \cite{PBCB}. As this is somewhat complicated to put into few phrases, we recommend reading the paper "Point-Based Approximate Color Bleeding". On the other hand, we will be presenting a simpler method using deep g-buffers in section 5.
+		to be slightly blue on the reflected area. To have this happen it would obviously be convenient to trace rays of some sort. Point-based color bleeding approximates this by using point cloud surfels with direct illumination values \cite{PBCB}.
 
 	\subsection{Soft shadows}
 		We can easily compute hard shadows in screen space using shadow mapping. A shadow map is a buffer that contains the distances between the light source and all pixels (visible fragments) of the scene. Having created the shadow map we check if the entry in the z-buffer is larger than the entry in the shadow map. If so, then the fragment is in shadow and is painted black. If not, then the fragment keeps its color and we can proceed to compute its local illumination. This can be extended to soft shadows simply by blending together fragments in shadow with their surrounding fragments.
@@ -213,7 +199,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 
 	\subsection{Reflection} \label{sec:reflection}
 		Screen space reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. \\\\
-		In all other cases, we rely on cube mapping (also called environmental mapping or reflection mapping). Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its inner center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
+		In all other cases, we rely on cube mapping (also called environmental mapping or reflection mapping). Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/cube_map.png}
@@ -223,7 +209,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\end{figure}%
 
 	\subsection{Depth of field}
-		Depth of field is an effect that arises when the lens of a camera is larger than just a pinhole. This allows for more light to pass through the lens and light-rays start to intersect each other, causing the resulting image to look blurry along certain distances. A raytracer could simply achieve this by sampling its camera rays over a circle. For a rasterizer it is much more complicated. This effect could be achieved using stochastic point samples along the lens in 4D \cite{DOF2}. As this is also difficult to briefly summarize, we recommend reading the paper "High-Quality Parallel Depth-of-Field Using Line Samples". 
+		Depth of field is an effect that arises when the lens of a camera is larger than just a pinhole. This allows for more light to pass through the lens and light-rays start to intersect each other, causing the resulting image to look blurry along certain distances. A raytracer could simply achieve this by sampling its camera rays over a circle. For a rasterizer it is much more complicated. This effect could be achieved using stochastic point samples along the lens in 4D \cite{DOF2}. 
 		\begin{figure}[htb!]%
 			\begin{center}%
 				\includegraphics[width=7cm]{img/raytraced_depth_of_field.png}
@@ -236,9 +222,9 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		Motion blur is a camera effect that comes up when the camera or an object in the scene is moving while a picture is being taken. The camera requires itself and the objects in the scene to be still in order for light to hit the lens in focus. If the camera or an object is moving while the light is hitting the lens, then the light of the new scene will intersect the light of the old scene causing a blur. This effect can be easily rendered in screen space by taking into account in which direction the camera or the object is moving, as well as at what velocity, which can also be evaluated using the previous frame, and blurring accordingly \cite{MOB}.
 
 \section{Deep g-buffer}
-	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{Mara2016DeepGBuffer}. This means we store g-buffers for the closest surfaces, then the second-closest surfaces and eventually the n-closest surfaces in an n-layer deep g-buffer. \\\\
+	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{Mara2016DeepGBuffer}. \\\\
 	Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{Mara2016DeepGBuffer}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one. Setting $\Delta z = 0$ makes the generated 2-layer z-buffer of the deep g-buffer turn into a 2-layer k-buffer\footnote{K-layer z-buffer that stores the z-values of the k-closest polygons in order} \cite{MFEKB}. \\\\
-	How to pick $\Delta z$ ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, it is possible that important visual information might be missed. On the other hand, if $\Delta z$ is too small, it is possible that unnecessary information might be picked up. According to NVIDIA, $\Delta z = 50cm$ seems to consistently deliver stable results, at least in the renders done in their paper.
+	How to pick $\Delta z$ ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, it is possible that important visual information might be missed. On the other hand, if $\Delta z$ is too small, it is possible that unnecessary information might be picked up. According to NVIDIA, $\Delta z = 50cm$ seems to consistently deliver stable results, at least in the renders done in their paper \cite{Mara2016DeepGBuffer}.
 	\subsection{Generating a 2-layer deep g-buffer}
 		%maybe explain skinning and modelview transformation
 		NVIDIA proposes two ways of generating a 2-layer deep g-buffer, one of which is straight forward to help demonstrate the idea and one of which is efficient. \\\\

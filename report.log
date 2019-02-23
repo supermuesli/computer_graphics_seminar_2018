@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  22 FEB 2019 23:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  23 FEB 2019 21:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1375,29 +1375,29 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 41.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./report.toc)
+) (./report.toc [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write7
 \openout7 = `report.toc'.
 
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+ [2]
 Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
-<img/pathtracing.png, id=191, 803.0pt x 501.875pt>
+<img/pathtracing.png, id=197, 803.0pt x 501.875pt>
 File: img/pathtracing.png Graphic file (type png)
 <use img/pathtracing.png>
 Package pdftex.def Info: img/pathtracing.png  used on input line 83.
 (pdftex.def)             Requested size: 199.16928pt x 124.48056pt.
-<img/radiosity.png, id=195, 1041.8925pt x 261.97874pt>
+<img/radiosity.png, id=201, 1041.8925pt x 261.97874pt>
 File: img/radiosity.png Graphic file (type png)
 <use img/radiosity.png>
 Package pdftex.def Info: img/radiosity.png  used on input line 92.
 (pdftex.def)             Requested size: 455.24408pt x 114.4675pt.
 [3]
-<img/graphics_pipeline.png, id=211, 272.01625pt x 604.2575pt>
+<img/graphics_pipeline.png, id=218, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
 Package pdftex.def Info: img/graphics_pipeline.png  used on input line 106.
@@ -1417,216 +1417,249 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--118
 
  []
 
-<img/wiki_deferred_shading.png, id=221, 481.8pt x 361.35pt>
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 120.
+
+<img/wiki_deferred_shading.png, id=227, 481.8pt x 361.35pt>
 File: img/wiki_deferred_shading.png Graphic file (type png)
 <use img/wiki_deferred_shading.png>
 Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 121.
 
-(pdftex.def)             Requested size: 199.16928pt x 149.373pt.
-<img/wiki_frame_buffer.png, id=222, 481.8pt x 361.35pt>
+(pdftex.def)             Requested size: 109.26108pt x 81.94534pt.
+<img/wiki_frame_buffer.png, id=228, 481.8pt x 361.35pt>
 File: img/wiki_frame_buffer.png Graphic file (type png)
 <use img/wiki_frame_buffer.png>
-Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 133.
-(pdftex.def)             Requested size: 199.16928pt x 149.373pt.
-[5 <./img/graphics_pipeline.png>]
-<img/wiki_z_buffer.png, id=230, 481.8pt x 361.35pt>
+Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 122.
+(pdftex.def)             Requested size: 109.26108pt x 81.94534pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--122
+\T1/aer/m/n/9 con-tain-ing a torus, a
+ []
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 122--122
+\T1/aer/m/n/9 sphere, a cuboid and a
+ []
+
+
+Underfull \hbox (badness 2042) in paragraph at lines 122--122
+\T1/aer/m/n/9 cone, all stand-ing on a
+ []
+
+<img/wiki_z_buffer.png, id=229, 481.8pt x 361.35pt>
 File: img/wiki_z_buffer.png Graphic file (type png)
 <use img/wiki_z_buffer.png>
-Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 143.
-(pdftex.def)             Requested size: 199.16928pt x 149.373pt.
-<img/wiki_normal_buffer.png, id=231, 481.8pt x 361.35pt>
+Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 123.
+(pdftex.def)             Requested size: 109.26108pt x 81.94534pt.
+<img/wiki_normal_buffer.png, id=230, 481.8pt x 361.35pt>
 File: img/wiki_normal_buffer.png Graphic file (type png)
 <use img/wiki_normal_buffer.png>
-Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 152.
-(pdftex.def)             Requested size: 199.16928pt x 149.373pt.
+Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 124.
+(pdftex.def)             Requested size: 109.26108pt x 81.94534pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--180
+Underfull \hbox (badness 2460) in paragraph at lines 124--124
+\T1/aer/m/n/9 vector cor-re-spond to an
+ []
+
+[5 <./img/graphics_pipeline.png>]
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 142.
+
+ (/usr/share/texmf/tex/latex/ts1aer.fd
+File: ts1aer.fd 
+)
+LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 142.
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--180
+Underfull \hbox (badness 10000) in paragraph at lines 161--166
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--180
+Underfull \hbox (badness 10000) in paragraph at lines 161--166
 
  []
 
-[6 <./img/wiki_deferred_shading.png> <./img/wiki_frame_buffer.png>]
-Underfull \vbox (badness 2564) has occurred while \output is active []
-
- [7 <./img/wiki_z_buffer.png> <./img/wiki_normal_buffer.png>]
-<img/visual_effects.png, id=248, 385.44pt x 385.44pt>
+[6 <./img/wiki_deferred_shading.png> <./img/wiki_frame_buffer.png> <./img/wiki_
+z_buffer.png> <./img/wiki_normal_buffer.png>]
+<img/visual_effects.png, id=251, 385.44pt x 385.44pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
-Package pdftex.def Info: img/visual_effects.png  used on input line 186.
+Package pdftex.def Info: img/visual_effects.png  used on input line 172.
 (pdftex.def)             Requested size: 199.16928pt x 199.16547pt.
-<img/ambient_occlusion.png, id=250, 364.36125pt x 305.14pt>
+<img/ambient_occlusion.png, id=253, 364.36125pt x 305.14pt>
 File: img/ambient_occlusion.png Graphic file (type png)
 <use img/ambient_occlusion.png>
-Package pdftex.def Info: img/ambient_occlusion.png  used on input line 198.
+Package pdftex.def Info: img/ambient_occlusion.png  used on input line 184.
 (pdftex.def)             Requested size: 199.16928pt x 166.79385pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--203
+Underfull \hbox (badness 10000) in paragraph at lines 179--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--203
+Underfull \hbox (badness 10000) in paragraph at lines 179--189
 
  []
 
-[8 <./img/visual_effects.png>]
-<img/cube_map.png, id=263, 2055.68pt x 2312.64pt>
+[7 <./img/visual_effects.png>]
+<img/cube_map.png, id=267, 2055.68pt x 2312.64pt>
 File: img/cube_map.png Graphic file (type png)
 <use img/cube_map.png>
-Package pdftex.def Info: img/cube_map.png  used on input line 219.
+Package pdftex.def Info: img/cube_map.png  used on input line 205.
 (pdftex.def)             Requested size: 199.16928pt x 224.0435pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--224
+Underfull \hbox (badness 10000) in paragraph at lines 201--210
 
  []
 
-<img/raytraced_depth_of_field.png, id=265, 331.2375pt x 331.2375pt>
+[8 <./img/ambient_occlusion.png>]
+<img/raytraced_depth_of_field.png, id=278, 331.2375pt x 331.2375pt>
 File: img/raytraced_depth_of_field.png Graphic file (type png)
 <use img/raytraced_depth_of_field.png>
 Package pdftex.def Info: img/raytraced_depth_of_field.png  used on input line 2
-29.
+15.
 (pdftex.def)             Requested size: 199.16928pt x 199.16858pt.
-[9 <./img/ambient_occlusion.png>]
-Underfull \vbox (badness 3049) has occurred while \output is active []
 
- [10 <./img/cube_map.png> <./img/raytraced_depth_of_field.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 239--242
+Underfull \hbox (badness 10000) in paragraph at lines 225--228
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 239--242
+Underfull \hbox (badness 10000) in paragraph at lines 225--228
 
  []
 
+[9 <./img/cube_map.png>]
 
-Package caption Warning: \label without proper reference on input line 258.
+Package caption Warning: \label without proper reference on input line 244.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:two_pass_strawman' on page 11 undefined on input 
-line 245.
+LaTeX Warning: Reference `alg:two_pass_strawman' on page 10 undefined on input 
+line 231.
 
 
-Package caption Warning: \label without proper reference on input line 279.
+Package caption Warning: \label without proper reference on input line 265.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:one_pass_strawman' on page 11 undefined on input 
-line 246.
+LaTeX Warning: Reference `alg:one_pass_strawman' on page 10 undefined on input 
+line 232.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--248
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--248
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 244--248
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
 
  []
 
-[11]
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--234
+
+ []
+
+[10 <./img/raytraced_depth_of_field.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 258.
- [12]
-Underfull \hbox (badness 10000) in paragraph at lines 316--319
+put line 244.
+ [11]
+Underfull \hbox (badness 10000) in paragraph at lines 302--305
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--327
+Underfull \hbox (badness 10000) in paragraph at lines 310--313
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 332--337
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--337
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--337
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
 
  []
 
-<img/deep_g_buffer_render.png, id=370, 1072.75781pt x 300.3722pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--323
+
+ []
+
+<img/deep_g_buffer_render.png, id=374, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 349.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 335.
 (pdftex.def)             Requested size: 455.24408pt x 127.46628pt.
-[14] [15 <./img/deep_g_buffer_render.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 359.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 359.
+[13] [14 <./img/deep_g_buffer_render.png (PNG copy)>] [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 345.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 345.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 359.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 359.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 345.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 345.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 264D508F37C56296E3B6D94634041594;2057.
+(rerunfilecheck)             Checksum: 9D84E8926D851AE60D44058D7CB99BBA;2068.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 359.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 345.
  ) 
 Here is how much of TeX's memory you used:
- 30141 strings out of 492642
- 569029 string characters out of 6135566
- 881219 words of memory out of 5000000
- 33349 multiletter control sequences out of 15000+600000
- 44272 words of font info for 96 fonts, out of 8000000 for 9000
+ 30165 strings out of 492642
+ 569381 string characters out of 6135566
+ 882219 words of memory out of 5000000
+ 33366 multiletter control sequences out of 15000+600000
+ 44607 words of font info for 97 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,12n,84p,1290b,1306s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (15 pages, 3214844 bytes).
+ 62i,12n,84p,1290b,1293s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
+sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pf
+b></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
+pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti9.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm
+1000.pfb>
+Output written on report.pdf (15 pages, 3219990 bytes).
 PDF statistics:
- 471 PDF objects out of 1000 (max. 8388607)
- 398 compressed objects within 4 object streams
- 124 named destinations out of 1000 (max. 500000)
- 393 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 485 PDF objects out of 1000 (max. 8388607)
+ 410 compressed objects within 5 object streams
+ 126 named destinations out of 1000 (max. 500000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
 
