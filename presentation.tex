@@ -14,28 +14,44 @@
 			\item Global illumination
 				\begin{itemize}
 					\item Pathtracing
+					\item Visual effects
 					\item Radiosity
+					\item Inefficiency
 				\end{itemize}
-			\item Forward rendering
-			\item Deferred rendering (with G-Buffers)
-			\item Visual effects
+			\item Traditional rendering
 				\begin{itemize}
-					\item Ambient occlusion
-					\item Color bleeding
-					\item Soft shadows
-					\item Transparency
-					\item Reflections
+					\item Forward rendering
+					\item Deferred rendering
 				\end{itemize}
-			\item Deferred rendering (with Deep G-Buffers)
+			\item Deep G-Buffers)
+				\begin{itemize}
+					\item Benefits
+					\item Generating 2-layer deep g-buffer
+					\item Global illumination approximation
+				\end{itemize}
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Global illumination}
 		\begin{itemize}
-			\item lights a scene
-			\item considers direct and indirect light
+			\item lighting of a scene
+			\item direct \textbf{and indirect} light is considered
 			\item causes visual effects that convey realism
+			\item most popular method is pathtracing
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Pathtracing}
+		\begin{itemize}
+			\item monte-carlo simulation
+			\item send camera ray through each pixel
+			\item allow ray to reflect \textbf{diffusely or specularly}
+			\item trace it back to a light source
+			\item if a light source was hit, the pixel is colored (albedo of hit-object)
+			\item else the pixel is black (in shadow)
+			\item each pixel is sampled thousands of times, then averaged
 		\end{itemize}
 	\end{frame}
 
@@ -47,47 +63,106 @@
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Pathtracing}
+		\frametitle{Radiosity}
 		\begin{itemize}
-			\item send camera ray through each pixel
-			\item trace it back to light source
-			\item if light source was hit, the pixel is colored (albedo of object it hit)
-			\item else it is black (in shadow)
-			\item each pixel is sampled thousands of times, then averaged
+			\item scene is divided into patches
+			\item each patch is a light receiver and emitter 
+			\item initialize scene with at least one patch that emits non-zero amount of light
+			\item iteratively update receivance and emitance of each patch
+			\item \textbf{purely diffuse global illumination}
+		\end{itemize}
+
+		\includegraphics[width=\textwidth]{img/radiosity.png}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Inefficiency}
+		\begin{itemize}
+			\item pathtracing 
+				\begin{itemize}
+					\item computes multiple ray bounces
+					\item requires thousands of samples (probably more) 
+				\end{itemize}
+			\item radiosity
+				\begin{itemize}
+					\item needs large amount of patches for good results
+					\item has to be recomputed if an object moves
+				\end{itemize}
+			\item both cannot be computed in real-time (yet)
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Radiosity}
+		\frametitle{Traditional rendering}
 		\begin{itemize}
-			\item scene is divided into patches
-			\item each patch is a light emitter and receiver
-			\item iteratively update emmitance and radiance of each patch
+			\item rasterization
+			\item way easier to compute than raytracing
+			\item interactive framerates
+			\item trade-off: not as realistic
+			\item requires techniques to simulate visual effects
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Forward rendering}
 		\begin{itemize}
-			\item compute lighting and shading in a single pass
-			\item inefficient
+			\item computes lighting in a single pass:
+				\begin{itemize}
+					\item for each fragment compute lighting
+					\item do z-test
+					\item render to frame-buffer or discard accordingly
+					\item render frame-buffer to screen
+				\end{itemize}
+			\item computes lighting for fragment regardless if visible or not
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Deferred rendering (with G-Buffers)}
+		\frametitle{Deferred rendering}
 		\begin{itemize}
-			\item collect g-buffers in first pass
-			\item compute lighting in second pass
+			\item computes geometry (stored in g-buffer) in first pass:
+				\begin{itemize}
+					\item albedo-buffer
+					\item normal-buffer
+					\item z-buffer
+				\end{itemize}
+			\item render g-buffer to texture-buffer
+			\item compute lighting in second pass:
+				\begin{itemize}
+					\item read frontmost scene geometry from g-buffer
+					\item compute lighting
+					\item render to screen
+				\end{itemize}
+			\item only computes lighting for visible fragments
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Deferred rendering (with Deep G-Buffers)}
+		\frametitle{Deep G-Buffers}
 		\begin{itemize}
-			\item generate 2-layer deep g-buffer with depth peeling
+			\item generate 2-layer deep g-buffer with depth-peeling or oracle
 			\item enforce minimum depth separation
 			\item consider second layer for visual effects
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (depth-peeling)}
+		\begin{itemize}
+			\item \textbf{depth-peeling method}
+			\item collect first layer g-buffer as usual
+			\item compute second layer g-buffer by stripping the first layer
+			\item takes two passes over scene geometry
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Generating a 2-layer deep g-buffer (oracle)}
+		\begin{itemize}
+			\item \textbf{oracle method}
+			\item collect first layer g-buffer as usual
+			\item compute second layer g-buffer by stripping the first layer
+			\item takes two passes over scene geometry
 		\end{itemize}
 	\end{frame}	
 
@@ -95,8 +170,10 @@
 		\frametitle{Results}
 		\includegraphics[width=\textwidth]{img/deep_g_buffer_render.png}
 		\begin{itemize}
-			\item using NVIDIA GeForce 980
-			\item image was generated in 10.8ms (92 FPS)
+			\item 1920x1080 resolution
+			\item rendered using NVIDIA GeForce 980
+			\item in 10.8ms (92 FPS)
+			\item looks good
 		\end{itemize}
 	\end{frame}
 
