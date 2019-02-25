@@ -299,8 +299,8 @@
 	\begin{frame}
 		\frametitle{Stable global illumination approximation}
 		\begin{itemize}
-			\item compute ambient occlusion 
-			\item compute some radiosity steps
+			\item compute screen space ambient occlusion (SSAO) 
+			\item compute \textbf{one} radiosity iteration \textbf{per frame}
 			\item compute screen space reflections
 			\item apply direct and ambient light
 		\end{itemize}
@@ -308,13 +308,17 @@
 
 	\begin{frame}
 		\frametitle{Screen space ambient occlusion}
-		\begin{itemize}
-			\item screen space ambient occlusion SSAO
-			\item compute ambient occlusion factor $AO$ for both layers
-			\item depth discontinuity is now accouted for
-			\item results will look more like actual ambient occlusion instead of approximate
-		\end{itemize}
-		%TODO inaert image
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item compute ambient occlusion factor $AO$ for \textbf{both layers}
+					\item depth discontinuity is now accouted for
+					\item results will look more like actual ambient occlusion instead of approximate
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.65\textwidth]{img/ambient_occlusion_depth_discontinuity.png}
+				\includegraphics[height=.65\textwidth]{img/screen_space_ambient_occlusion_halo.png}
+		\end{columns}		
 	\end{frame}	
 
 	\begin{frame}
@@ -322,10 +326,10 @@
 		\begin{itemize}
 			\item divide screen space into patches using g-buffers
 			\item define form-factor taking into account both g-buffer layers
+			\item 
 			\item compute \textbf{one} bounce per frame
 			\item accumulate bounces from previous frames
 			\item ghosting may occur: introduce ways to damp previous lighting
-			
 		\end{itemize}
 	\end{frame}	
 
@@ -355,7 +359,6 @@
 			\item 1920x1080 resolution
 			\item rendered using NVIDIA GeForce 980
 			\item in 10.8ms (92 FPS)
-			\item looks good
 		\end{itemize}
 	\end{frame}
 
