@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  23 FEB 2019 23:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  25 FEB 2019 21:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,48 +805,108 @@ Dictionary: translator-theorem-dictionary, Language: English
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
-] [3
-
-] [4
-
 ]
-<img/visual_effects.png, id=136, 385.44pt x 385.44pt>
-File: img/visual_effects.png Graphic file (type png)
-<use img/visual_effects.png>
-Package pdftex.def Info: img/visual_effects.png  used on input line 63.
-(pdftex.def)             Requested size: 278.83578pt x 278.834pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
-Overfull \vbox (81.82994pt too high) detected at line 63
- []
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for OT1+mathkerncmss on input 
+line 49.
 
-[5
+(/usr/share/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
+File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
+thkerncmss.
+)
+<img/indirect_illumination.png, id=84, 319.1925pt x 463.7325pt>
+File: img/indirect_illumination.png Graphic file (type png)
+<use img/indirect_illumination.png>
+Package pdftex.def Info: img/indirect_illumination.png  used on input line 49.
+(pdftex.def)             Requested size: 113.74516pt x 165.25168pt.
+ [3
 
- <./img/visual_effects.png>]
-<img/radiosity.png, id=164, 1041.8925pt x 261.97874pt>
+ <./img/indirect_illumination.png>]
+<img/raytrace_tut.png, id=119, 883.3pt x 590.205pt>
+File: img/raytrace_tut.png Graphic file (type png)
+<use img/raytrace_tut.png>
+Package pdftex.def Info: img/raytrace_tut.png  used on input line 66.
+(pdftex.def)             Requested size: 199.1693pt x 133.07857pt.
+ [4
+
+ <./img/raytrace_tut.png>]
+<img/radiosity.png, id=147, 1041.8925pt x 261.97874pt>
 File: img/radiosity.png Graphic file (type png)
 <use img/radiosity.png>
-Package pdftex.def Info: img/radiosity.png  used on input line 76.
+Package pdftex.def Info: img/radiosity.png  used on input line 78.
 (pdftex.def)             Requested size: 398.3386pt x 100.16057pt.
+ [5
+
+ <./img/radiosity.png (PNG copy)>]
+<img/visual_effects.png, id=173, 385.44pt x 385.44pt>
+File: img/visual_effects.png Graphic file (type png)
+<use img/visual_effects.png>
+Package pdftex.def Info: img/visual_effects.png  used on input line 88.
+(pdftex.def)             Requested size: 165.24782pt x 165.25168pt.
+<img/ambient_occlusion.png, id=174, 364.36125pt x 305.14pt>
+File: img/ambient_occlusion.png Graphic file (type png)
+<use img/ambient_occlusion.png>
+Package pdftex.def Info: img/ambient_occlusion.png  used on input line 88.
+(pdftex.def)             Requested size: 140.9439pt x 118.03743pt.
  [6
 
- <./img/radiosity.png (PNG copy)>] [7
+ <./img/visual_effects.png> <./img/ambient_occlusion.png>]
+[7
 
 ]
-[8
+<img/graphics_pipeline.png, id=228, 272.01625pt x 604.2575pt>
+File: img/graphics_pipeline.png Graphic file (type png)
+<use img/graphics_pipeline.png>
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 124.
+(pdftex.def)             Requested size: 74.38756pt x 165.25168pt.
+ [8
 
-] [9
+ <./img/graphics_pipeline.png>] [9
 
-] [10
+]
+<img/wiki2_deferred_shading.png, id=281, 431.6125pt x 470.75874pt>
+File: img/wiki2_deferred_shading.png Graphic file (type png)
+<use img/wiki2_deferred_shading.png>
+Package pdftex.def Info: img/wiki2_deferred_shading.png  used on input line 164
+.
+(pdftex.def)             Requested size: 151.50789pt x 165.25168pt.
+ [10
 
-] [11
+ <./img/wiki2_deferred_shading.png>] [11
 
 ] [12
 
-] [13
+]
+<img/depth_peeling_duck.png, id=360, 137.51375pt x 284.06125pt>
+File: img/depth_peeling_duck.png Graphic file (type png)
+<use img/depth_peeling_duck.png>
+Package pdftex.def Info: img/depth_peeling_duck.png  used on input line 213.
+(pdftex.def)             Requested size: 91.4308pt x 188.86061pt.
+ [13
 
-] [14
+ <./img/depth_peeling_duck.png>]
+<img/minimum_depth_separation.png, id=389, 1035.11719pt x 482.55281pt>
+File: img/minimum_depth_separation.png Graphic file (type png)
+<use img/minimum_depth_separation.png>
+Package pdftex.def Info: img/minimum_depth_separation.png  used on input line 2
+28.
+(pdftex.def)             Requested size: 209.34157pt x 97.59404pt.
 
-] [15
+Overfull \hbox (10.17227pt too wide) in paragraph at lines 228--228
+[][]  
+ []
+
+[14
+
+ <./img/minimum_depth_separation.png (PNG copy)>] [15
 
 ] [16
 
@@ -854,7 +914,8 @@ Package pdftex.def Info: img/radiosity.png  used on input line 76.
 
 ] [18
 
-] [19
+]
+[19
 
 ] [20
 
@@ -862,14 +923,21 @@ Package pdftex.def Info: img/radiosity.png  used on input line 76.
 
 ] [22
 
+] [23
+
+] [24
+
+] [25
+
+] [26
+
 ]
-<img/deep_g_buffer_render.png, id=596, 1072.75781pt x 300.3722pt>
+<img/deep_g_buffer_render.png, id=719, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 262.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 360.
 (pdftex.def)             Requested size: 398.3386pt x 111.53471pt.
-
-[23
+ [27
 
  <./img/deep_g_buffer_render.png (PNG copy)>]
 \tf@nav=\write6
@@ -881,29 +949,36 @@ Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 262.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 264.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 264.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 362.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 362.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 264.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 264.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 362.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 362.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17003 strings out of 492642
- 321719 string characters out of 6135566
- 403817 words of memory out of 5000000
- 20475 multiletter control sequences out of 15000+600000
- 6051 words of font info for 22 fonts, out of 8000000 for 9000
+ 17159 strings out of 492642
+ 325643 string characters out of 6135566
+ 404817 words of memory out of 5000000
+ 20594 multiletter control sequences out of 15000+600000
+ 11295 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,16n,57p,800b,561s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on presentation.pdf (23 pages, 1522968 bytes).
+ 56i,16n,58p,800b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmss12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb>
+Output written on presentation.pdf (27 pages, 3324821 bytes).
 PDF statistics:
- 645 PDF objects out of 1000 (max. 8388607)
- 593 compressed objects within 6 object streams
- 47 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 795 PDF objects out of 1000 (max. 8388607)
+ 716 compressed objects within 8 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

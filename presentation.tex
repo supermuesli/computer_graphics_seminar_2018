@@ -14,19 +14,19 @@
 			\item Global illumination
 				\begin{itemize}
 					\item Pathtracing
-					\item Visual effects
 					\item Radiosity
-					\item Inefficiency
+					\item Visual effects
+					\item Computational difficulty
 				\end{itemize}
 			\item Traditional rendering
 				\begin{itemize}
 					\item Forward rendering
 					\item Deferred rendering
 				\end{itemize}
-			\item Deep G-Buffers)
+			\item Deep G-Buffers
 				\begin{itemize}
-					\item Benefits
-					\item Generating 2-layer deep g-buffer
+					\item Depth-peeling
+					\item Generating a 2-layer deep g-buffer
 					\item Global illumination approximation
 				\end{itemize}
 		\end{itemize}
@@ -34,32 +34,35 @@
 
 	\begin{frame}
 		\frametitle{Global illumination}
-		\begin{itemize}
-			\item lighting of a scene
-			\item direct \textbf{and indirect} light is considered
-			\item causes visual effects that convey realism
-			\item most popular method is pathtracing
-		\end{itemize}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item lighting of a scene
+					\item direct \textbf{and indirect} light is considered
+					\item causes visual effects that convey realism
+					\item $ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega') \partial \omega' $
+					\item most popular method is pathtracing
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.7\textheight]{img/indirect_illumination.png}
+		\end{columns}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Pathtracing}
-		\begin{itemize}
-			\item monte-carlo simulation
-			\item send camera ray through each pixel
-			\item allow ray to reflect \textbf{diffusely or specularly}
-			\item trace it back to a light source
-			\item if a light source was hit, the pixel is colored (albedo of hit-object)
-			\item else the pixel is black (in shadow)
-			\item each pixel is sampled thousands of times, then averaged
-		\end{itemize}
-	\end{frame}
-
-	\begin{frame}
-		\frametitle{Visual effects}
-		\begin{center}
-			\includegraphics[width=.7\textwidth]{img/visual_effects.png}
-		\end{center}
+		\begin{columns}
+			\column{.5\textwidth}
+				\begin{itemize}
+					\item send camera ray through each pixel
+					\item allow ray to reflect \textbf{diffusely or specularly}
+					\item trace it back to a light source
+					\item if a light source was hit, the pixel is colored
+					\item else the pixel is black
+					\item sample each pixel thousands of times, then average
+				\end{itemize}
+			\column{.5\textwidth}
+				\includegraphics[width=\textwidth]{img/raytrace_tut.png}
+		\end{columns}
 	\end{frame}
 
 	\begin{frame}
@@ -71,79 +74,157 @@
 			\item iteratively update receivance and emitance of each patch
 			\item \textbf{purely diffuse global illumination}
 		\end{itemize}
-
 		\includegraphics[width=\textwidth]{img/radiosity.png}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Inefficiency}
+		\frametitle{Visual effects}
+		\begin{columns}
+			\column{.6\textwidth}
+				\includegraphics[height=.7\textheight]{img/visual_effects.png}
+			\column{.4\textwidth}
+				\includegraphics[height=.5\textheight]{img/ambient_occlusion.png}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Computational difficulty}
 		\begin{itemize}
 			\item pathtracing 
 				\begin{itemize}
 					\item computes multiple ray bounces
-					\item requires thousands of samples (probably more) 
+					\item requires (hundreds of) thousands of samples 
+					\item has to be recomputed if camera or object moves
 				\end{itemize}
 			\item radiosity
 				\begin{itemize}
 					\item needs large amount of patches for good results
 					\item has to be recomputed if an object moves
 				\end{itemize}
-			\item both cannot be computed in real-time (yet)
+			\item tough to be computed in real-time without additional tricks
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Traditional rendering}
-		\begin{itemize}
-			\item rasterization
-			\item way easier to compute than raytracing
-			\item interactive framerates
-			\item trade-off: not as realistic
-			\item requires techniques to simulate visual effects
-		\end{itemize}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item rasterization
+					\item way easier to compute than raytracing
+					\item interactive framerates
+					\item trade-off: not as realistic
+					\item requires techniques to simulate visual effects
+					\item most of the rendering is done by GPU
+					\item abide by rendering pipeline of GPU
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.7\textheight]{img/graphics_pipeline.png}
+		\end{columns}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Forward rendering}
 		\begin{itemize}
-			\item computes lighting in a single pass:
+			\item computes geometry and lighting in a single pass:
 				\begin{itemize}
 					\item for each fragment compute lighting
-					\item do z-test
-					\item render to frame-buffer or discard accordingly
+					\item do z-test (closest fragment for that xy-position?)
+					\item if passed, render to frame-buffer, else discard
 					\item render frame-buffer to screen
 				\end{itemize}
-			\item computes lighting for fragment regardless if visible or not
+			\item lighting computed regardless if fragment visible or not
+			\item however, benefitial for transparency and anti-aliasing
 		\end{itemize}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Deferred rendering}
-		\begin{itemize}
-			\item computes geometry (stored in g-buffer) in first pass:
+		\begin{columns}
+			\column{.6\textwidth}
 				\begin{itemize}
-					\item albedo-buffer
-					\item normal-buffer
-					\item z-buffer
+					\item computes geometry in first pass:
+						\begin{itemize}
+							\item albedo-buffer
+							\item normal-buffer
+							\item z-buffer
+						\end{itemize}
+					\item render g-buffers to texture-buffer (not screen)
+					\item compute lighting in second pass:
+						\begin{itemize}
+							\item read frontmost geometry from g-buffer
+							\item compute lighting
+							\item render to screen
+						\end{itemize}
+					\item only computes lighting for visible fragments
 				\end{itemize}
-			\item render g-buffer to texture-buffer
-			\item compute lighting in second pass:
-				\begin{itemize}
-					\item read frontmost scene geometry from g-buffer
-					\item compute lighting
-					\item render to screen
-				\end{itemize}
-			\item only computes lighting for visible fragments
-		\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.7\textheight]{img/wiki2_deferred_shading.png}
+		\end{columns}
 	\end{frame}
 
 	\begin{frame}
-		\frametitle{Deep G-Buffers}
+		\frametitle{Benefits of deferred rendering}
 		\begin{itemize}
-			\item generate 2-layer deep g-buffer with depth-peeling or oracle
-			\item enforce minimum depth separation
-			\item consider second layer for visual effects
+			\item forward rendering in $O(objects \cdot lights$):
+				\begin{itemize}
+					\item for each object
+						\begin{itemize}
+							\item for each light compute lighting
+						\end{itemize}
+				\end{itemize}
+			\item deferred rendering in $O(objects + lights$):
+				\begin{itemize}
+					\item for each object
+						\begin{itemize}
+							\item render geometry
+						\end{itemize}
+					\item for each light
+						\begin{itemize}
+							\item compute lighting
+						\end{itemize}
+				\end{itemize}
+			\item lighting computation is way less complex!
+			\item we can add way more lights to the scene
 		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Problems of deferred rendering}
+		\begin{itemize}
+			\item we \textbf{only} store information about frontmost fragments
+			\item but information of deeper layers can improve visual effects
+			\item get g-buffers of deeper layers through depth-peeling!
+		\end{itemize}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Depth-peeling}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item compute first layer g-buffers as usual
+					\item for further layers, peel away the previous layers
+					\item effectively returns closest-, second-closest, ... n-closest layers
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.8\textheight]{img/depth_peeling_duck.png}
+		\end{columns}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Deep G-Buffers}
+		\begin{columns}
+			\column{.5\textwidth}
+				\begin{itemize}
+					\item idea: also gather geometry of n-closest layer
+					\item generate 2-layer deep g-buffer with depth-peeling or oracle
+					\item enforce minimum depth separation
+					\item consider second layer for visual effects
+				\end{itemize}
+			\column{.5\textwidth}
+				\includegraphics[height=.49\textwidth]{img/minimum_depth_separation.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}
@@ -151,7 +232,7 @@
 		\begin{itemize}
 			\item \textbf{depth-peeling method}
 			\item collect first layer g-buffer as usual
-			\item compute second layer g-buffer by stripping the first layer
+			\item compute second layer g-buffer by peeling the first layer
 			\item takes two passes over scene geometry\pause
 			\item instead use oracle and do it in a single pass!
 		\end{itemize}
@@ -216,7 +297,7 @@
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Global illumination approximation using Deep G-Buffers}
+		\frametitle{Stable global illumination approximation}
 		\begin{itemize}
 			\item compute ambient occlusion 
 			\item compute some radiosity steps
@@ -226,26 +307,44 @@
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Ambient occlusion with Deep G-Buffers}
+		\frametitle{Screen space ambient occlusion}
 		\begin{itemize}
-			\item 
+			\item screen space ambient occlusion SSAO
+			\item compute ambient occlusion factor $AO$ for both layers
+			\item depth discontinuity is now accouted for
+			\item results will look more like actual ambient occlusion instead of approximate
+		\end{itemize}
+		%TODO inaert image
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Screen space radiosity}
+		\begin{itemize}
+			\item divide screen space into patches using g-buffers
+			\item define form-factor taking into account both g-buffer layers
+			\item compute \textbf{one} bounce per frame
+			\item accumulate bounces from previous frames
+			\item ghosting may occur: introduce ways to damp previous lighting
 			
 		\end{itemize}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Reflections with Deep G-Buffers}
+		\frametitle{Screen space mirror reflections}
 		\begin{itemize}
-			\item 
-			
+			\item march reflection rays in cameraspace
+			\item project reflection onto both g-buffers
+			\item if distance is within minimum depth separation, it's a hit
+			\item else switch to cube-mapping
 		\end{itemize}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Radiosity with Deep G-Buffers}
+		\frametitle{Screen space mirror reflections (cube mapping)}
 		\begin{itemize}
-			\item temporal filtering for undersampling noise reduction
-			
+			\item render scene from 6 angles (cube-like)
+			\item march reflection ray
+			\item look-up reflection point in cube-map
 		\end{itemize}
 	\end{frame}	
 
