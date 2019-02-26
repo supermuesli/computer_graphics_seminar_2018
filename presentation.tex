@@ -99,6 +99,7 @@
 			\item radiosity
 				\begin{itemize}
 					\item needs large amount of patches for good results
+					\item requires computation of form-factor (tough double integral)
 					\item has to be recomputed if an object moves
 				\end{itemize}
 			\item tough to be computed in real-time without additional tricks
@@ -192,7 +193,7 @@
 	\begin{frame}
 		\frametitle{Problems of deferred rendering}
 		\begin{itemize}
-			\item we \textbf{only} store information about frontmost fragments
+			\item we \textbf{only} store information about the frontmost layer
 			\item but information of deeper layers can improve visual effects
 			\item get g-buffers of deeper layers through depth-peeling!
 		\end{itemize}
@@ -219,7 +220,7 @@
 				\begin{itemize}
 					\item idea: also gather geometry of n-closest layer
 					\item generate 2-layer deep g-buffer with depth-peeling or oracle
-					\item enforce minimum depth separation
+					\item enforce minimum depth separation ($\Delta z$)
 					\item consider second layer for visual effects
 				\end{itemize}
 			\column{.5\textwidth}
@@ -231,10 +232,14 @@
 		\frametitle{Generating a 2-layer deep g-buffer (depth-peeling)}
 		\begin{itemize}
 			\item \textbf{depth-peeling method}
-			\item collect first layer g-buffer as usual
-			\item compute second layer g-buffer by peeling the first layer
-			\item takes two passes over scene geometry\pause
-			\item instead use oracle and do it in a single pass!
+				\begin{itemize}
+					\item collect first layer g-buffer as usual
+					\item compute second layer g-buffer by peeling the first layer
+					\item keep fragments if distance is at least $\Delta z$
+					\item else discard
+					\item takes two passes over scene geometry\pause
+					\item instead use oracle and do it in a single pass!
+				\end{itemize}
 		\end{itemize}
 	\end{frame}	
 
@@ -248,72 +253,118 @@
 			\item we even have knowledge of position and velocity updates
 			\item exploit this by recycling information from the previous frame and adjusting it a little
 			\item 4 different variants available
-			
 		\end{itemize}
 	\end{frame}	
 
 	\begin{frame}
 		\frametitle{Generating a 2-layer deep g-buffer (previous variant)}
-		\begin{itemize}
-			\item \textbf{previous variant}
-			\item recycle first layer z-buffer of previous frame
-			\item the smaller the position updates, the smaller the error
-			\item even then, errors would only appear in the second layer (invisible unless transparent)
-			\item does not guarantee minimum separation
-		\end{itemize}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item \textbf{previous variant}
+						\begin{itemize}
+							\item recycle first layer z-buffer of previous frame
+							\item the smaller the position updates, the smaller the error
+							\item even then, errors would only appear in the second layer 
+							\item does not guarantee minimum separation
+						\end{itemize}
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.9\textwidth]{img/previous.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}
 		\frametitle{Generating a 2-layer deep g-buffer (delay variant)}
-		\begin{itemize}
-			\item \textbf{delay variant}
-			\item introduce a frame of latency
-			\item frame and animation/simulation are out of sync by one frame
-			\item use first layer z-buffer of precomputed latency frame 
-			\item drawback: one frame of latency
-		\end{itemize}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item \textbf{delay variant}
+						\begin{itemize}
+							\item introduce a frame of latency
+							\item frame and animation/simulation are out of sync by one frame
+							\item use first layer z-buffer of precomputed latency frame 
+							\item drawback: one frame of latency
+						\end{itemize}
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.9\textwidth]{img/delay.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}
 		\frametitle{Generating a 2-layer deep g-buffer (predict variant)}
-		\begin{itemize}
-			\item \textbf{predict variant}
-			\item use velocities from animation/simulation
-			\item predict position updates of objects
-			\item 
-		\end{itemize}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item \textbf{predict variant}
+					\begin{itemize}
+						\item use velocities from animation/simulation
+						\item predict position updates of vertices
+						\item use predicted frames first layer z-buffer for peeling
+					\end{itemize}
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.9\textwidth]{img/predict.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}
 		\frametitle{Generating a 2-layer deep g-buffer (reproject variant)}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item \textbf{reproject variant}
+					\begin{itemize}
+						\item performs minimum separation test against previous frame's first layer z-buffer
+						\item same source of error as predict variant, but not as bad 
+						\item delivers most stables performance out of the 4 variants
+					\end{itemize}
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.9\textwidth]{img/reproject.png}
+		\end{columns}
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Global illumination approximation}
 		\begin{itemize}
-			\item \textbf{reproject variant}
-			\item performs minimum separation test against previous frame's first layer z-buffer
-			\item visibility test done using previous z-buffer ("in the past")
-			\item same source of error as predict variant, but not as bad (velocities are perfect)
-			\item delivers most stables performance out of the 4 variants
-			
+			\item a recipe for global illumination:
+				\begin{itemize}
+					\item compute adapted screen space ambient occlusion 
+					\item compute \textbf{one} adapted screen space radiosity iteration \textbf{per frame}
+					\item compute adapted mirror reflections
+					\item apply direct and ambient light
+				\end{itemize}
 		\end{itemize}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Stable global illumination approximation}
-		\begin{itemize}
-			\item compute screen space ambient occlusion (SSAO) 
-			\item compute \textbf{one} radiosity iteration \textbf{per frame}
-			\item compute screen space reflections
-			\item apply direct and ambient light
-		\end{itemize}
-	\end{frame}	
-
-	\begin{frame}
-		\frametitle{Screen space ambient occlusion}
+		\frametitle{Double Screen space ambient occlusion}
 		\begin{columns}
 			\column{.6\textwidth}
 				\begin{itemize}
 					\item compute ambient occlusion factor $AO$ for \textbf{both layers}
-					\item depth discontinuity is now accouted for
-					\item results will look more like actual ambient occlusion instead of approximate
+					\item pick the smaller $AO$ factor
+					\item why?
+					
+				\end{itemize}
+			\column{.4\textwidth}
+				\includegraphics[height=.65\textwidth]{img/ao_sphere_sampling.png}
+		\end{columns}		
+	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Double Screen space ambient occlusion}
+		\begin{columns}
+			\column{.6\textwidth}
+				\begin{itemize}
+					\item point p should be fully visible
+					\item one z-buffer isn't enough to see that
+					\item we enforced minimum depth separation
+					\item thus depth discontinuity is accouted for
+					\item results will look more like actual ambient occlusion
+					
 				\end{itemize}
 			\column{.4\textwidth}
 				\includegraphics[height=.65\textwidth]{img/ambient_occlusion_depth_discontinuity.png}
@@ -322,34 +373,63 @@
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Screen space radiosity}
-		\begin{itemize}
-			\item divide screen space into patches using g-buffers
-			\item define form-factor taking into account both g-buffer layers
-			\item 
-			\item compute \textbf{one} bounce per frame
-			\item accumulate bounces from previous frames
-			\item ghosting may occur: introduce ways to damp previous lighting
-		\end{itemize}
+		\frametitle{Double Screen space radiosity}
+		\begin{columns}
+			\column{0.7\textwidth}
+				\begin{itemize}
+					\item divide scene into patches using both g-buffers
+					\item define form-factor taking into account both g-buffer layers
+					\item compute \textbf{one} bounce per frame
+					\item accumulate bounces from previous frames
+					\item ghosting may occur: introduce ways to damp previous lighting
+				\end{itemize}
+			\column{0.3\textwidth}
+				\includegraphics[height=.8\textwidth]{img/form_factor.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Screen space mirror reflections}
+		\frametitle{Double Screen space radiosity}
+		\begin{columns}
+			\column{0.5\textwidth}
+				\begin{itemize}
+					\item benefit of using deep g-buffers?
+					\item we divided both g-buffers into patches
+					\item we enforced minimum depth separation
+					\item \textbf{now objects behind objects also contribute to indirect illumination!}
+				\end{itemize}
+			\column{0.5\textwidth}
+				\includegraphics[height=.5\textwidth]{img/minimum_depth_separation.png}
+				\includegraphics[width=1.05\textwidth]{img/radiosity_gi.png}
+		\end{columns}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Mirror reflections}
 		\begin{itemize}
-			\item march reflection rays in cameraspace
-			\item project reflection onto both g-buffers
-			\item if distance is within minimum depth separation, it's a hit
-			\item else switch to cube-mapping
+			\item march reflection ray to reflective objects vertex
+			\item project each vertex onto both g-buffers
+			\item if an intersection is within $\Delta z$ distance of both g-buffers, it's a hit
+			\item else if there is no intersection, we switch to environmental-mapping
 		\end{itemize}
+		\begin{center}
+			\includegraphics[width=.7\textwidth]{img/reflections.png}
+		\end{center}
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Screen space mirror reflections (cube mapping)}
-		\begin{itemize}
-			\item render scene from 6 angles (cube-like)
-			\item march reflection ray
-			\item look-up reflection point in cube-map
-		\end{itemize}
+		\frametitle{Mirror reflections (cube mapping)}
+		\begin{columns}
+			\column{.5\textwidth}
+				\begin{itemize}
+					\item render scene from 6 angles (cube-like) to a buffer
+					\item march reflection ray to reflective objects vertex
+					\item use its vertex-normal to attain specular reflection direction
+					\item intersecting point on cube-map is reflected
+				\end{itemize}
+			\column{.5\textwidth}
+				\includegraphics[height=.9\textwidth]{img/cube_map.png}
+		\end{columns}
 	\end{frame}	
 
 	\begin{frame}

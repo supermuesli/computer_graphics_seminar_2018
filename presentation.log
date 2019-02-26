@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  25 FEB 2019 23:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  26 FEB 2019 06:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -865,7 +865,7 @@ Package pdftex.def Info: img/ambient_occlusion.png  used on input line 88.
 <img/graphics_pipeline.png, id=228, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
-Package pdftex.def Info: img/graphics_pipeline.png  used on input line 124.
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 125.
 (pdftex.def)             Requested size: 74.38756pt x 165.25168pt.
  [8
 
@@ -875,7 +875,7 @@ Package pdftex.def Info: img/graphics_pipeline.png  used on input line 124.
 <img/wiki2_deferred_shading.png, id=281, 431.6125pt x 470.75874pt>
 File: img/wiki2_deferred_shading.png Graphic file (type png)
 <use img/wiki2_deferred_shading.png>
-Package pdftex.def Info: img/wiki2_deferred_shading.png  used on input line 164
+Package pdftex.def Info: img/wiki2_deferred_shading.png  used on input line 165
 .
 (pdftex.def)             Requested size: 151.50789pt x 165.25168pt.
  [10
@@ -888,7 +888,7 @@ Package pdftex.def Info: img/wiki2_deferred_shading.png  used on input line 164
 <img/depth_peeling_duck.png, id=360, 137.51375pt x 284.06125pt>
 File: img/depth_peeling_duck.png Graphic file (type png)
 <use img/depth_peeling_duck.png>
-Package pdftex.def Info: img/depth_peeling_duck.png  used on input line 213.
+Package pdftex.def Info: img/depth_peeling_duck.png  used on input line 214.
 (pdftex.def)             Requested size: 91.4308pt x 188.86061pt.
  [13
 
@@ -897,10 +897,10 @@ Package pdftex.def Info: img/depth_peeling_duck.png  used on input line 213.
 File: img/minimum_depth_separation.png Graphic file (type png)
 <use img/minimum_depth_separation.png>
 Package pdftex.def Info: img/minimum_depth_separation.png  used on input line 2
-28.
+29.
 (pdftex.def)             Requested size: 209.34157pt x 97.59404pt.
 
-Overfull \hbox (10.17227pt too wide) in paragraph at lines 228--228
+Overfull \hbox (10.17227pt too wide) in paragraph at lines 229--229
 [][]  
  []
 
@@ -912,48 +912,124 @@ Overfull \hbox (10.17227pt too wide) in paragraph at lines 228--228
 
 ] [17
 
-] [18
+]
+<img/previous.png, id=491, 415.5525pt x 489.83pt>
+File: img/previous.png Graphic file (type png)
+<use img/previous.png>
+Package pdftex.def Info: img/previous.png  used on input line 275.
+(pdftex.def)             Requested size: 121.64848pt x 143.39871pt.
+ [18
+
+ <./img/previous.png>]
+<img/delay.png, id=518, 415.5525pt x 489.83pt>
+File: img/delay.png Graphic file (type png)
+<use img/delay.png>
+Package pdftex.def Info: img/delay.png  used on input line 293.
+(pdftex.def)             Requested size: 121.64848pt x 143.39871pt.
+ [19
+
+ <./img/delay.png>]
+<img/predict.png, id=546, 415.5525pt x 489.83pt>
+File: img/predict.png Graphic file (type png)
+<use img/predict.png>
+Package pdftex.def Info: img/predict.png  used on input line 310.
+(pdftex.def)             Requested size: 121.64848pt x 143.39871pt.
+ [20
+
+ <./img/predict.png>]
+<img/reproject.png, id=573, 415.5525pt x 489.83pt>
+File: img/reproject.png Graphic file (type png)
+<use img/reproject.png>
+Package pdftex.def Info: img/reproject.png  used on input line 327.
+(pdftex.def)             Requested size: 121.64848pt x 143.39871pt.
+ [21
+
+ <./img/reproject.png>] [22
 
 ]
-[19
+<img/ao_sphere_sampling.png, id=626, 1025.33063pt x 703.12688pt>
+File: img/ao_sphere_sampling.png Graphic file (type png)
+<use img/ao_sphere_sampling.png>
+Package pdftex.def Info: img/ao_sphere_sampling.png  used on input line 355.
+(pdftex.def)             Requested size: 151.02374pt x 103.56546pt.
+ [23
 
-] [20
-
-] [21
-
-] [22
-
-]
-<img/ambient_occlusion_depth_discontinuity.png, id=618, 1023.825pt x 690.32906p
+ <./img/ao_sphere_sampling.png (PNG copy)>]
+<img/ambient_occlusion_depth_discontinuity.png, id=652, 1023.825pt x 690.32906p
 t>
 File: img/ambient_occlusion_depth_discontinuity.png Graphic file (type png)
 <use img/ambient_occlusion_depth_discontinuity.png>
 Package pdftex.def Info: img/ambient_occlusion_depth_discontinuity.png  used on
- input line 322.
+ input line 373.
 (pdftex.def)             Requested size: 153.59836pt x 103.56546pt.
-<img/screen_space_ambient_occlusion_halo.png, id=619, 1053.9375pt x 704.6325pt>
+<img/screen_space_ambient_occlusion_halo.png, id=653, 1053.9375pt x 704.6325pt>
 
 File: img/screen_space_ambient_occlusion_halo.png Graphic file (type png)
 <use img/screen_space_ambient_occlusion_halo.png>
 Package pdftex.def Info: img/screen_space_ambient_occlusion_halo.png  used on i
-nput line 322.
+nput line 373.
 (pdftex.def)             Requested size: 154.89961pt x 103.56546pt.
- [23
+ [24
 
  <./img/ambient_occlusion_depth_discontinuity.png (PNG copy)> <./img/screen_spa
-ce_ambient_occlusion_halo.png>] [24
+ce_ambient_occlusion_halo.png>]
+<img/form_factor.png, id=679, 316.93407pt x 474.27188pt>
+File: img/form_factor.png Graphic file (type png)
+<use img/form_factor.png>
+Package pdftex.def Info: img/form_factor.png  used on input line 389.
+(pdftex.def)             Requested size: 63.88379pt x 95.60258pt.
+ [25
 
-] [25
+ <./img/form_factor.png (PNG copy)>]
+File: img/minimum_depth_separation.png Graphic file (type png)
+<use img/minimum_depth_separation.png>
+Package pdftex.def Info: img/minimum_depth_separation.png  used on input line 4
+05.
+(pdftex.def)             Requested size: 213.60611pt x 99.58464pt.
+<img/radiosity_gi.png, id=707, 1032.10594pt x 319.94531pt>
+File: img/radiosity_gi.png Graphic file (type png)
+<use img/radiosity_gi.png>
+Package pdftex.def Info: img/radiosity_gi.png  used on input line 405.
+(pdftex.def)             Requested size: 209.12836pt x 64.82762pt.
 
-] [26
+Overfull \hbox (14.43681pt too wide) in paragraph at lines 405--405
+[][] 
+ []
 
-]
-<img/deep_g_buffer_render.png, id=721, 1072.75781pt x 300.3722pt>
+
+Overfull \hbox (9.95906pt too wide) in paragraph at lines 405--405
+[]  
+ []
+
+[26
+
+ <./img/radiosity_gi.png (PNG copy)>]
+<img/reflections.png, id=733, 1082.54437pt x 574.39594pt>
+File: img/reflections.png Graphic file (type png)
+<use img/reflections.png>
+Package pdftex.def Info: img/reflections.png  used on input line 418.
+(pdftex.def)             Requested size: 278.83578pt x 147.94585pt.
+
+Overfull \vbox (9.97098pt too high) detected at line 418
+ []
+
+[27
+
+ <./img/reflections.png (PNG copy)>]
+<img/cube_map.png, id=759, 2055.68pt x 2312.64pt>
+File: img/cube_map.png Graphic file (type png)
+<use img/cube_map.png>
+Package pdftex.def Info: img/cube_map.png  used on input line 433.
+(pdftex.def)             Requested size: 159.31355pt x 179.25114pt.
+ [28
+
+ <./img/cube_map.png>]
+<img/deep_g_buffer_render.png, id=785, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 363.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 443.
 (pdftex.def)             Requested size: 398.3386pt x 111.53471pt.
- [27
+ [29
 
  <./img/deep_g_buffer_render.png (PNG copy)>]
 \tf@nav=\write6
@@ -965,20 +1041,20 @@ Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 363.
 \tf@snm=\write8
 \openout8 = `presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 365.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 365.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 445.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 445.
  (./presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 365.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 365.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 445.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 445.
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17169 strings out of 492642
- 326113 string characters out of 6135566
- 404817 words of memory out of 5000000
- 20602 multiletter control sequences out of 15000+600000
- 11295 words of font info for 41 fonts, out of 8000000 for 9000
+ 17238 strings out of 492642
+ 327343 string characters out of 6135566
+ 404816 words of memory out of 5000000
+ 20656 multiletter control sequences out of 15000+600000
+ 15078 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,16n,58p,800b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
@@ -991,10 +1067,10 @@ cmss8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr
 ype1/public/amsfonts/cm/cmssi8.pfb></usr/share/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb>
-Output written on presentation.pdf (27 pages, 3528249 bytes).
+Output written on presentation.pdf (29 pages, 7560769 bytes).
 PDF statistics:
- 797 PDF objects out of 1000 (max. 8388607)
- 716 compressed objects within 8 object streams
- 55 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 861 PDF objects out of 1000 (max. 8388607)
+ 764 compressed objects within 8 object streams
+ 59 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
