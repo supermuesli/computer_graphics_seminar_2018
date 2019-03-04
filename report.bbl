@@ -269,29 +269,6 @@
     \warn{\item Can't use 'location' + 'address'}
   \endentry
 
-  \entry{NOIT}{article}{}
-    \name{author}{1}{}{%
-      {{hash=EC}{%
-         family={Everitt},
-         familyi={E\bibinitperiod},
-         given={Cass},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {NVIDIA}%
-    }
-    \strng{namehash}{EC1}
-    \strng{fullhash}{EC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelalpha}{Eve}
-    \field{sortinit}{E}
-    \field{sortinithash}{E}
-    \field{title}{Interactive Order-Independent Transparency}
-    \field{journaltitle}{NVIDIA OpenGL Applications Engineering}
-  \endentry
-
   \entry{DST}{article}{}
     \name{author}{1}{}{%
       {{hash=FPFF}{%
@@ -432,30 +409,6 @@
     \field{title}{REAL-TIME REFLECTION AND REFRACTION ON A PER-VERTEX BASIS}
   \endentry
 
-  \entry{MOB}{article}{}
-    \name{author}{1}{}{%
-      {{hash=MMWRCZ}{%
-         family={Matthias M.\bibnamedelima Wloka},
-         familyi={M\bibinitperiod\bibinitdelim M\bibinitperiod\bibinitdelim
-  W\bibinitperiod},
-         given={Robert C.\bibnamedelima Zeleznik},
-         giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim
-  Z\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Brown University}%
-    }
-    \strng{namehash}{MMWRCZ1}
-    \strng{fullhash}{MMWRCZ1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelalpha}{MMW}
-    \field{sortinit}{M}
-    \field{sortinithash}{M}
-    \field{title}{Interactive Real-Time Motion Blur}
-  \endentry
-
   \entry{SAO}{inproceedings}{}
     \name{author}{3}{}{%
       {{hash=MM}{%
@@ -493,68 +446,6 @@
     \field{pages}{97\bibrangedash 103}
     \field{series}{EGGH-HPG'12}
     \field{title}{Scalable Ambient Obscurance}
-    \list{location}{1}{%
-      {Paris, France}%
-    }
-    \field{year}{2012}
-    \warn{\item Can't use 'location' + 'address'}
-  \endentry
-
-  \entry{DOF2}{inproceedings}{}
-    \name{author}{6}{}{%
-      {{hash=TS}{%
-         family={Tzeng},
-         familyi={T\bibinitperiod},
-         given={Stanley},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=PA}{%
-         family={Patney},
-         familyi={P\bibinitperiod},
-         given={Anjul},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=DA}{%
-         family={Davidson},
-         familyi={D\bibinitperiod},
-         given={Andrew},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=EMS}{%
-         family={Ebeida},
-         familyi={E\bibinitperiod},
-         given={Mohamed\bibnamedelima S.},
-         giveni={M\bibinitperiod\bibinitdelim S\bibinitperiod},
-      }}%
-      {{hash=MSA}{%
-         family={Mitchell},
-         familyi={M\bibinitperiod},
-         given={Scott\bibnamedelima A.},
-         giveni={S\bibinitperiod\bibinitdelim A\bibinitperiod},
-      }}%
-      {{hash=OJD}{%
-         family={Owens},
-         familyi={O\bibinitperiod},
-         given={John\bibnamedelima D.},
-         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Eurographics Association}%
-    }
-    \strng{namehash}{TS+1}
-    \strng{fullhash}{TSPADAEMSMSAOJD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{labelalpha}{Tze+12}
-    \field{sortinit}{T}
-    \field{sortinithash}{T}
-    \field{booktitle}{Proceedings of the Fourth ACM SIGGRAPH / Eurographics
-  Conference on High-Performance Graphics}
-    \field{isbn}{978-3-905674-41-5}
-    \field{pages}{23\bibrangedash 31}
-    \field{series}{EGGH-HPG'12}
-    \field{title}{High-quality Parallel Depth-of-field Using Line Samples}
     \list{location}{1}{%
       {Paris, France}%
     }

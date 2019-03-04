@@ -6,6 +6,15 @@
 % Own Packages
 \usepackage{listings}
 \usepackage{fancyhdr}
+\usepackage{floatflt} 
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Own Definitions
@@ -43,7 +52,7 @@
 % Abstract
 
 \begin{abstract}%
-G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using g-buffers, we are only able to compute local illumination, meaning it is necessary to apply further techniques to approximate visual effects that would have been exerted in a globally illuminated scene. With multiple depth-layers of information about the scene, we are able to make an even better approximation of the illumination as opposed to using just a single layer. Depth-peeling while collecting G-Buffers for each layer would deliver the best approximation, but would also be more difficult to compute. As a trade-off, we will be using two layers of information and store them in a Deep G-Buffer, since two layers have proven to be sufficient. This way we can achieve real-time global illumination on moderate hardware.
+G-buffers can be used to efficiently render images with large amounts of light sources. This is possible thanks to a process called "deferred rendering". Using g-buffers, we are not able to approximate global illumination very well since we only have a single layer of information of the scene, meaning it is necessary to apply further techniques to mimic visual effects that would have otherwise been exerted in a globally illuminated scene. With multiple depth-layers of information, we are able to make a good approximation of the illumination as opposed to using just a single layer. Depth-peeling while collecting G-Buffers for each layer would deliver the best approximation, but would also be more difficult to compute. As a trade-off, we will be using two layers of information and store them in a Deep G-Buffer, since two layers have proven to be sufficient. This way we can achieve real-time global illumination on moderate hardware.
 \end{abstract}
 
 \keywords{nvidia, g-buffer, deep g-buffer, pathtracing, global illumination approximation, deferred shading, deferred rendering}
@@ -59,12 +68,12 @@ G-buffers can be used to efficiently render images with large amounts of light s
 % Introduction
 \label{cha:introduction}
 \section{Global illumination}
-	In order to understand why computing global illumination is such a big deal, we first need to set the stage by introducing the essentials of traditional rendering. \\\\
-	Global illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take	into account how light reflects and carries information (in the most basic case: color). On the contrary, local illumination is computed by only considering direct light, meaning that the resulting image will lack details and visual effects that would otherwise convey realism. These visual effects are ambient occlusion, color bleeding, reflections, caustics, and soft shadows. What all these visual effects describe is explained in section 4.
+	In order to understand why computing global illumination is such a big deal, we first need to set the stage by introducing the essentials of rendering. \\\\
+	Global illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take	into account how light reflects and carries information (in the most basic case: color). On the contrary, local illumination is computed by only considering direct light, meaning that the resulting image will lack details and visual effects that would otherwise convey realism. These visual effects are ambient occlusion, color bleeding, soft shadows and reflections. Further descriptions are provided in section 4.
 	\subsection{Physically based methods}
 	In order to generate physically based lighting, we need to solve the rendering equation for every single ray of light
 	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega') \partial \omega' $$
-	where 
+	where %TODO add footnote to BRDF (bidirectional reflection distribution function)
 	\begin{center}
 		\begin{align*}
 			&L_o(\omega) \text{ is the outgoing light in direction } \omega\text{,}\\
@@ -74,17 +83,15 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			&\text{and } cos(n, \omega') \text{ is lambert reflectance}  \text{ .}
 		\end{align*}
 	\end{center}
-	The most popular method for approximating this integral is monte-carlo pathtracing (figure \ref{fig:pathtracing}) \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
+	The most popular method for approximating this integral is pathtracing (figure \ref{fig:pathtracing}) \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
 	%TODO: diffuse lambert reflectance
 	\subsubsection{Pathtracing} 
-		Monte-carlo integration makes use of a simple concept: the integral of a function $f$ is $$ n $$. We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is also possible to achieve caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render.
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/pathtracing.png}
-			\end{center}%
-			\caption{A photorealistic computer generated image using pathtracing.}%
-			\label{fig:pathtracing}%
-		\end{figure}%
+		\begin{floatingfigure}[r]{.6\textwidth}%
+				\includegraphics[width=.6\textwidth]{img/pathtracing.png}
+				\caption{A photorealistic computer generated image using pathtracing.}%
+				\label{fig:pathtracing}%
+		\end{floatingfigure}%
+		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
 	\subsubsection{Radiosity}
 		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter and receiver. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{RAD3}.
 		\begin{figure}[htb!]%
@@ -95,48 +102,47 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\label{fig:radiosity}%
 		\end{figure}%
 	\subsection{Computational difficulties of physically based methods}
-	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. Radiosity can be preprocessed and quickly loaded to illuminate a scene, but thus would require large amounts of memory for non-static scenes. Because of this, it is nearly impossible to achieve real time rendering using physically based methods on an average system. This forces game engines to stick to achieving global illumination and visual effects through the application of plausible-looking and efficiently computable but physically inaccurate techniques. \\
-	Adding multiple light sources to a scene still proves to be challenge to average systems when traditional rendering (forward rendering) as described by modern graphics pipelines is applied. Deferred rendering counters this problem at the cost of having to compute transparency using depth peeling and having no straight forward anti-aliasing.
+	With pathtracing we have to take into account thousands of samples of every ray of light with its reflections, so the computational difficulty should become apparent \cite{DST}. \\\\
+	Radiosity requires a large amount of patches and a moderate amount of iterations to deliver good results. It can be preprocessed and quickly loaded to illuminate a scene, but would require large amounts of memory for non-static scenes.\\\\
+	Since physics simulations/animations or games practically always have moving objects or lights per frame, the whole illumination would have to be recomputed for both pathtracing as well as radiosity. Because of this, it is impossible to achieve real time rendering using physically based methods on an average system. Game engines are forced to stick to achieving global illumination and the visual effects it induces through the application of plausible-looking and efficiently computable techniques. \\\\
+	Lighting with traditional rendering can also be inefficient if many light sources are involved. This still proves to be challenge when forward rendering as described by modern graphics pipelines is applied. Deferred rendering counters this problem at the cost of having to compute transparency using depth-peeling and having no straight forward anti-aliasing.
 	%TODO maybe explain anti aliasing
 
 \section{Traditional rendering (rasterization)}
 	Graphics pipelines describe each step that has to be taken in order to render an image. It is conventional to use GPU's for applications that rely heavily on rendering images. There is no universal graphics pipeline, because these are dependent on the GPU that is used, which means it is convenient that there exist API's like OpenGL that try to generalize the steps that need to be taken in order to render an image and map them to compatible GPU's. This means that most GPU dependent applications abide by the graphics pipeline as described by, for instance, OpenGL (figure \ref{fig:graphics_pipeline}).
-	\begin{figure}[htb!]%
-	\begin{center}%
-		\includegraphics[height=7cm]{img/graphics_pipeline.png}
-	\end{center}%
-	\caption{The OpenGL graphics pipeline. The steps within blue boxes are programmable.}%
-	\label{fig:graphics_pipeline}%
-	\end{figure}%
 	\subsection{Forward rendering}
-		With forward rendering, for each object in the scene, we would render its fragments to the frame-buffer if they pass the z-test (if it is the current frontmost fragment). Since this is done for each object, it is likely that many fragments will overlap other fragments. However, we already computed all the lighting and shading for that fragment, so if it is not going to be visible anyway, than those computations were effectively wasted. This means that the more lights we add to the scene, the more lighting computations are going to be in vain.
+		With forward rendering, for each object in the scene, we would compute its lighting and then render its fragments to the frame-buffer if they pass the z-test (if it is the current frontmost fragment). Since this is done for each object, it is likely that many fragments will overlap other fragments. However, we already computed all the lighting and shading for that fragment, so if it is not going to be visible anyway, than those computations were effectively wasted. Note that lighting has to be computed in worldspace before the rasterization stage (which projects the scene into cameraspace), so the z-test cannot be done before lighting is computed. This means that the more lights we add to the scene, the more lighting computations are going to be in vain.
 	\subsection{Deferred rendering}
-		The goal of deferred rendering is to defer lighting and shading calculations until after the frontmost fragments are determined. This is done by computing necessary geometry buffers (g-buffers) in a first pass that is called "geometry pass" and storing them in a texture-buffer instead of rendering to the screen. In the second pass (lighting pass) all lighting computations are performed and accumulated with the texture-buffer, which is then rendered to the screen. \\\\
+		\begin{floatingfigure}[r]{.3\textwidth}%
+			\includegraphics[height=.4\textheight]{img/graphics_pipeline.png}
+			\caption{The OpenGL graphics pipeline. The steps within blue boxes are programmable.}%
+			\label{fig:graphics_pipeline}%
+		\end{floatingfigure}%
+		The goal of deferred rendering is to defer lighting and shading calculations until after the frontmost fragments are determined, meaning that geometry and lighting computation are \textbf{decoupled}. This is done by computing necessary geometry buffers (g-buffers) in a first pass through the pipeline that is called "geometry pass" and rendering them into a texture-buffer of the GPU instead of to the screen. In the second pass (lighting pass) all lighting computations are performed using the previously computed geometry that is stored in the texture-buffer. \\\\
 		With forward rendering we would have to compute the lighting for every fragment of every object for all light-sources in a single pass. This means that the time complexity of computing forward lighting is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
-		If we apply deffered rendering, however, we do not force ourselves to light every fragment as soon as it has been computed. Finding the closest fragment is called "solving the visibility problem". This is done during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found. Now all the fragments that we light are only going to be lighted once, which means for the time complexity that the lighting is done in $O(amount_{pixels} \cdot amount_{lights})$, allowing us to render more light-sources at the expense of passing around g-buffers (note that fragments are \textbf{potential} pixels). \\\\
+		If we apply deffered rendering, however, we do not force ourselves to light every fragment as soon as it has been computed. Finding the closest fragment is called "solving the visibility problem". This is done during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found. Now all the fragments that we light are only going to be lighted once, which means for the time complexity that the lighting is done in $O(amount_{pixels} \cdot amount_{lights})$ (note that fragments are \textbf{potential} pixels). \\\\
+		Aside from saving some lighting computation for fragments, decoupling geometry and lighting means decoupling the loops in which geometry and light-sources are iterated. Effectively, the computational time drops from $O(amount_{objects} \cdot amount_{lights})$ to $O(amount_{objects} + amount_{lights})$. This is a huge performance gain which allows for more light-sources to be added at the expense of carrying around g-buffers.
 		For all practical purposes, g-buffers have to at least consist of an albedo-buffer, a normal-buffer and a z-buffer. Using at least these g-buffers, it is possible to render an image with basic shading.
 
-	\subsection{Geometry-buffer (G-buffer)}
+	\subsubsection{Geometry-pass}
 		\begin{figure}[]
-			\subfigure[A scene that was rendered using deferred lighting. The objects are locally illuminated by point-lights using g-buffers.]{\includegraphics[width=.24\textwidth]{img/wiki_deferred_shading.png}}%
-			\subfigure[Example of an albedo-buffer. It shows a scene containing a torus, a sphere, a cuboid and a cone, all standing on a plane.]{\includegraphics[width=.24\textwidth]{img/wiki_frame_buffer.png}}%
-			\subfigure[Example of a z-buffer. The lighter a pixel, the further away it is from the cameras point of view.]{\includegraphics[width=.24\textwidth]{img/wiki_z_buffer.png}}%
-			\subfigure[Example of a normal-buffer. The x, y and z components of a normal-vector correspond to an RGB color.]{\includegraphics[width=.24\textwidth]{img/wiki_normal_buffer.png}}%
-			\caption{G-Buffers}
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_frame_buffer.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_z_buffer.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_normal_buffer.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_deferred_shading.png}}%
+			\caption{An albedo-buffer (a), a z-buffer (b), a normal-buffer (c) and a scene rendered using all of those buffers (d).}
 			\label{fig:deferred_shading}%
 		\end{figure}
 
-		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen. Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
-		\subsubsection{Albedo-buffer}%
-			Unshaded color-values of frontmost fragments are stored in the albedo-buffer.% 
-		\subsubsection{Z-buffer}
-			%TODO maybe explain screenspace and worldspace
-			The z-buffer stores depth values of fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for screenspace techniques like SSAO\footnote{Screen space ambient occlusion} and depth-peeling. 
-		\subsubsection{Normal-buffer}
-			The normal-buffer stores surface-normals that are mostly used for shading and to determine reflection and refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
-	\subsection{Geometry pass}
-		collect g-buffars TODO
-	\subsection{Lighting pass}
+		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen (screenspace). Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
+		\paragraph{Albedo-buffer}%
+			This buffer simply stores the color-values of frontmost fragments. Colors in computer graphics are referred to as "albedo".% 
+		\paragraph{Z-buffer}
+			The z-buffer stores depth values of frontmost fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for depth-peeling and screenspace techniques like SSAO\footnote{Screen space ambient occlusion}. 
+		\paragraph{Normal-buffer}
+			The normal-buffer stores frontmost surface-normals that are mostly used for shading and to determine reflection/refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
+
+	\subsubsection{Lighting pass}
 		For any illumination to happen we first need to define some light sources. The following are most commonly used\cite{DST}:
 		\begin{itemize}
 			\item \textbf{Point-lights} are defined by an origin in worldspace and a radius (like a sphere of light).
@@ -160,32 +166,35 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		%
 		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. \\\\
 		%maybe explain illumination model
-		Both first compute the normals for each vertex for each polygon in cameraspace within the vertex-shader. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed. The differences are essentially that gouraud-shading computes shaded colors using some illumination-model, which requires vertex-normals that were just computed, and assigns them to the vertices of their polygons within the vertex-shader and then interpolates (blends) the fragment-colors inbetween the vertices in the fragment-shader, while phong-shading uses its vertex-normals to interpolate the normals of each fragment within the polygons in the vertex-shader and computes shaded colors using some illumination-model, which requires the fragment-normals that were just computed, on each fragment in the fragment-shader. \\\\
+		Both first compute the normals for each vertex for each polygon in cameraspace. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed. Phong-shading uses its vertex-normals to interpolate the normals of each fragment within the polygons in the vertex-shader and computes shaded colors using some illumination-model, which requires the fragment-normals that were just computed, on each fragment in the fragment-shader. \\\\
 		Gouraud-shading is a fast way of computing shading since it only uses the illumination-model on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to applying the illumination-model on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3d models are made of few polygons, which would make phong-shading preferable in that case. This would conclude local illumination, which means we took care of direct lighting. \\\\
 		In the context of deferred shading, all of this is done in the second pass (the shading or lighting pass). By now it should become apparent why shading in a single pass is inefficient, since all of these illumination computations would be in vein if the visibility test does not pass anyway. The g-buffers that we collect in the first pass (the geometry pass) make this possible. 
 
 \section{Visual effects} 
-	The following are visual effects that are sought after, but some of them are hard or impossible to achieve physically correct without using
-	computationally expensive methods. When applying pathtracing, we get most of the following effects for free: 
-	\begin{figure}[htb!]%
-	\begin{center}%
-		\includegraphics[width=7cm]{img/visual_effects.png}
-	\end{center}%
-	\caption{Diverse visual effects caused by global illumination inside a cornell box. The image was rendered using pathtracing.}%
-	%TODO insert source https://blog.demofox.org/2016/09/21/path-tracing-getting-started-with-diffuse-and-emissive/
-	\label{fig:visual_effects}%
-	\end{figure}%
+	\begin{floatingfigure}[l]{.5\textwidth} %
+		\includegraphics[width=.5\textwidth]{img/visual_effects.png} %
+			
+		\caption{Diverse visual effects caused by global illumination inside a cornell box. The image was rendered using pathtracing.}%
+		\label{fig:visual_effects}%
+	\end{floatingfigure} %
+
+	The following are visual effects that are sought after, since they are fundamental to conveying realism. If the scene was globally illuminated, all of these visual effects would be visible in some way or another, so naturally the problem lies within simulating all of those visual effects efficiently. \\\\
+	Unfortunately, since with traditional rendering (rasterization) we mostly only compute local lighting, we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminated scene. \\\\
+	With pathtracing and radiosity, the simulation of all of those visual effects is build in within the rendering technique, though at the expense of reaching non-interactive framerates. \\\\
+	Next to the basic visual effects
+
 	\subsection{Ambient occlusion}
+		\begin{floatingfigure}[r]{.5\textwidth}%
+			\includegraphics[width=.5\textwidth]{img/ambient_occlusion.png}%
+
+			\caption{How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.}%
+			\label{fig:ambient_occlusion}%
+		\end{floatingfigure}%
+
+		%TODO explain sphere sampling, hemispheresampling insert images of those
 		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets \cite{AOM}. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). \\\\
 		This method basically checks the surrounding z-values of each z-value of the z-buffer. Given a radius $r$ and a sampling count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding z-values within $r$. In simple terms, if the majority (half or more) of the samples (the surrounding z-values) are smaller than the center z-value (the one we are computing $AO$ for), then $AO$ receives a value of $1$, else a value smaller than $1$ but larger or equal to $0$. These float values can then be put in a texture-buffer to be used in post-processing or they can be used directly. To apply ambient occlusion to the final image, the $AO$ values are multiplied with their respective pixels in the final image. Because $0 \leq AO \leq 1$ this can be seen as tweaking the intensity of the color on a specific pixel. \\\\
 		Since it only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading the method (ambient occlusion) to be considered an efficient way of faking global illumination.
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/ambient_occlusion.png}
-			\end{center}%
-			\caption{How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.}%
-			\label{fig:ambient_occlusion}%
-		\end{figure}%
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
 		to be slightly blue on the reflected area. To have this happen it would obviously be convenient to trace rays of some sort. Point-based color bleeding approximates this by using point cloud surfels with direct illumination values \cite{PBCB}.
@@ -193,33 +202,15 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	\subsection{Soft shadows}
 		We can easily compute hard shadows in screen space using shadow mapping. A shadow map is a buffer that contains the distances between the light source and all pixels (visible fragments) of the scene. Having created the shadow map we check if the entry in the z-buffer is larger than the entry in the shadow map. If so, then the fragment is in shadow and is painted black. If not, then the fragment keeps its color and we can proceed to compute its local illumination. This can be extended to soft shadows simply by blending together fragments in shadow with their surrounding fragments.
 
-	\subsection{Transparency}
-		A quick method to achieve transparency is depth peeling. To do this we need two g-buffers at a time, one of which stores the current g-buffer and one of which stores the previous g-buffer. Depending on how many levels of transparency are wished for, let $k$ be the level of transparency, we make $k$ passes on the g-buffers, "peeling" away the previous g-buffers texel\footnote{Pixel of a texture} from the current g-buffer if a larger z-value on that texel-position is found. For this to work, the previous z-buffer in the first pass has to be initialized with negative infinity \cite{NOIT}.
-		%TODO explain how to construct the final transparent image
 
 	\subsection{Reflection} \label{sec:reflection}
-		Screen space reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. \\\\
-		In all other cases, we rely on cube mapping (also called environmental mapping or reflection mapping). Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/cube_map.png}
-			\end{center}%
+		\begin{floatingfigure}[r]{.7\textwidth}%
+			\includegraphics[width=.7\textwidth]{img/cube_map.png}
 			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.}%
 			\label{fig:cube_map}%
-		\end{figure}%
-
-	\subsection{Depth of field}
-		Depth of field is an effect that arises when the lens of a camera is larger than just a pinhole. This allows for more light to pass through the lens and light-rays start to intersect each other, causing the resulting image to look blurry along certain distances. A raytracer could simply achieve this by sampling its camera rays over a circle. For a rasterizer it is much more complicated. This effect could be achieved using stochastic point samples along the lens in 4D \cite{DOF2}. 
-		\begin{figure}[htb!]%
-			\begin{center}%
-				\includegraphics[width=7cm]{img/raytraced_depth_of_field.png}
-			\end{center}%
-			\caption{Depth of field in action. The camera lens is focused on the center sphere, making it appear sharp. The other spheres appear to be blurry.}%
-			\label{fig:depth_of_field}%
-		\end{figure}%
-
-	\subsection{Motion blur}
-		Motion blur is a camera effect that comes up when the camera or an object in the scene is moving while a picture is being taken. The camera requires itself and the objects in the scene to be still in order for light to hit the lens in focus. If the camera or an object is moving while the light is hitting the lens, then the light of the new scene will intersect the light of the old scene causing a blur. This effect can be easily rendered in screen space by taking into account in which direction the camera or the object is moving, as well as at what velocity, which can also be evaluated using the previous frame, and blurring accordingly \cite{MOB}.
+		\end{floatingfigure}%
+		Reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. In all other cases, we rely on cube-mapping (a form of environmental-mapping). \\\\
+		Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}.
 
 \section{Deep g-buffer}
 	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{Mara2016DeepGBuffer}. \\\\
@@ -290,10 +281,10 @@ submit geometry with:
 		\end{algorithm}
 	\subsection{Global illumination using 2-layer deep g-buffer} 
 		%maybe explain ambient light
-		To fake global illumination we combine direct-light $DIRECT$, ambient-light $AMBIENT$, screen space ambient visibility\footnote{$AV = 1-AO$} $AV$ as well as screen space radiosity $RADIOSITY$ and screen space reflections $REFLECTIONS$ by \cite{RSM} \cite{TSTMT}
+		To simulate global illumination we combine direct-light $DIRECT$, ambient-light $AMBIENT$, screen space ambient visibility\footnote{$AV = 1-AO$} $AV$ as well as screen space radiosity $RADIOSITY$ and screen space reflections $REFLECTIONS$ by \cite{RSM} \cite{TSTMT}
 		$$ DIRECT + AV \cdot AMBIENT + RADIOSITY + REFLECTIONS $$
 		
-	\subsection{Screen space ambient occlusion using 2-layer deep g-buffer}
+	\subsection{Double screen space ambient occlusion using 2-layer deep g-buffer}
 		Scalable ambient obscurance \cite{SAO}, which is an ambient occlusion method, is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
 		$$ AO(X) = \sqrt{\frac{\pi}{N} \Sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
 		for the ambient occlusion factor $AO$ where $N$ is the sample count, $R(Z, i)$ returns the position of the $i'th$ sample surface using the z-buffer $Z$ and
@@ -302,6 +293,7 @@ submit geometry with:
 		$$ O(X, Y) = (1 - \frac{v \cdot v}{r^2}) \cdot max(\frac{v \cdot n_X - \beta}{\sqrt{v \cdot v + \epsilon}}, 0) $$
 		evaluates if the z-value at $Y$ is occluded by z-value at $X$, where $r$ is the sample radius, $v = Y - X$ the direction vector from position $X$ to position $Y$ and $n_X$ is the normal-vector in the normal-buffer at position $X$. \\\\
 		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff \cite{Mara2016DeepGBuffer}. 
+		%TODO explain benefits with images (like in presentation). explain halos with normal ssao and how they are fided with double ssao
 		
 	\subsection{Screen space radiosity using 2-layer deep g-buffer}
 		We extend screen space radiosity \cite{RTAII} to 2-layer deep g-buffers. We have 
@@ -324,9 +316,11 @@ submit geometry with:
 		if for the pixel the reprojected point is within $1cm$ of either layer, else
 		$$ E_t = E $$
 		with the purpose of detecting faulty velocity approximations and discarding accordingly. Nvidia recommends $\alpha = 0.85$ in most occasions, as $\alpha \geq 0.95$ causes lighting latency and artifacts.
+		%TODO explain benefits with images (like in presentation) insert statue color bleeding image
 
 	\subsection{Screen space reflections using 2-layer deep g-buffer}
 		Screen space reflections are adapted to deep g-buffers by reflection raytracing. Each point in cameraspace is projected into the two g-buffer layers via reflection rays, where points with a maximum distance of $\Delta z$ within both layers are treated as a hit. The outgoing radiance is set equal to the incoming radiance along the reflection direction. If this procedure fails, e.g. if after a maximum distance of $d > \Delta z$ there is still no hit, or if the reflection ray reaches void space, one performs a switch to environmental mapping as described in section \ref{sec:reflection}.
+		%TODO explain benefits with images (like in presentation). insert flying duckreflection image
 
 \section{Conclusion}
 	Deep g-buffers seem to do a good job at faking global illumination in real time. The resulting renders speak for themselves. As stated by NVIDIA, deep g-buffers also have potential to be used for transparency, depth of field and motion blur.

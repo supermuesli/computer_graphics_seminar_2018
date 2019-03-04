@@ -227,45 +227,45 @@ Too many commas in name 1 of "Masanori Kakimoto, Tomoaki Tatsukawa, Geng Chun, T
 while executing---line 2749 of file biblatex.bst
 Too many commas in name 1 of "Masanori Kakimoto, Tomoaki Tatsukawa, Geng Chun, Tomoyuki Nishita" for entry REFL
 while executing---line 2749 of file biblatex.bst
-You've used 17 entries,
+You've used 14 entries,
             6268 wiz_defined-function locations,
-            1294 strings with 11585 characters,
-and the built_in function-call counts, 116228 in all, are:
-= -- 8901
-> -- 2207
-< -- 1062
-+ -- 2399
-- -- 576
-* -- 8124
-:= -- 10316
+            1279 strings with 11216 characters,
+and the built_in function-call counts, 94921 in all, are:
+= -- 7274
+> -- 1859
+< -- 911
++ -- 1939
+- -- 479
+* -- 6544
+:= -- 8281
 add.period$ -- 0
-call.type$ -- 17
-change.case$ -- 730
+call.type$ -- 14
+change.case$ -- 636
 chr.to.int$ -- 44
-cite$ -- 32
-duplicate$ -- 10983
-empty$ -- 10802
-format.name$ -- 1067
-if$ -- 25194
+cite$ -- 26
+duplicate$ -- 8882
+empty$ -- 8793
+format.name$ -- 856
+if$ -- 20714
 int.to.chr$ -- 0
-int.to.str$ -- 53
+int.to.str$ -- 43
 missing$ -- 0
-newline$ -- 548
-num.names$ -- 1312
-pop$ -- 5523
+newline$ -- 442
+num.names$ -- 1107
+pop$ -- 4468
 preamble$ -- 1
-purify$ -- 769
+purify$ -- 665
 quote$ -- 0
-skip$ -- 4259
+skip$ -- 3610
 stack$ -- 0
-substring$ -- 15581
-swap$ -- 3010
-text.length$ -- 541
-text.prefix$ -- 22
+substring$ -- 12652
+swap$ -- 2485
+text.length$ -- 446
+text.prefix$ -- 17
 top$ -- 1
-type$ -- 565
+type$ -- 463
 warning$ -- 0
-while$ -- 1057
+while$ -- 840
 width$ -- 0
-write$ -- 532
+write$ -- 429
 (There were 102 error messages)
