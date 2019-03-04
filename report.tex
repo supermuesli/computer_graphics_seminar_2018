@@ -83,16 +83,16 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			&\text{and } cos(n, \omega') \text{ is lambert reflectance}  \text{ .}
 		\end{align*}
 	\end{center}
-	The most popular method for approximating this integral is pathtracing (figure \ref{fig:pathtracing}) \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
-	
-	%TODO: diffuse lambert reflectance
+	The most popular method for approximating this integral is pathtracing \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
+
+	%TODO make section title visible in rendered paper...
 	\subsubsection{Pathtracing} 
 		\begin{floatingfigure}[r]{.6\textwidth}%
 				\includegraphics[width=.6\textwidth]{img/pathtracing.png}
 				\caption{A photorealistic computer generated image using pathtracing.}%
 				\label{fig:pathtracing}%
 		\end{floatingfigure}%
-		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to a light-source. If a light-source is hit, the pixel gets painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. Direct consequences of this are soft shadows and ambient occlusion. The reflections and refractions are determined by the BRDF, which essentially determines surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
+		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to a light-source. If a light-source is hit, the pixel gets painted with color, else black. This process is repeated many times over for each pixel and then averaged. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. Direct consequences of this are soft shadows and ambient occlusion. The reflections and refractions are determined by the BRDF, which essentially determines surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
 	\subsubsection{Radiosity}
 		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter and receiver. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{RAD3}.
 		\begin{figure}[htb!]%
@@ -123,7 +123,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		With forward rendering we would have to compute the lighting for every fragment of every object for all light-sources in a single pass. This means that the time complexity of computing forward lighting is $O(amount_{fragments} \cdot amount_{lights})$. \\\\
 		If we apply deffered rendering, however, we do not force ourselves to light every fragment as soon as it has been computed. Finding the closest fragment is called "solving the visibility problem". This is done during the geometry pass when filling the z-buffer with its respective z-values, which can be computed by performing perspective correct interpolation between the vertices of the current polygon (in most cases triangles). The z-buffer, along with all other buffers that are collected, are continuously updated if a closer fragment for the same pixel is found. Now all the fragments that we light are only going to be lighted once, which means for the time complexity that the lighting is done in $O(amount_{pixels} \cdot amount_{lights})$ (note that fragments are \textbf{potential} pixels). \\\\
 		Aside from saving some lighting computation for fragments, decoupling geometry and lighting means decoupling the loops in which geometry and light-sources are iterated. Effectively, the computational time drops from $O(amount_{objects} \cdot amount_{lights})$ to $O(amount_{objects} + amount_{lights})$. This is a huge performance gain which allows for more light-sources to be added at the expense of carrying around g-buffers.
-		For all practical purposes, g-buffers have to at least consist of an albedo-buffer, a normal-buffer and a z-buffer. Using at least these g-buffers, it is possible to render an image with basic shading.
+		For all practical purposes, g-buffers have to at least consist of an albedo-buffer, a normal-buffer and a z-buffer. Using at least these g-buffers, it is possible to render an image with basic shading. \\\\
 
 	\subsubsection{Geometry-pass}
 		\begin{figure}[]
@@ -134,8 +134,8 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\caption{An albedo-buffer (a), a z-buffer (b), a normal-buffer (c) and a scene rendered using all of those buffers (d).}
 			\label{fig:deferred_shading}%
 		\end{figure}
-
-		Each geometry-buffer stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen (screenspace). Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
+		
+		Each geometry-buffer (g-buffer) stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen (screenspace). Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
 		\paragraph{Albedo-buffer}%
 			This buffer simply stores the color-values of frontmost fragments. Colors in computer graphics are referred to as "albedo".% 
 		\paragraph{Z-buffer}
