@@ -134,10 +134,10 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\caption{An albedo-buffer (a), a z-buffer (b), a normal-buffer (c) and a scene rendered using all of those buffers (d).}
 			\label{fig:deferred_shading}%
 		\end{figure}
-		
+
 		Each geometry-buffer (g-buffer) stores information of some sort for each individual pixel, meaning that they are all two-dimensional arrays using the dimensions of the screen (screenspace). Note that there are more possible buffers to choose from (position-buffer, stencil-buffer, ...), but these three are the most essential:
 		\paragraph{Albedo-buffer}%
-			This buffer simply stores the color-values of frontmost fragments. Colors in computer graphics are referred to as "albedo".% 
+			This buffer simply stores the color-values of frontmost fragments. Colors in the context of computer graphics can be referred to as "albedo".% 
 		\paragraph{Z-buffer}
 			The z-buffer stores depth values of frontmost fragments. These are needed to determine which surfaces are closest and visible to the camera. If two different fragments have the same x and y coordinates in screenspace, then the fragment with the smaller z-value is supposed to be in front of the other. This buffer is also used for depth-peeling and screenspace techniques like SSAO\footnote{Screen space ambient occlusion}. 
 		\paragraph{Normal-buffer}
