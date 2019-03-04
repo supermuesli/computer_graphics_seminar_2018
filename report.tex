@@ -84,6 +84,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\end{align*}
 	\end{center}
 	The most popular method for approximating this integral is pathtracing (figure \ref{fig:pathtracing}) \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
+	
 	%TODO: diffuse lambert reflectance
 	\subsubsection{Pathtracing} 
 		\begin{floatingfigure}[r]{.6\textwidth}%
@@ -91,7 +92,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 				\caption{A photorealistic computer generated image using pathtracing.}%
 				\label{fig:pathtracing}%
 		\end{floatingfigure}%
-		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to the light source. If the lamp is hit the pixel gets painted painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. Direct consequences of this are soft shadows and ambient occlusion. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. The reflections and refractions are determined by the BRDF, which essentially describes surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
+		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to a light-source. If a light-source is hit, the pixel gets painted with color, else black. This process is repeated many times over for each pixel and its result is then averaged with all the other results. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. Direct consequences of this are soft shadows and ambient occlusion. The reflections and refractions are determined by the BRDF, which essentially determines surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
 	\subsubsection{Radiosity}
 		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter and receiver. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{RAD3}.
 		\begin{figure}[htb!]%
@@ -179,7 +180,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	\end{floatingfigure} %
 
 	The following are visual effects that are sought after, since they are fundamental to conveying realism. If the scene was globally illuminated, all of these visual effects would be visible in some way or another, so naturally the problem lies within simulating all of those visual effects efficiently. \\\\
-	Unfortunately, since with traditional rendering (rasterization) we mostly only compute local lighting, we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminated scene. \\\\
+	Unfortunately, since with traditional rendering (rasterization) we mostly only compute local lighting, we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminatefd scene. \\\\
 	With pathtracing and radiosity, the simulation of all of those visual effects is build in within the rendering technique, though at the expense of reaching non-interactive framerates. \\\\
 	Next to the basic visual effects
 
