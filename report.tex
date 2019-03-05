@@ -7,6 +7,7 @@
 \usepackage{listings}
 \usepackage{fancyhdr}
 \usepackage{floatflt} 
+\usepackage{mathtools}
 \usepackage{titlesec}
 
 \setcounter{secnumdepth}{4}
@@ -134,7 +135,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_z_buffer.png}}%
 			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_normal_buffer.png}}%
 			\subfigure[]{\includegraphics[width=.25\textwidth]{img/wiki_deferred_shading.png}}%
-			\caption{An albedo-buffer (a), a z-buffer (b), a normal-buffer (c) and a scene rendered using all of those buffers (d).}
+			\caption{An albedo-buffer (a), a z-buffer (b), a normal-buffer (c) and a locally illuminated scene rendered using all of those buffers (d).}
 			\label{fig:deferred_shading}%
 		\end{figure}
 
@@ -168,16 +169,34 @@ G-buffers can be used to efficiently render images with large amounts of light s
 
 	\subsection{Ambient occlusion}
 		\begin{floatingfigure}[r]{.5\textwidth}%
-			\includegraphics[width=.5\textwidth]{img/ambient_occlusion.png}%
+			\includegraphics[width=.5\textwidth]{img/ao_sphere_sampling.png}%
 
-			\caption{How ambient occlusion affects the realism of a rendered 3d model. The "in-betweens" of the model appear to have depth.}%
-			\label{fig:ambient_occlusion}%
+			\caption{Computing the ambient occlusion factor $AO$ via sphere sampling.}%
+			\label{fig:ao_sphere_sampling}%
 		\end{floatingfigure}%
 
+
 		%TODO explain sphere sampling, hemispheresampling insert images of those
-		Ambient occlusion essentially describes how much shading the "in-betweens" of a 3d object gets \cite{AOM}. This effect can be efficiently approximated by using a method called - ironically - screen space ambient occlusion (SSAO). \\\\
-		This method basically checks the surrounding z-values of each z-value of the z-buffer. Given a radius $r$ and a sampling count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding z-values within $r$. In simple terms, if the majority (half or more) of the samples (the surrounding z-values) are smaller than the center z-value (the one we are computing $AO$ for), then $AO$ receives a value of $1$, else a value smaller than $1$ but larger or equal to $0$. These float values can then be put in a texture-buffer to be used in post-processing or they can be used directly. To apply ambient occlusion to the final image, the $AO$ values are multiplied with their respective pixels in the final image. Because $0 \leq AO \leq 1$ this can be seen as tweaking the intensity of the color on a specific pixel. \\\\
-		Since it only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading the method (ambient occlusion) to be considered an efficient way of faking global illumination.
+		Ambient occlusion (the visual effect) essentially describes how likely it is that a surface is occluded, meaning that light cannot reach it because some other surface is in the way (figure \ref{fig:visual_effects}) \cite{AOM}. This effect can be efficiently approximated by using a method called \textbf{screen space ambient occlusion (SSAO)}. \\\\
+		
+		This method basically samples points in a sphere around each z-value $p$ of the z-buffer $Z$. Given a z-value $p$, a radius $r$ and a sampling count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding points $S$ within $r$:
+		\\\\
+		$$ AO = \frac{1}{N} \Sigma_{i}^{N} O(p, S_i) $$
+
+		where $O(b)$ returns $1$ if point $b$ is occluded, else $0$:
+
+		\[
+			O(b) = 
+			\begin{dcases*} 
+			\text{1,} & if  $b_{z} \leq Z_{b_{x}, b_{y}}$ \\ 
+			\text{0,} & otherwise 
+			\end{dcases*} 
+		\]
+
+		Since with deferred rendering we also have a normal-buffer, we can use those normals to do hemi-sphere sampling instead, because with sphere-sampling, on average, half of the samples would be occluded. By applying hemi-sphere sampling we can cut the sample-count in half, which will result in a performance increase. \\\\
+		The final $AO$ factors can be put in a texture-buffer to be used in post-processing or they can be used directly. To apply ambient occlusion to the final image, the $AO$ values are multiplied with their respective pixels in the frame-buffer. Because $0 \leq AO \leq 1$ this can be seen as tweaking the intensity of the color on a specific pixel. \\\\
+		Since it only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading the ambient occlusion (method) to be considered a necessity for simulating global illumination. \\\\
+
 	\subsection{Color bleeding}
 		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear
 		to be slightly blue on the reflected area. To have this happen it would obviously be convenient to trace rays of some sort. Point-based color bleeding approximates this by using point cloud surfels with direct illumination values \cite{PBCB}.
@@ -191,7 +210,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.}%
 			\label{fig:cube_map}%
 		\end{floatingfigure}%
-		Reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. In all other cases, we rely on cube-mapping (a form of environmental-mapping). \\\\
+		Reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. In all other cases, we rely on \textbf{cube-mapping}. \\\\
 		Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}. \\\\
 
 \section{Deep g-buffer}

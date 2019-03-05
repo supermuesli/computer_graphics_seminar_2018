@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  5 MAR 2019 07:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  5 MAR 2019 08:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1283,27 +1283,27 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 44.
 
 (/usr/share/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
 
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1337,7 +1337,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box99
-Package hyperref Info: Link coloring OFF on input line 43.
+Package hyperref Info: Link coloring OFF on input line 44.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1347,9 +1347,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count365
 )
-LaTeX Info: Redefining \ref on input line 43.
-LaTeX Info: Redefining \pageref on input line 43.
-LaTeX Info: Redefining \nameref on input line 43.
+LaTeX Info: Redefining \ref on input line 44.
+LaTeX Info: Redefining \pageref on input line 44.
+LaTeX Info: Redefining \nameref on input line 44.
  (./report.out) (./report.out)
 \@outlinefile=\write6
 \openout6 = `report.out'.
@@ -1391,18 +1391,18 @@ Package biblatex Warning: BibTeX reported the following issues
 (biblatex)                - Can't use 'location' + 'address'.
 
 )
-Package biblatex Info: Reference section=0 on input line 43.
-Package biblatex Info: Reference segment=0 on input line 43.
+Package biblatex Info: Reference section=0 on input line 44.
+Package biblatex Info: Reference segment=0 on input line 44.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: floatflt package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count366
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+LaTeX Font Info:    Try loading font information for U+msa on input line 51.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1413,17 +1413,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 71--73
+Underfull \hbox (badness 10000) in paragraph at lines 72--74
 
  []
 
 <img/pathtracing.png, id=155, 803.0pt x 501.875pt>
 File: img/pathtracing.png Graphic file (type png)
 <use img/pathtracing.png>
-Package pdftex.def Info: img/pathtracing.png  used on input line 91.
+Package pdftex.def Info: img/pathtracing.png  used on input line 92.
 (pdftex.def)             Requested size: 273.14922pt x 170.71947pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 91--92
+Overfull \hbox (15.0pt too wide) in paragraph at lines 92--93
 [][] 
  []
 
@@ -1431,25 +1431,25 @@ Package floatflt Message: Floating figure 1 set on page 2
 <img/radiosity.png, id=160, 1041.8925pt x 261.97874pt>
 File: img/radiosity.png Graphic file (type png)
 <use img/radiosity.png>
-Package pdftex.def Info: img/radiosity.png  used on input line 100.
+Package pdftex.def Info: img/radiosity.png  used on input line 101.
 (pdftex.def)             Requested size: 455.24408pt x 114.4675pt.
 [2 <./img/pathtracing.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 106--111
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--111
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--111
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--111
+Underfull \hbox (badness 10000) in paragraph at lines 107--112
 
  []
 
@@ -1460,91 +1460,91 @@ Package floatflt Warning: Floating figures 1 and 2 colliding.
 <img/graphics_pipeline.png, id=185, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
-Package pdftex.def Info: img/graphics_pipeline.png  used on input line 121.
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 122.
 (pdftex.def)             Requested size: 123.98341pt x 275.41846pt.
 
-Overfull \hbox (2.40881pt too wide) in paragraph at lines 121--122
+Overfull \hbox (2.40881pt too wide) in paragraph at lines 122--123
 [][] 
  []
 
 Package floatflt Message: Floating figure 2 set on page 4
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--130
+Underfull \hbox (badness 10000) in paragraph at lines 126--131
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 132.
+               Default added (so using `tbp') on input line 133.
 
 <img/wiki_frame_buffer.png, id=187, 481.8pt x 361.35pt>
 File: img/wiki_frame_buffer.png Graphic file (type png)
 <use img/wiki_frame_buffer.png>
-Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 133.
+Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 134.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_z_buffer.png, id=188, 481.8pt x 361.35pt>
 File: img/wiki_z_buffer.png Graphic file (type png)
 <use img/wiki_z_buffer.png>
-Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 134.
+Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 135.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_normal_buffer.png, id=189, 481.8pt x 361.35pt>
 File: img/wiki_normal_buffer.png Graphic file (type png)
 <use img/wiki_normal_buffer.png>
-Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 135.
+Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 136.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_deferred_shading.png, id=190, 481.8pt x 361.35pt>
 File: img/wiki_deferred_shading.png Graphic file (type png)
 <use img/wiki_deferred_shading.png>
-Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 136.
+Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 137.
 
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 [4 <./img/graphics_pipeline.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 150--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--155
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 <img/visual_effects.png, id=199, 539.01375pt x 516.93124pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
-Package pdftex.def Info: img/visual_effects.png  used on input line 158.
+Package pdftex.def Info: img/visual_effects.png  used on input line 159.
 (pdftex.def)             Requested size: 227.62204pt x 218.30069pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 158--159
+Overfull \hbox (15.0pt too wide) in paragraph at lines 159--160
 [][] 
  []
 
@@ -1552,199 +1552,208 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 158--159
 uffer.png> <./img/wiki_deferred_shading.png>]
 Package floatflt Message: Floating figure 3 set on page 6
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--168
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
 
  []
 
 
-Overfull \hbox (11.34492pt too wide) in paragraph at lines 164--168
+Overfull \hbox (11.34492pt too wide) in paragraph at lines 165--169
 \T1/aer/m/n/10 mostly only use the afore-men-tioned shading-methods
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--168
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--168
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
 
  []
 
-<img/ambient_occlusion.png, id=215, 364.36125pt x 305.14pt>
-File: img/ambient_occlusion.png Graphic file (type png)
-<use img/ambient_occlusion.png>
-Package pdftex.def Info: img/ambient_occlusion.png  used on input line 171.
-(pdftex.def)             Requested size: 227.62204pt x 190.62355pt.
+<img/ao_sphere_sampling.png, id=215, 1025.33063pt x 703.12688pt>
+File: img/ao_sphere_sampling.png Graphic file (type png)
+<use img/ao_sphere_sampling.png>
+Package pdftex.def Info: img/ao_sphere_sampling.png  used on input line 172.
+(pdftex.def)             Requested size: 227.62204pt x 156.08313pt.
 
-Overfull \hbox (254.62204pt too wide) in paragraph at lines 171--172
+Overfull \hbox (254.62204pt too wide) in paragraph at lines 172--173
 [][] 
  []
 
 Package floatflt Message: Floating figure 4 set on page 6
 
-Overfull \hbox (12.26529pt too wide) in paragraph at lines 178--181
-[]|\T1/aer/m/n/10 Ambient oc-clu-sion es-sen-tially de-scribes how much
+Overfull \hbox (2.14479pt too wide) in paragraph at lines 180--181
+[]|\T1/aer/m/n/10 Ambient oc-clu-sion (the vi-sual ef-fect) es-sen-tially
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--181
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--181
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-[6 <./img/visual_effects.png> <./img/ambient_occlusion.png>]
 
-Package floatflt Warning: Floating figures 4 and 5 colliding.
+Overfull \hbox (6.73497pt too wide) in paragraph at lines 182--184
+[]\T1/aer/m/n/10 This method ba-si-cally sam-ples points in a sphere
+ []
 
-<img/cube_map.png, id=227, 2055.68pt x 2312.64pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
+
+ []
+
+[6 <./img/visual_effects.png> <./img/ao_sphere_sampling.png (PNG copy)>]
+<img/cube_map.png, id=229, 2055.68pt x 2312.64pt>
 File: img/cube_map.png Graphic file (type png)
 <use img/cube_map.png>
-Package pdftex.def Info: img/cube_map.png  used on input line 191.
+Package pdftex.def Info: img/cube_map.png  used on input line 209.
 (pdftex.def)             Requested size: 318.66946pt x 358.49078pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 191--192
+Overfull \hbox (15.0pt too wide) in paragraph at lines 209--210
 [][] 
  []
 
-Package floatflt Message: Floating figure 5 set on page 7
 
-Overfull \hbox (11.32365pt too wide) in paragraph at lines 195--197
-[]|\T1/aer/m/n/10 Reflections can be ef-fi-ciently
- []
+LaTeX Warning: Reference `fig:cube_map' on page 7 undefined on input line 214.
 
 
-Overfull \hbox (24.52371pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 mapping (a form of environmental-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 195--197
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 
-Overfull \hbox (0.38387pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 side a buffer. This buffer now
- []
-
-
-Overfull \hbox (1.29361pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 tire sur-round-ing en-vi-ron-ment
- []
-
-
-Overfull \hbox (2.43338pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 of the re-flec-tive ob-ject. When
- []
-
-
-Overfull \hbox (12.69502pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 tion, which will ul-ti-mately point
- []
-
-
-Overfull \hbox (4.22302pt too wide) in paragraph at lines 195--197
-\T1/aer/m/n/10 the abil-ity to self-reflect [[]MK[]]. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 199--202
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--202
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
-[7 <./img/cube_map.png>]
 
-Package caption Warning: \label without proper reference on input line 218.
+Underfull \hbox (badness 10000) in paragraph at lines 217--220
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--220
+
+ []
+
+
+Package caption Warning: \label without proper reference on input line 237.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:two_pass_strawman' on page 8 undefined on input l
-ine 205.
+LaTeX Warning: Reference `alg:two_pass_strawman' on page 7 undefined on input l
+ine 222.
 
 
-Package caption Warning: \label without proper reference on input line 239.
+Package caption Warning: \label without proper reference on input line 258.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:one_pass_strawman' on page 8 undefined on input l
-ine 206.
+LaTeX Warning: Reference `alg:one_pass_strawman' on page 7 undefined on input l
+ine 223.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 204--208
+Underfull \hbox (badness 10000) in paragraph at lines 221--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--208
+Underfull \hbox (badness 10000) in paragraph at lines 221--226
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 221--226
+
+ []
+
+[7]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 218.
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 276--280
+put line 237.
+ [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 296--300
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 285--288
+Underfull \hbox (badness 10000) in paragraph at lines 305--308
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 290--291
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--298
+Underfull \hbox (badness 10000) in paragraph at lines 313--318
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--298
+Underfull \hbox (badness 10000) in paragraph at lines 313--318
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 293--298
+Underfull \hbox (badness 10000) in paragraph at lines 313--318
 
  []
 
 [10]
-<img/deep_g_buffer_render.png, id=322, 1072.75781pt x 300.3722pt>
+<img/deep_g_buffer_render.png, id=321, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 312.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 333.
 (pdftex.def)             Requested size: 455.24408pt x 127.46628pt.
  [11 <./img/deep_g_buffer_render.png (PNG copy)>] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 322.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 322.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 343.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 343.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 322.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 322.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 343.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 343.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 80D61E40D6D98051B6A2450C21B8D97A;1616.
+(rerunfilecheck)             Checksum: 688ACE8D713B71F357809D0548691DBE;1617.
 
 
 LaTeX Warning: There were undefined references.
@@ -1752,36 +1761,37 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 322.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 343.
  ) 
 Here is how much of TeX's memory you used:
  30437 strings out of 492642
- 572596 string characters out of 6135566
- 893535 words of memory out of 5000000
+ 572602 string characters out of 6135566
+ 892536 words of memory out of 5000000
  33650 multiletter control sequences out of 15000+600000
  44272 words of font info for 96 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,12n,84p,1170b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,84p,1170b,1299s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (12 pages, 3088038 bytes).
+sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/font
+s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti9.pfb>
+Output written on report.pdf (12 pages, 2086674 bytes).
 PDF statistics:
- 420 PDF objects out of 1000 (max. 8388607)
- 352 compressed objects within 4 object streams
+ 422 PDF objects out of 1000 (max. 8388607)
+ 355 compressed objects within 4 object streams
  112 named destinations out of 1000 (max. 500000)
  340 words of extra memory for PDF output out of 10000 (max. 10000000)
 
