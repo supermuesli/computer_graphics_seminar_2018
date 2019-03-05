@@ -146,11 +146,12 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\paragraph{Normal-buffer}
 			The normal-buffer stores frontmost surface-normals that are mostly used for shading and to determine reflection/refraction directions. They can also be used for light attentuation, since the dot product of a normalized surface-normal and the normalized direction of a light-ray is a criterion for light intensity. If the light-ray is orthogonal to the surface-normal, for instance, the dot product will equal zero, meaning that the light has maximum intensity (lambert reflectance).
 
-	\subsubsection{Lighting pass}
-		At this point we have to choose a shading technique. The most popular ones are gouraud-shading and phong-shading. \\\\
+	\subsubsection{Lighting-pass} \label{lpass}
+		At this point we have to choose a shading technique. Depending on polygon-count we can pick gouraud-shading or phong-shading. \\\\
 		Both first compute the normals for each vertex of each polygon in cameraspace. This can be done by averaging the surface normals of the polygons that share the vertex of which the normal is to be computed, which they use for lighting computations. Phong-shading goes one step further and uses its vertex-normals to interpolate the normals of each fragment within the polygons. \\\\
-		Gouraud-shading is a fast way of computing shading since it only performs the lighting computations on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3D models are made of few polygons, which would make phong-shading preferable in that case. This would conclude local illumination, which means we took care of direct lighting. \\\\
-		By now it should become apparent why lighting in a single pass with multiple light-sources is inefficient, since all of these illumination computations would be in vain if the visibility test does not pass anyway. The g-buffers that we collect in the geometry pass make this possible. 
+		Gouraud-shading is a fast way of computing shading since it only performs the lighting computations on each vertex of its polygons (which would be three times if the polygons are triangles) as opposed to on each fragment, as well as computing the normal for each fragment, as is done by phong-shading. On the downside, gouraud-shading may look edgy if the 3D models are made of few polygons, which would make phong-shading preferable in that case. \\\\
+		Regardless of which shading-technique was chosen, we would have computed all necessary normals in the geometry-pass and stored them in the normal-buffer. In the lighting-pass, we simply read from the normal-buffer and compute the colors for each fragment. This already concludes local illumination, which means we took care of direct lighting.\\\\
+		By now it should become apparent why lighting in a single pass with multiple light-sources is inefficient, since all of the illumination computations would be in vain if the visibility test does not pass anyway. The g-buffers that we collect in the geometry pass make this possible. 
 
 \section{Visual effects} 
 	\begin{floatingfigure}[l]{.5\textwidth} %
@@ -161,9 +162,9 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	\end{floatingfigure} %
 
 	The following are visual effects that are sought after, since they are fundamental to conveying realism. If the scene was globally illuminated, all of these visual effects would be visible in some way or another, so naturally the problem lies within simulating all of those visual effects efficiently. \\\\
-	Unfortunately, since with traditional rendering (rasterization) we mostly only compute local lighting, we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminatefd scene. \\\\
-	With pathtracing and radiosity, the simulation of all of those visual effects is build in within the rendering technique, though at the expense of reaching non-interactive framerates. \\\\
-	Next to the basic visual effects
+	Unfortunately, since with traditional rendering we mostly only use the aforementioned shading-methods (\ref{lpass}), we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminated scene. \\\\
+	With pathtracing and radiosity, the simulation of all of those visual effects is built-in within their rendering techniques, though at the expense of reaching non-interactive framerates. \\\\
+	Next to the basic visual effects in figure \ref{fig:visual_effects}, there is depth-of-field and motion-blur. Those will not be covered in this paper, as they are visual effects induced by the camera as opposed to lighting. Nevertheless, they can also be simulated.
 
 	\subsection{Ambient occlusion}
 		\begin{floatingfigure}[r]{.5\textwidth}%
