@@ -32,17 +32,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2}Color bleeding}{7}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Soft shadows}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Reflection}{7}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Reflection}{7}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Soft shadows}{7}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Deep g-buffer}{7}{section.4}
+\contentsline {section}{\numberline {4}Deep g-buffer}{8}{section.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1}Generating a 2-layer deep g-buffer}{8}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Global illumination using 2-layer deep g-buffer}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.2}Global illumination using 2-layer deep g-buffer}{9}{subsection.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Double screen space ambient occlusion using 2-layer deep g-buffer}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.3}Double screen space ambient occlusion using 2-layer deep g-buffer}{9}{subsection.4.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.4}Double screen space radiosity using 2-layer deep g-buffer}{10}{subsection.4.4}
 \defcounter {refsection}{0}\relax 
