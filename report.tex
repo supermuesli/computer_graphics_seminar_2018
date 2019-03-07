@@ -70,7 +70,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 \label{cha:introduction}
 \section{Global illumination}
 	In order to understand why computing global illumination is such a big deal, we first need to set the stage by introducing the essentials of rendering. \\\\
-	Global illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take	into account how light reflects and carries information (in the most basic case: color). On the contrary, local illumination is computed by only considering direct light, meaning that the resulting image will lack details and visual effects that would otherwise convey realism. These visual effects are ambient occlusion, color bleeding, soft shadows and reflections. Further descriptions are provided in section 4.
+	Global illumination is a lighting effect that is achieved by not only computing direct light, but also indirect light, meaning that it is neccesary to take	into account how light reflects and carries information (in the most basic case: color). On the contrary, local illumination is computed by only considering direct light, meaning that the resulting image will lack details and visual effects that would otherwise convey realism. These visual effects are ambient occlusion, color-bleeding, soft shadows and reflections. Further descriptions are provided in section 4.
 	\subsection{Physically based methods}
 	In order to generate physically based lighting, we need to solve the rendering equation for every single ray of light
 	$$ L_o(\omega) = L_e(\omega) + \int_\Omega f(\omega, \omega')L_i(\omega')cos(n, \omega') \partial \omega' $$
@@ -84,16 +84,17 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			&\text{and } cos(n, \omega') \text{ is lambert reflectance}  \text{ .}
 		\end{align*}
 	\end{center}
-	The most popular method for approximating this integral is pathtracing \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces.
-
+	The most popular method for approximating this integral is pathtracing \cite{P2PATH}. Radiosity also solves the rendering equation but only for perfectly diffuse surfaces. %
+	%
 	%TODO make section title visible in rendered paper...
-	\subsubsection{Pathtracing} 
+	\subsubsection{Pathtracing}%
 		\begin{floatingfigure}[r]{.6\textwidth}%
 				\includegraphics[width=.6\textwidth]{img/pathtracing.png}
 				\caption{A photorealistic computer generated image using pathtracing.}%
 				\label{fig:pathtracing}%
 		\end{floatingfigure}%
-		We first send a camera ray through each individual pixel of the image plane and then trace the ray back to a light-source. If a light-source is hit, the pixel gets painted with color, else black. This process is repeated many times over for each pixel and then averaged. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. Direct consequences of this are soft shadows and ambient occlusion. The reflections and refractions are determined by the BRDF, which essentially determines surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
+		.\\
+		\textbf{1.1.1 \quad Pathtracing} We first send a camera ray through each individual pixel of the image plane and then trace the ray back to a light-source. If a light-source is hit, the pixel gets painted with color, else black. This process is repeated many times over for each pixel and then averaged. A maximum hop number caps the amount of times a ray is able to reflect. A hop number larger than 1 (3 in most simple cases is sufficient, but this is also dependent on the complexity of the scene) allows for some global illumination. Direct consequences of this are soft shadows and ambient occlusion. The reflections and refractions are determined by the BRDF, which essentially determines surface interaction of incoming rays. Through this it is possible to attain caustics and transparency. With each surface a ray hits it carries information from that surface, e.g. its color, and reflects it onto the next surface it hits. This causes color-bleeding. Since each pixel is possibly sampled hundreds of thousands of times to reduce the noise that is induced by diffuse reflections, pathtracing may result in a photorealistic render (figure \ref{fig:pathtracing}).
 	\subsubsection{Radiosity}
 		is a diffuse global illumination method, meaning it is only meant to be used for diffuse surfaces, as it is has been observed to be one of their physical properties. In simple terms, it solves the rendering equation by splitting the objects in cameraspace into patches and treats each of those as a light emitter and receiver. We iteratively check which patches are exposed to light (an initial light-source is required) and adjust their emmitances accordingly until convergence or until we are satisfied with the look of the render (see figure \ref{fig:radiosity}). It takes a while to compute the illumination, but since it is not dependent on the camera view or location, the illumination will stay the same unless an object is moved. Games often preprocess radiosity on scenes with little object movement as it then becomes a quick way of achieving diffuse global illumination \cite{RAD} \cite{RAD3}.
 		\begin{figure}[htb!]%
@@ -165,9 +166,9 @@ G-buffers can be used to efficiently render images with large amounts of light s
 	The following are visual effects that are sought after, since they are fundamental to conveying realism. If the scene was globally illuminated, all of these visual effects would be visible in some way or another, so naturally the problem lies within simulating all of those visual effects efficiently. \\\\
 	Unfortunately, since with traditional rendering we mostly only use the aforementioned shading-methods (\ref{lpass}), we are forced to apply further techniques to attain all of those visual effects in order to approximate a globally illuminated scene. \\\\
 	With pathtracing and radiosity, the simulation of all of those visual effects is built-in within their rendering techniques, though at the expense of reaching non-interactive framerates. \\\\
-	Next to the basic visual effects in figure \ref{fig:visual_effects}, there is depth-of-field and motion-blur. Those will not be covered in this paper, as they are visual effects induced by the camera as opposed to lighting. Nevertheless, they can also be simulated.
+	Next to the basic visual effects in figure \ref{fig:visual_effects}, there is depth-of-field and motion-blur. Those will not be covered in this report, as they are visual effects induced by the camera as opposed to lighting. Nevertheless, they can also be simulated.
 
-	\subsection{Ambient occlusion}
+	\subsection{Ambient occlusion}%
 		\begin{floatingfigure}[r]{.5\textwidth}%
 			\includegraphics[width=.5\textwidth]{img/ao_sphere_sampling.png}%
 
@@ -175,52 +176,91 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\label{fig:ao_sphere_sampling}%
 		\end{floatingfigure}%
 
-
-		%TODO explain sphere sampling, hemispheresampling insert images of those
-		Ambient occlusion (the visual effect) essentially describes how likely it is that a surface is occluded, meaning that light cannot reach it because some other surface is in the way (figure \ref{fig:visual_effects}) \cite{AOM}. This effect can be efficiently approximated by using a method called \textbf{screen space ambient occlusion (SSAO)}. \\\\
-		
-		This method basically samples points in a sphere around each z-value $p$ of the z-buffer $Z$. Given a z-value $p$, a radius $r$ and a sample-count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding points $S$ within $r$:
-		\\\\
-		$$ AO = \frac{1}{N} \Sigma_{i}^{N} O(p, S_i) $$
-
-		where $O(b)$ returns $1$ if point $b$ is occluded, else $0$:
-
+		Ambient occlusion (the visual effect) essentially describes how likely it is that a surface is occluded, meaning that light cannot reach it because some other surface is in the way (figure \ref{fig:visual_effects}) \cite{AOM}. This effect can be efficiently approximated through a method called \textbf{screen space ambient occlusion (SSAO)}. \\\\
+		%
+		This method basically samples points in a sphere around each fragment of the z-buffer $Z$. Given a fragment $p$, a radius $r$ and a sample-count $N$ we can compute the ambient occlusion factor $AO$ by checking $N$ randomly picked surrounding points $S$ within $r$:
+		\\\\\\\\
+		$$ AO = \frac{1}{N} \sum_{i}^{N} O(S_i) $$%
+		%
+		\\%
+		where $O(s)$ returns $1$ if point $s$ is occluded, else $0$:%
+		% 
+		\\%
 		\[
-			O(b) = 
+			O(s) = 
 			\begin{dcases*} 
-			\text{1,} & if  $b_{z} \leq Z_{b_{x}, b_{y}}$ \\ 
+			\text{1,} & if  $s_{z} \leq Z_{s_{x}, s_{y}}$ \\ 
 			\text{0,} & otherwise 
 			\end{dcases*} 
 		\]
-
-		Since with deferred rendering we also have a normal-buffer, we can use those normals to do hemi-sphere sampling instead, because with sphere-sampling, on average, half of the samples would be occluded. By applying hemi-sphere sampling we can cut the sample-count in half, which will result in a performance increase. \\\\
+		%
+		Since with deferred rendering we also have a normal-buffer, we can use those normals to do hemi-sphere sampling instead, because with sphere-sampling, on average, half of the samples would be occluded. By applying hemi-sphere sampling we can cut the sample-count in half, which will result in a performance increase \cite{AOM}. \\\\
 		The final $AO$ factors can be put in a texture-buffer to be used in post-processing or they can be used directly. To apply ambient occlusion to the final image, the $AO$ factors can be multiplied with their respective pixels in the frame-buffer. Because $0 \leq AO \leq 1$ this can be seen as tweaking the intensity of the color on a specific pixel. \\\\
-		Since it only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading the ambient occlusion (method) to be considered a necessity for simulating global illumination. \\\\
+		Since SSAO only runs over the z-buffer it is considered screen space. Ambient occlusion (the visual effect) is an effect directly caused by global illumination, leading ambient occlusion (the method) to be considered a necessity for simulating global illumination. \\\\
 
-	\subsection{Color bleeding}
-		Color bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear to be slightly blue on the reflected area. While easily achievable with raytracing, it is also possible to do with rasterization, just not as physically accurate. Color bleeding could be simulated by the use of colored lights at the respective positions.
+	\subsection{Color-bleeding}%
+		\begin{floatingfigure}[l]{.3\textwidth}%
+			\includegraphics[width=.3\textwidth]{img/color_bleeding_sampling.png}%
 
+			\caption{Sampling points for color-bleeding using the z-buffer.}%
+			\label{fig:color_bleeding}%
+		\end{floatingfigure}%
+		%
+		Color-bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear to be slightly blue on the reflected area. While easily achievable with raytracing, it is also possible to do with rasterization, just not as accurate. Simple color-bleeding could be simulated by the use of colored lights at the respective areas. \\\\
+		Better results are achievable in screenspace by using a sampling technique nearly identical to SSAO \ref{CB}. Again, we sample $M$ random points $S$ in a sphere (or hemi-sphere) around a fragment $p$ in the z-buffer $Z$ (see figure \ref{fig:color_bleeding}). Let $N$ be the normal-buffer.
+		%
+		$$ arccos(N_{p_{x}, p_{y}} \cdot N_{S_{i, x}, S_{i, y}}) $$
+		%
+		\\
+		is the angle $\theta$ between the two surfaces belonging to $p$ and $S_i$. If $\theta$ is larger or equal to $180$, then the two surfaces are \textbf{not facing each other}, meaning that light would not be reflected from $S_i$ to $p$, hence no color-beeding would occur. However, if $180 > \theta > 0$, then color-bleeding will occur with its intensity scaling with $\theta$. Adding the averaged scaled color value of all sample fragments $S_i$ to $p$ would be sufficient for simulating simple color-bleeding. Since this method requires some identical steps to SSAO it is a good idea to incorporate them with one another. \\\\
 
-	\subsection{Reflection} \label{sec:reflection}
-		\begin{floatingfigure}[r]{.7\textwidth}%
-			\includegraphics[width=.7\textwidth]{img/cube_map.png}
+	\subsection{Soft shadows}
+		\begin{figure}[htb!]
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/3noshadow.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/3shadow.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/3shadow_light.png}}%
+			\subfigure[]{\includegraphics[width=.25\textwidth]{img/3shadow_light_map.png}}%
+			\caption{Scene without shadow-mapping (a) and with shadow-mapping (b). The same scene rendered from the light's point of view (c) and its z-buffer (d)}
+			\label{fig:shadow_map}%
+		\end{figure}
+		We can easily compute hard shadows using shadow-mapping. A shadow-map is basically a z-buffer induced by rendering the scene from a light-sources point of view (see figure \ref{fig:shadow_map}). Having created the shadow-map, we now use it for depth-testing. If a fragments distance to the light-source is larger than its entry in the shadow-map, then the fragment is in shadow and can be painted black, or if ambient lighting is wished for, with its ambient color. If not, then the fragment keeps its original color. \\\\
+		This works fine for directional lights and spotlights, however if we adapt it to point-lights, then we have to generate a cube-depth-map. Just like the cube-map that is generated for reflections (see figure \ref{fig:cube_map}), rendering a shadow-map from six different angles provides enough information to do depth-testing with for a point-light. \\
+		\begin{floatingfigure}[l]{.265625\textwidth}%
+			\includegraphics[width=.265625\textwidth]{img/depth_test_failure.png}
+			\caption{A texture indicating fragments that failed the depth-test (white means failed).}%
+			\label{fig:depth_test_failure}%
+		\end{floatingfigure}%
+		This technique can be extended to work with soft shadows. Fragments are first depth-tested against the shadow-map and all the results are rendered into a texture (see figure \ref{fig:depth_test_failure}). This texture is then blurred and its values are used as occlusion-factors as is done with SSAO. The drawback of this method is that shadows do not grow softer with distance, when in reality they actually do, but it is easily computable compared to more realistic looking methods. \\\\\\\\\\
+
+	\subsection{Reflection} \label{sec:reflection}%
+		\begin{floatingfigure}[r]{.5\textwidth}%
+			\includegraphics[width=.5\textwidth]{img/cube_map.png}
 			\caption{How a cube-map is rendered. The black sphere in the lower image represents the camera. The resulting six renders are put together in the cube-map in the upper image.}%
 			\label{fig:cube_map}%
 		\end{floatingfigure}%
 		Reflections can be efficiently computed. If the reflective surface is completely planar, then we can simply project the texture that is supposed to be reflected onto the surface that reflects it. In all other cases, we rely on \textbf{cube-mapping}. \\\\
-		Creating a cube-map (figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect \cite{REFL}. \\\\
+		Creating a cube-map (see figure \ref{fig:cube_map}) works like this: we define a cube with our camera in its center. Next, we treat each plane of the cube as an image plane that we render to, meaning we render six times in total, and save those inside a buffer. This buffer now has knowledge about the entire surrounding environment of the reflective object. When computing the color of a vertex of a reflective object, we use the direction vector from the camera to the vertex and use the vertex-normal to get the specular reflection direction, which will ultimately point at the spot on the cube-map that will be reflected. The issue with this is that it lacks the ability to self-reflect and it is not physically accurate \cite{REFL}.  \\\\\\\\\\\
 
-	\subsection{Soft shadows}
-		We can easily compute hard shadows in cameraspace using shadow mapping. A shadow map is basically a z-buffer induced by rendering the scene from a light-sources point of view. Having created the shadow map we check if the entry in the z-buffer is larger than the entry in the shadow map. If so, then the fragment is in shadow and can be painted black or, if ambient lighting is wished for, with its ambient color. If not, then the fragment keeps its original color. This works fine for directional lights and spotlights, however if we have point-lights, then we have to generate a cube-depth-map. Just like the cube-map that is generated for reflections, rendering a z-buffer from six different angles provides enough information to do depth-testing with for a point-light. \\\\
-		This technique can be easily extended to soft shadows simply by blending together fragments in shadow with their surrounding fragments.
-		%TODO insert image of shadopmap 
+\section{Deep g-buffer}%
+	Visual effects and lighting can be better approximated if information about further layers of the scene is provided. Deep g-buffers store multiple layers of information about the scene which are attained via depth-peeling. Instead of storing information about only the closest surface, in an n-layer deep g-buffer we also store surfaces up to the n-closest surface \cite{Mara2016DeepGBuffer}. \\\\
+	Practical observations suggest that the n-closest surface is often not the n-most relevant for lighting and visual effects (see figure \ref{fig:minimum_depth_separation}) \cite{Mara2016DeepGBuffer}. It would be more useful to have information about the n-closest \textbf{front-facing} surface. To resolve this issue we rely on minimum-depth-separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one. Setting $\Delta z = 0$ is equivalent to applying traditional depth-peeling. \\\\
+	What minimum separation distance to choose ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, we might miss the true next front-facing surface, if $\Delta z$ is too small, we might pick up a back-facing surface instead. According to NVIDIA, $50cm$ seems to consistently deliver stable results, at least in the renders done in their paper \cite{Mara2016DeepGBuffer}.
+	\begin{figure}[htb!]%
+		\begin{center}
+			\includegraphics[width=.534567\textwidth]{img/minimum_depth_separation.png}
+			\caption{Minimum depth separation helps with finding the next front-facing surface, i.e. the next object.}%
+			\label{fig:minimum_depth_separation}%
+		\end{center}
+	\end{figure}%
 
-\section{Deep g-buffer}
-	Deep g-buffers make use of a concept similar to depth peeling. Instead of storing information about the closest surface, in an n-layer deep g-buffer we also store information about the n-closest surface \cite{Mara2016DeepGBuffer}. \\\\
-	Practical observations suggest that the second-closest surface is often not the second-most relevant for shading and visual effects \cite{Mara2016DeepGBuffer}. To resolve this issue we rely on minimum depth separation, which essentially introduces a distance $\Delta z$ that has to be exceeded when looking for the next-closest surface immediately after the current one. Setting $\Delta z = 0$ makes the generated 2-layer z-buffer of the deep g-buffer turn into a 2-layer k-buffer\footnote{K-layer z-buffer that stores the z-values of the k-closest polygons in order} \cite{MFEKB}. \\\\
-	How to pick $\Delta z$ ultimately depends on the depth complexity of the scene and has to be tweaked accordingly. If $\Delta z$ is too large, it is possible that important visual information might be missed. On the other hand, if $\Delta z$ is too small, it is possible that unnecessary information might be picked up. According to NVIDIA, $\Delta z = 50cm$ seems to consistently deliver stable results, at least in the renders done in their paper \cite{Mara2016DeepGBuffer}.
 	\subsection{Generating a 2-layer deep g-buffer}
-		NVIDIA proposes two ways of generating a 2-layer deep g-buffer, one of which is straight forward to help demonstrate the idea and one of which is efficient. \\\\
+		\begin{figure}[htb!]
+			\includegraphics[width=\textwidth]{img/generating2.png}%
+			\caption{How well the oracles predictions compare to the exact peeling results.}
+			\label{fig:generating}%
+		\end{figure}
+		%TODO change NVIDIA to authors name of reviewed paper Mara et al. something
+		NVIDIA proposes two ways of generating a 2-layer deep g-buffer. Either apply simple depth-peeling in two passes over the scene geometry, or use an oracle that recycles/predicts the first-layer-z-buffer of the previous/next frame and peels it away in a single pass. Both depth-peeling variants are tweaked to enforce minimum-depth-separation. \\\\
 		The first one is called "Strawman Two-Pass Generation Algorithm" and displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection and skinning-transformations). In the first pass we simply collect the first layers g-buffers and in the second pass we peel away the first layers g-buffers to receive the second layer. Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$ the minimum depth seperation constraint is met. \\\\
 		This is essentially two-pass depth peeling, however, there is a more efficient algorithm which only requires a single pass displayed in \ref{alg:one_pass_strawman}. \\\\
 		In order to save a pass over the geometry, we rely on an oracle that predicts the first layers z-buffer before it is even rendered. Using that prediction, we can compute fragments for the second layer by peeling the first layer. In total, there are four variants to go about this. $t$ is the index of the frame.
@@ -290,8 +330,18 @@ submit geometry with:
 		$$ DIRECT + AV \cdot AMBIENT + RADIOSITY + REFLECTIONS $$
 		
 	\subsection{Double screen space ambient occlusion using 2-layer deep g-buffer}
+		\begin{floatingfigure}[l]{.65\textwidth}%
+			\includegraphics[width=.65\textwidth]{img/ambient_occlusion_depth_discontinuity.png}
+			\caption{Samping on a single layer results in point $p$ being half-occluded despite being perfectly visible.}%
+			\label{fig:depth_discontinuity}%
+		\end{floatingfigure}%	
+		\begin{floatingfigure}[r]{.65\textwidth}%
+			\includegraphics[width=.65\textwidth]{img/screen_space_ambient_occlusion_halo.png}
+			\caption{Halos caused by traditional screen space ambient occlusion.}%
+			\label{fig:halos}%
+		\end{floatingfigure}
 		Scalable ambient obscurance \cite{SAO}, which is an ambient occlusion method, is extended to work with deep g-buffers. To take into account both z-buffers of the deep g-buffer we have
-		$$ AO(X) = \sqrt{\frac{\pi}{N} \Sigma_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
+		$$ AO(X) = \sqrt{\frac{\pi}{N} \sum_{i=1}^{N} max(0, A_{i}^{0}, A_{i}^{1})} $$
 		for the ambient occlusion factor $AO$ where $N$ is the sample count, $R(Z, i)$ returns the position of the $i'th$ sample surface using the z-buffer $Z$ and
 		$$ A_{i}^{j} = O(X, R(Z[j], i))$$
 		where $X$ is the position of the z-value that is being checked, $Y$ the position of the sample (a surrounding z-value) and
@@ -304,7 +354,7 @@ submit geometry with:
 		We extend screen space radiosity \cite{RTAII} to 2-layer deep g-buffers. We have 
 		$$ E(X) = \int_{\Omega} \frac{B(Y)}{\pi} max(n_X \cdot \omega, 0) d\omega$$
 		for the incident irradiance at $X$ caused by the outgoing diffuse radiance $B(Y)$ from the closest point $Y$ in direction $\omega = Y - X$. This can be \textbf{numerically estimated} by
-		$$ E(X) = \frac{2\pi}{M} \Sigma_{samples} B(Y) max(\omega \cdot n_X, 0)$$
+		$$ E(X) = \frac{2\pi}{M} \sum_{samples} B(Y) max(\omega \cdot n_X, 0)$$
 		where $\omega$ is normalized. \\\\
 		We sample $N$ points $Y$ from both g-buffer layers while only using the $M$ points for which
 		$$ (\omega \cdot n_X) > 0 $$
@@ -315,13 +365,13 @@ submit geometry with:
 		$$ boost(p) = \frac{max_{\lambda}p[\lambda] - min_{\lambda}p[\lambda]}{max_{\lambda}p[\lambda]} $$ 
 		where $\lambda$ is the wavelength or color channel. Choosing $boost(p) = 1$, for instance, will conserve energy. Else it can be used to boost the scattering of radiance of a saturated surface, which will cause a stronger color bleed. \\\\
 		Since not all points in the deep g-buffer produce robust approximations for indirect shading, we compute a confidence value $0 \leq M/N \leq 1$ that indicates how many samples contribute to the final result, with a larger confidence value implying stronger influence. According to the confidence value, we linearly interpolate between a precomuted lighting solution and indirect deep g-buffer illumination. \\\\
-		Iteratively repeating the above steps across frames will result in multi bounce indirect illumination, causing soft shadows and color bleeding and diffuse global illumination. This is done by computing one bounce per frame, using the previous frames irradiance-buffer $E_{t-1}$, which would simulate $n$ bounces in $n$ frames. Obviously this method is prone to ghosting, but its effect can be reduced by damping the forwarded irradiance-buffer by a factor $0 < \delta \leq 1$, which in simple words "underestiamtes" illumination. Compensation for this is provided by some environmental lighting from static light probes. The same accumulation procedure is done across deep g-buffer layers. \\\\
+		Iteratively repeating the above steps across frames will result in multi bounce indirect illumination, causing soft shadows and color-bleeding and diffuse global illumination. This is done by computing one bounce per frame, using the previous frames irradiance-buffer $E_{t-1}$, which would simulate $n$ bounces in $n$ frames. Obviously this method is prone to ghosting, but its effect can be reduced by damping the forwarded irradiance-buffer by a factor $0 < \delta \leq 1$, which in simple words "underestiamtes" illumination. Compensation for this is provided by some environmental lighting from static light probes. The same accumulation procedure is done across deep g-buffer layers. \\\\
 		Finally, to account for any remaining noise due to undersampling, \textbf{temporal filtering} is applied by
 		$$ E_t = E(1 - \alpha) + reproject(E_{t-1}) \alpha $$
 		if for the pixel the reprojected point is within $1cm$ of either layer, else
 		$$ E_t = E $$
 		with the purpose of detecting faulty velocity approximations and discarding accordingly. Nvidia recommends $\alpha = 0.85$ in most occasions, as $\alpha \geq 0.95$ causes lighting latency and artifacts.
-		%TODO explain benefits with images (like in presentation) insert statue color bleeding image
+		%TODO explain benefits with images (like in presentation) insert statue color-bleeding image
 
 	\subsection{Mirror reflections using 2-layer deep g-buffer}
 		Screen space reflections are adapted to deep g-buffers by reflection raytracing. Each point in cameraspace is projected into the two g-buffer layers via reflection rays, where points with a maximum distance of $\Delta z$ within both layers are treated as a hit. The outgoing radiance is set equal to the incoming radiance along the reflection direction. If this procedure fails, e.g. if after a maximum distance of $d > \Delta z$ there is still no hit, or if the reflection ray reaches void space, one performs a switch to environmental mapping as described in section \ref{sec:reflection}.

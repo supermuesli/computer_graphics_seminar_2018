@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  5 MAR 2019 19:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  7 MAR 2019 02:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1367,11 +1367,6 @@ Package biblatex Info: ... file 'report.bbl' found.
  (./report.bbl
 
 Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'MFEKB':
-(biblatex)                - Can't use 'location' + 'address'.
-
-
-Package biblatex Warning: BibTeX reported the following issues
 (biblatex)                with 'RTAII':
 (biblatex)                - Invalid format of field 'month'.
 
@@ -1428,28 +1423,38 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 92--93
  []
 
 Package floatflt Message: Floating figure 1 set on page 2
+
+Overfull \hbox (3.98285pt too wide) in paragraph at lines 96--98
+\T1/aer/m/n/10 cam-era ray through each in-di-vid-ual pixel
+ []
+
+
+Overfull \hbox (4.8826pt too wide) in paragraph at lines 96--98
+\T1/aer/m/n/10 re-frac-tions are de-ter-mined by the BRDF,
+ []
+
 <img/radiosity.png, id=160, 1041.8925pt x 261.97874pt>
 File: img/radiosity.png Graphic file (type png)
 <use img/radiosity.png>
-Package pdftex.def Info: img/radiosity.png  used on input line 101.
+Package pdftex.def Info: img/radiosity.png  used on input line 102.
 (pdftex.def)             Requested size: 455.24408pt x 114.4675pt.
 [2 <./img/pathtracing.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--112
+Underfull \hbox (badness 10000) in paragraph at lines 108--113
 
  []
 
@@ -1460,91 +1465,91 @@ Package floatflt Warning: Floating figures 1 and 2 colliding.
 <img/graphics_pipeline.png, id=185, 272.01625pt x 604.2575pt>
 File: img/graphics_pipeline.png Graphic file (type png)
 <use img/graphics_pipeline.png>
-Package pdftex.def Info: img/graphics_pipeline.png  used on input line 122.
+Package pdftex.def Info: img/graphics_pipeline.png  used on input line 123.
 (pdftex.def)             Requested size: 123.98341pt x 275.41846pt.
 
-Overfull \hbox (2.40881pt too wide) in paragraph at lines 122--123
+Overfull \hbox (2.40881pt too wide) in paragraph at lines 123--124
 [][] 
  []
 
 Package floatflt Message: Floating figure 2 set on page 4
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--131
+Underfull \hbox (badness 10000) in paragraph at lines 127--132
 
  []
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 133.
+               Default added (so using `tbp') on input line 134.
 
 <img/wiki_frame_buffer.png, id=187, 481.8pt x 361.35pt>
 File: img/wiki_frame_buffer.png Graphic file (type png)
 <use img/wiki_frame_buffer.png>
-Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 134.
+Package pdftex.def Info: img/wiki_frame_buffer.png  used on input line 135.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_z_buffer.png, id=188, 481.8pt x 361.35pt>
 File: img/wiki_z_buffer.png Graphic file (type png)
 <use img/wiki_z_buffer.png>
-Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 135.
+Package pdftex.def Info: img/wiki_z_buffer.png  used on input line 136.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_normal_buffer.png, id=189, 481.8pt x 361.35pt>
 File: img/wiki_normal_buffer.png Graphic file (type png)
 <use img/wiki_normal_buffer.png>
-Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 136.
+Package pdftex.def Info: img/wiki_normal_buffer.png  used on input line 137.
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 <img/wiki_deferred_shading.png, id=190, 481.8pt x 361.35pt>
 File: img/wiki_deferred_shading.png Graphic file (type png)
 <use img/wiki_deferred_shading.png>
-Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 137.
+Package pdftex.def Info: img/wiki_deferred_shading.png  used on input line 138.
 
 (pdftex.def)             Requested size: 113.81102pt x 85.35835pt.
 [4 <./img/graphics_pipeline.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 151--156
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--156
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--156
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--156
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
 
  []
 
 <img/visual_effects.png, id=199, 539.01375pt x 516.93124pt>
 File: img/visual_effects.png Graphic file (type png)
 <use img/visual_effects.png>
-Package pdftex.def Info: img/visual_effects.png  used on input line 159.
+Package pdftex.def Info: img/visual_effects.png  used on input line 160.
 (pdftex.def)             Requested size: 227.62204pt x 218.30069pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 159--160
+Overfull \hbox (15.0pt too wide) in paragraph at lines 160--161
 [][] 
  []
 
@@ -1552,240 +1557,386 @@ Overfull \hbox (15.0pt too wide) in paragraph at lines 159--160
 uffer.png> <./img/wiki_deferred_shading.png>]
 Package floatflt Message: Floating figure 3 set on page 6
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--169
+Underfull \hbox (badness 10000) in paragraph at lines 166--170
 
  []
 
 
-Overfull \hbox (11.34492pt too wide) in paragraph at lines 165--169
+Overfull \hbox (11.34492pt too wide) in paragraph at lines 166--170
 \T1/aer/m/n/10 mostly only use the afore-men-tioned shading-methods
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--169
+Underfull \hbox (badness 10000) in paragraph at lines 166--170
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--169
+Underfull \hbox (badness 10000) in paragraph at lines 166--170
 
  []
 
 <img/ao_sphere_sampling.png, id=215, 1025.33063pt x 703.12688pt>
 File: img/ao_sphere_sampling.png Graphic file (type png)
 <use img/ao_sphere_sampling.png>
-Package pdftex.def Info: img/ao_sphere_sampling.png  used on input line 172.
+Package pdftex.def Info: img/ao_sphere_sampling.png  used on input line 173.
 (pdftex.def)             Requested size: 227.62204pt x 156.08313pt.
 
-Overfull \hbox (254.62204pt too wide) in paragraph at lines 172--173
+Overfull \hbox (254.62204pt too wide) in paragraph at lines 173--174
 [][] 
  []
 
 Package floatflt Message: Floating figure 4 set on page 6
 
-Overfull \hbox (2.14479pt too wide) in paragraph at lines 180--181
+Overfull \hbox (2.14479pt too wide) in paragraph at lines 179--183
 []|\T1/aer/m/n/10 Ambient oc-clu-sion (the vi-sual ef-fect) es-sen-tially
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
 
  []
 
 
-Overfull \hbox (6.73497pt too wide) in paragraph at lines 182--184
-[]\T1/aer/m/n/10 This method ba-si-cally sam-ples points in a sphere
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--184
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 179--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 183--189
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--200
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--199
+Underfull \hbox (badness 10000) in paragraph at lines 195--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--200
 
  []
 
 [6 <./img/visual_effects.png> <./img/ao_sphere_sampling.png (PNG copy)>]
-<img/cube_map.png, id=228, 2055.68pt x 2312.64pt>
-File: img/cube_map.png Graphic file (type png)
-<use img/cube_map.png>
-Package pdftex.def Info: img/cube_map.png  used on input line 206.
-(pdftex.def)             Requested size: 318.66946pt x 358.49078pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 206--207
+Package floatflt Warning: Floating figures 4 and 5 colliding.
+
+<img/color_bleeding_sampling.png, id=229, 465.23813pt x 474.27188pt>
+File: img/color_bleeding_sampling.png Graphic file (type png)
+<use img/color_bleeding_sampling.png>
+Package pdftex.def Info: img/color_bleeding_sampling.png  used on input line 20
+3.
+(pdftex.def)             Requested size: 136.5746pt x 139.2215pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 203--204
 [][] 
  []
 
 Package floatflt Message: Floating figure 5 set on page 7
 
-Overfull \hbox (11.32365pt too wide) in paragraph at lines 210--212
-[]|\T1/aer/m/n/10 Reflections can be ef-fi-ciently
- []
+LaTeX Warning: Reference `CB' on page 7 undefined on input line 210.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Underfull \hbox (badness 10000) in paragraph at lines 209--212
 
  []
 
 
-Overfull \hbox (0.38387pt too wide) in paragraph at lines 210--212
-\T1/aer/m/n/10 side a buffer. This buffer now
- []
-
-
-Overfull \hbox (1.29361pt too wide) in paragraph at lines 210--212
-\T1/aer/m/n/10 tire sur-round-ing en-vi-ron-ment
- []
-
-
-Overfull \hbox (2.43338pt too wide) in paragraph at lines 210--212
-\T1/aer/m/n/10 of the re-flec-tive ob-ject. When
- []
-
-
-Overfull \hbox (12.69502pt too wide) in paragraph at lines 210--212
-\T1/aer/m/n/10 tion, which will ul-ti-mately point
- []
-
-
-Overfull \hbox (4.22302pt too wide) in paragraph at lines 210--212
-\T1/aer/m/n/10 the abil-ity to self-reflect [[]MK[]]. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Underfull \hbox (badness 10000) in paragraph at lines 212--216
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--212
+Underfull \hbox (badness 10000) in paragraph at lines 212--216
+
+ []
+
+<img/3noshadow.png, id=231, 401.5pt x 321.2pt>
+File: img/3noshadow.png Graphic file (type png)
+<use img/3noshadow.png>
+Package pdftex.def Info: img/3noshadow.png  used on input line 219.
+(pdftex.def)             Requested size: 113.81102pt x 91.04793pt.
+<img/3shadow.png, id=232, 401.5pt x 321.2pt>
+File: img/3shadow.png Graphic file (type png)
+<use img/3shadow.png>
+Package pdftex.def Info: img/3shadow.png  used on input line 220.
+(pdftex.def)             Requested size: 113.81102pt x 91.04793pt.
+<img/3shadow_light.png, id=233, 401.5pt x 321.2pt>
+File: img/3shadow_light.png Graphic file (type png)
+<use img/3shadow_light.png>
+Package pdftex.def Info: img/3shadow_light.png  used on input line 221.
+(pdftex.def)             Requested size: 113.81102pt x 91.04793pt.
+<img/3shadow_light_map.png, id=234, 401.5pt x 321.2pt>
+File: img/3shadow_light_map.png Graphic file (type png)
+<use img/3shadow_light_map.png>
+Package pdftex.def Info: img/3shadow_light_map.png  used on input line 222.
+(pdftex.def)             Requested size: 113.81102pt x 91.04793pt.
+<img/depth_test_failure.png, id=237, 426.59375pt x 321.2pt>
+File: img/depth_test_failure.png Graphic file (type png)
+<use img/depth_test_failure.png>
+Package pdftex.def Info: img/depth_test_failure.png  used on input line 229.
+(pdftex.def)             Requested size: 120.9242pt x 91.04793pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 229--230
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 226--232
+
+ []
+
+[7 <./img/color_bleeding_sampling.png (PNG copy)> <./img/3noshadow.png (PNG cop
+y)> <./img/3shadow.png (PNG copy)> <./img/3shadow_light.png (PNG copy)> <./img/
+3shadow_light_map.png (PNG copy)>]
+Package floatflt Message: Floating figure 6 set on page 8
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 214--216
-
- []
-
-[7 <./img/cube_map.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 218--221
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--221
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 
-Package caption Warning: \label without proper reference on input line 238.
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+<img/cube_map.png, id=250, 2055.68pt x 2312.64pt>
+File: img/cube_map.png Graphic file (type png)
+<use img/cube_map.png>
+Package pdftex.def Info: img/cube_map.png  used on input line 237.
+(pdftex.def)             Requested size: 227.62204pt x 256.04973pt.
+
+Overfull \hbox (147.9242pt too wide) in paragraph at lines 237--238
+[][] 
+ []
+
+Package floatflt Message: Floating figure 7 set on page 8
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+<img/minimum_depth_separation.png, id=257, 1035.11719pt x 482.55281pt>
+File: img/minimum_depth_separation.png Graphic file (type png)
+<use img/minimum_depth_separation.png>
+Package pdftex.def Info: img/minimum_depth_separation.png  used on input line 2
+50.
+(pdftex.def)             Requested size: 243.35579pt x 113.44409pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--255
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--255
+
+ []
+
+[8 <./img/depth_test_failure.png> <./img/cube_map.png>]
+<img/generating2.png, id=269, 1181.16281pt x 395.97937pt>
+File: img/generating2.png Graphic file (type png)
+<use img/generating2.png>
+Package pdftex.def Info: img/generating2.png  used on input line 258.
+(pdftex.def)             Requested size: 455.24408pt x 152.61868pt.
+
+
+Package caption Warning: \label without proper reference on input line 279.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:two_pass_strawman' on page 8 undefined on input l
-ine 223.
+LaTeX Warning: Reference `alg:two_pass_strawman' on page 9 undefined on input l
+ine 264.
 
 
-Package caption Warning: \label without proper reference on input line 259.
+Package caption Warning: \label without proper reference on input line 300.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `alg:one_pass_strawman' on page 8 undefined on input l
-ine 224.
+LaTeX Warning: Reference `alg:one_pass_strawman' on page 9 undefined on input l
+ine 265.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--227
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 222--227
+Underfull \hbox (badness 10000) in paragraph at lines 263--268
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--227
+Underfull \hbox (badness 10000) in paragraph at lines 263--268
 
  []
 
-[8]
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--268
+
+ []
+
+[9 <./img/minimum_depth_separation.png (PNG copy)> <./img/generating2.png (PNG 
+copy)>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 238.
+put line 279.
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--301
 
+Package floatflt Warning: Floating figures 7 and 8 colliding.
+
+<img/ambient_occlusion_depth_discontinuity.png, id=282, 1023.825pt x 690.32906p
+t>
+File: img/ambient_occlusion_depth_discontinuity.png Graphic file (type png)
+<use img/ambient_occlusion_depth_discontinuity.png>
+Package pdftex.def Info: img/ambient_occlusion_depth_discontinuity.png  used on
+ input line 334.
+(pdftex.def)             Requested size: 295.90587pt x 199.51614pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 334--335
+[][] 
  []
 
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 306--309
+Package floatflt Message: Floating figure 9 set on page 10
+<img/screen_space_ambient_occlusion_halo.png, id=283, 1053.9375pt x 704.6325pt>
 
+File: img/screen_space_ambient_occlusion_halo.png Graphic file (type png)
+<use img/screen_space_ambient_occlusion_halo.png>
+Package pdftex.def Info: img/screen_space_ambient_occlusion_halo.png  used on i
+nput line 339.
+(pdftex.def)             Requested size: 295.90587pt x 197.83334pt.
+
+Overfull \hbox (322.90587pt too wide) in paragraph at lines 339--340
+[]|[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-
+Overfull \hbox (35.51987pt too wide) in paragraph at lines 343--344
+[]\T1/aer/m/n/10 Scalable am-bi-ent ob-scu-rance [[]MML12[]],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 311--312
-
+Overfull \hbox (16.77963pt too wide) in paragraph at lines 343--344
+\T1/aer/m/n/10 which is an am-bi-ent oc-clu-sion method,
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 314--319
+Overfull \hbox (3.5263pt too wide) detected at line 344
+\OML/cmm/m/it/10 AO\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X\OT1/cmr/m/n/10 ) = []
+ []
+
+
+Overfull \hbox (1.60962pt too wide) in paragraph at lines 346--348
+\T1/aer/m/n/10 po-si-tion of the sam-ple (a sur-round-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--352
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 357--360
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--319
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--319
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
-<img/deep_g_buffer_render.png, id=321, 1072.75781pt x 300.3722pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--370
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--370
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--370
+
+ []
+
+[12]
+<img/deep_g_buffer_render.png, id=353, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 334.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 385.
 (pdftex.def)             Requested size: 455.24408pt x 127.46628pt.
-[11] [12 <./img/deep_g_buffer_render.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 344.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 344.
+ [13 <./img/deep_g_buffer_render.png (PNG copy)>] [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 395.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 395.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 344.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 344.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 395.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 395.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 7A874079AC33234A8A2A24DF47F6C017;1617.
+(rerunfilecheck)             Checksum: E1E8664A92F6EC53D1981F8641203152;1617.
 
 
 LaTeX Warning: There were undefined references.
@@ -1793,16 +1944,16 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 344.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
  ) 
 Here is how much of TeX's memory you used:
- 30434 strings out of 492642
- 572518 string characters out of 6135566
- 890536 words of memory out of 5000000
- 33648 multiletter control sequences out of 15000+600000
+ 30492 strings out of 492642
+ 574063 string characters out of 6135566
+ 890535 words of memory out of 5000000
+ 33685 multiletter control sequences out of 15000+600000
  44272 words of font info for 96 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 62i,12n,84p,1170b,1312s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,84p,1203b,1262s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texmf-dist/fonts/type1/public
@@ -1820,10 +1971,10 @@ fb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmti9.pfb>
-Output written on report.pdf (12 pages, 3016778 bytes).
+Output written on report.pdf (14 pages, 5286423 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 354 compressed objects within 4 object streams
- 111 named destinations out of 1000 (max. 500000)
- 340 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 457 PDF objects out of 1000 (max. 8388607)
+ 376 compressed objects within 4 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 390 words of extra memory for PDF output out of 10000 (max. 10000000)
 
