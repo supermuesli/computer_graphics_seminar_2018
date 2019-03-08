@@ -54,4 +54,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {19}{\ignorespaces The same scene rendered with a two layer deep g-buffer.\relax }}{15}{figure.caption.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {20}{\ignorespaces An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.\relax }}{16}{figure.caption.20}
+\contentsline {figure}{\numberline {20}{\ignorespaces n-Screen space ambient occlusion using different amounts of layers and their errors.\relax }}{16}{figure.caption.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {21}{\ignorespaces An image rendered without (left) and with the usage of 2-layer deep g-buffers (right). The image was generated in 10.8ms at 1080p using NVIDIA GeForce 980, which implies a theoretical framerate of 92 frames per second.\relax }}{16}{figure.caption.21}

@@ -500,6 +500,9 @@ INPUT ./img/duck_one.png
 INPUT img/duck_two.png
 INPUT ./img/duck_two.png
 INPUT ./img/duck_two.png
+INPUT img/multi_layer_ao.png
+INPUT ./img/multi_layer_ao.png
+INPUT ./img/multi_layer_ao.png
 INPUT img/deep_g_buffer_render.png
 INPUT ./img/deep_g_buffer_render.png
 INPUT ./img/deep_g_buffer_render.png

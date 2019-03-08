@@ -425,12 +425,12 @@ submit geometry with:
 \section{Conclusion}
 	\begin{figure}[htb!] %
 		\begin{center}%
-			\includegraphics[width=.5\textwidth]{img/multi_layer_ao.png} %
+			\includegraphics[width=\textwidth]{img/multi_layer_ao.png} %
 		\end{center}%
 		\caption{n-Screen space ambient occlusion using different amounts of layers and their errors.}%
 		\label{fig:multi_layer_ao}%
 	\end{figure} %
-	Deep g-buffers do a good job at approximating global illumination in real time. They can be efficiently generated via depth-peeling in a single pass and provide some knowledge of deeper layers of the scene, which prove to help drastically with lighting and reflection. The resulting renders cover more details than renders which use only a single layer of information, but just enough so that the trade-off between the computational cost of generating more layers and the visual clues gained are not worth it (see figure \ref{}). As stated by NVIDIA, deep g-buffers also have potential to be used for transparency, depth of field and motion blur \cite{Mara2016DeepGBuffer}.
+	Deep g-buffers do a good job at approximating global illumination in real time. They can be efficiently generated via depth-peeling in a single pass and provide some knowledge of deeper layers of the scene, which prove to help drastically with lighting and reflection. The resulting renders cover more details than renders which use only a single layer of information, but just enough so that the trade-off between the computational cost of generating more layers and the visual clues gained are not worth it (see figure \ref{fig:multi_layer_ao}). As stated by NVIDIA, deep g-buffers also have potential to be used for transparency, depth of field and motion blur \cite{Mara2016DeepGBuffer}.
 
 	\begin{figure}[htb!]%
 		\begin{center}%
