@@ -406,7 +406,8 @@ submit geometry with:
 		\end{floatingfigure} %		
 		%
 		. \\
-		\textbf{4.2.3 \quad Mirror reflections using a 2-layer deep g-buffer} Screen space reflections are adapted to deep g-buffers by reflection raytracing. Each point in cameraspace is projected onto the two g-buffer layers via reflection rays, where points with a maximum distance of $\Delta z$ within both layers are treated as a hit. The outgoing radiance $refl$ is set equal to the incoming radiance along the reflection direction. If this procedure fails, e.g. if after a maximum distance of $d > \Delta z$ there is still no hit, or if the reflection ray reaches void space, one performs a switch to environmental mapping as described in section \ref{sec:reflection}. \\\\
+		\textbf{4.2.3 \quad Mirror reflections using a 2-layer deep g-buffer} \\
+		Screen space reflections are adapted to deep g-buffers by reflection raytracing. Each point in cameraspace is projected onto the two g-buffer layers via reflection rays, where points with a maximum distance of $\Delta z$ within both layers are treated as a hit. The outgoing radiance $refl$ is set equal to the incoming radiance along the reflection direction. If this procedure fails, e.g. if after a maximum distance of $d > \Delta z$ there is still no hit, or if the reflection ray reaches void space, one performs a switch to environmental mapping as described in section \ref{sec:reflection}. \\\\
 		\begin{floatingfigure}[r]{.5\textwidth} %
 			\includegraphics[width=.5\textwidth]{img/duck_one.png} %
 			\caption{The same scene rendered with a single layer g-buffer}%
