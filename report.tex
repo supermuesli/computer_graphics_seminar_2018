@@ -365,6 +365,7 @@ submit geometry with:
 		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff \cite{Mara2016DeepGBuffer}. If only a single layer g-buffer was used, then objects of a rendered scene would be prune containing so-called "halos" around their edges (see figure \ref{fig:halos}). This happens because only a single z-buffer is used as an approximation of the scene, which leads to information about objects in further depth being lost (see figure \ref{fig:depth_discontinuity}).
 		
 	\subsubsection{Double screen space radiosity using 2-layer deep g-buffer}
+		.\\
 		Screen space radiosity \cite{RTAII} is extended to work with 2-layer deep g-buffers. We have 
 		$$ E(X) = \int_{\Omega} \frac{B(Y)}{\pi} max(n_X \cdot \omega, 0) d\omega$$
 		for the incident irradiance at $X$ caused by the outgoing diffuse radiance $B(Y)$ from the closest point $Y$ in direction $\omega = Y - X$. This can be \textbf{numerically estimated} by

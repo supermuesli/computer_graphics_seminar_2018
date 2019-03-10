@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  10 MAR 2019 04:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.20)  10 MAR 2019 04:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1873,12 +1873,12 @@ Overfull \hbox (2.04736pt too wide) in paragraph at lines 364--366
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 371--374
+Underfull \hbox (badness 10000) in paragraph at lines 372--375
 
  []
 
 
-Overfull \vbox (1.95682pt too high) has occurred while \output is active []
+Overfull \vbox (2.51688pt too high) has occurred while \output is active []
 
 
 [13 <./img/screen_space_ambient_occlusion_halo.png> <./img/ambient_occlusion_de
@@ -1886,15 +1886,15 @@ pth_discontinuity.png (PNG copy)>]
 <img/radiosity_one.png, id=411, 506.6428pt x 310.91156pt>
 File: img/radiosity_one.png Graphic file (type png)
 <use img/radiosity_one.png>
-Package pdftex.def Info: img/radiosity_one.png  used on input line 378.
+Package pdftex.def Info: img/radiosity_one.png  used on input line 379.
 (pdftex.def)             Requested size: 227.62204pt x 139.68118pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 378--379
+Overfull \hbox (15.0pt too wide) in paragraph at lines 379--380
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 376--381
+Underfull \hbox (badness 10000) in paragraph at lines 377--382
 
  []
 
@@ -1905,37 +1905,37 @@ Package floatflt Warning: Floating figures 10 and 11 colliding.
 <img/radiosity_two.png, id=412, 504.38437pt x 308.65312pt>
 File: img/radiosity_two.png Graphic file (type png)
 <use img/radiosity_two.png>
-Package pdftex.def Info: img/radiosity_two.png  used on input line 387.
+Package pdftex.def Info: img/radiosity_two.png  used on input line 388.
 (pdftex.def)             Requested size: 227.62204pt x 139.29294pt.
 
-Overfull \hbox (254.62204pt too wide) in paragraph at lines 387--388
+Overfull \hbox (254.62204pt too wide) in paragraph at lines 388--389
 [][] 
  []
 
 
-Overfull \hbox (0.40886pt too wide) in paragraph at lines 384--390
+Overfull \hbox (0.40886pt too wide) in paragraph at lines 385--391
 \T1/aer/m/n/10 where $\OML/cmm/m/it/10 ^^U$ \T1/aer/m/n/10 is the wave-length o
 r color chan-nel. Choos-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--390
+Underfull \hbox (badness 10000) in paragraph at lines 385--391
 
  []
 
 Package floatflt Message: Floating figure 11 set on page 14
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--394
+Underfull \hbox (badness 10000) in paragraph at lines 392--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 391--394
+Underfull \hbox (badness 10000) in paragraph at lines 392--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 396--401
+Underfull \hbox (badness 10000) in paragraph at lines 397--402
 
  []
 
@@ -1946,10 +1946,10 @@ Package floatflt Warning: Floating figures 11 and 12 colliding.
 <img/duck_context.png, id=420, 530.73282pt x 298.11375pt>
 File: img/duck_context.png Graphic file (type png)
 <use img/duck_context.png>
-Package pdftex.def Info: img/duck_context.png  used on input line 403.
+Package pdftex.def Info: img/duck_context.png  used on input line 404.
 (pdftex.def)             Requested size: 227.62204pt x 127.85434pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 403--404
+Overfull \hbox (15.0pt too wide) in paragraph at lines 404--405
 [][] 
  []
 
@@ -1957,21 +1957,21 @@ Package floatflt Message: Floating figure 12 set on page 15
 <img/duck_one.png, id=422, 515.67656pt x 231.86626pt>
 File: img/duck_one.png Graphic file (type png)
 <use img/duck_one.png>
-Package pdftex.def Info: img/duck_one.png  used on input line 411.
+Package pdftex.def Info: img/duck_one.png  used on input line 413.
 (pdftex.def)             Requested size: 227.62204pt x 102.34695pt.
 
-Overfull \hbox (254.62204pt too wide) in paragraph at lines 411--412
+Overfull \hbox (254.62204pt too wide) in paragraph at lines 413--414
 [][] 
  []
 
 
-Overfull \hbox (4.30498pt too wide) in paragraph at lines 408--414
-\T1/aer/bx/n/10 deep g-buffer \T1/aer/m/n/10 Screen space re-flec-tions are ada
-pted
+Overfull \hbox (1.11876pt too wide) in paragraph at lines 409--416
+\T1/aer/m/n/10 i-mum dis-tance of $\OT1/cmr/m/n/10 ^^A\OML/cmm/m/it/10 z$ \T1/a
+er/m/n/10 within both lay-ers are treated
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 408--414
+Underfull \hbox (badness 10000) in paragraph at lines 409--416
 
  []
 
@@ -1979,33 +1979,33 @@ Package floatflt Message: Floating figure 13 set on page 15
 <img/duck_two.png, id=426, 515.67656pt x 232.61906pt>
 File: img/duck_two.png Graphic file (type png)
 <use img/duck_two.png>
-Package pdftex.def Info: img/duck_two.png  used on input line 418.
+Package pdftex.def Info: img/duck_two.png  used on input line 420.
 (pdftex.def)             Requested size: 227.62204pt x 102.67924pt.
 [15 <./img/duck_context.png (PNG copy)> <./img/duck_one.png (PNG copy)> <./img/
 duck_two.png (PNG copy)>]
 <img/multi_layer_ao.png, id=432, 1165.35374pt x 395.22656pt>
 File: img/multi_layer_ao.png Graphic file (type png)
 <use img/multi_layer_ao.png>
-Package pdftex.def Info: img/multi_layer_ao.png  used on input line 428.
+Package pdftex.def Info: img/multi_layer_ao.png  used on input line 430.
 (pdftex.def)             Requested size: 455.24408pt x 154.39102pt.
 <img/deep_g_buffer_render.png, id=435, 1072.75781pt x 300.3722pt>
 File: img/deep_g_buffer_render.png Graphic file (type png)
 <use img/deep_g_buffer_render.png>
-Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 437.
+Package pdftex.def Info: img/deep_g_buffer_render.png  used on input line 439.
 (pdftex.def)             Requested size: 455.24408pt x 127.46628pt.
  [16 <./img/multi_layer_ao.png (PNG copy)> <./img/deep_g_buffer_render.png (PNG
  copy)>] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 446.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 446.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 448.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 448.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 446.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 446.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 448.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 448.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 18689844B29F9338BD6938050986C769;1651.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 446.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 448.
  ) 
 Here is how much of TeX's memory you used:
  30560 strings out of 492642
@@ -2033,7 +2033,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts
 /type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 i9.pfb>
-Output written on report.pdf (17 pages, 7540050 bytes).
+Output written on report.pdf (17 pages, 7540033 bytes).
 PDF statistics:
  543 PDF objects out of 1000 (max. 8388607)
  451 compressed objects within 5 object streams
