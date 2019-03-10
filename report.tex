@@ -209,7 +209,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		\end{floatingfigure}%
 		%
 		Color-bleeding happens when light directs information from one hit-surface to another. Let A and B be objects. If A reflects light onto B and A's surface is blue, then B will also appear to be slightly blue on the reflected area. While easily achievable with raytracing, it is also possible to do with rasterization, just not as accurate. Simple color-bleeding could be simulated by the use of colored lights at the respective areas. \\\\
-		Better results are achievable in screenspace by using a sampling technique nearly identical to SSAO \ref{CB}. Again, we sample $M$ random points $S$ in a sphere (or hemi-sphere) around a fragment $p$ in the z-buffer $Z$ (see figure \ref{fig:color_bleeding}). Let $N$ be the normal-buffer.
+		Better results are achievable in screenspace by using a sampling technique nearly identical to SSAO \cite{CBB}. Again, we sample $M$ random points $S$ in a sphere (or hemi-sphere) around a fragment $p$ in the z-buffer $Z$ (see figure \ref{fig:color_bleeding}). Let $N$ be the normal-buffer.
 		%
 		$$ arccos(N_{p_{x}, p_{y}} \cdot N_{S_{i, x}, S_{i, y}}) $$
 		%
@@ -264,8 +264,8 @@ G-buffers can be used to efficiently render images with large amounts of light s
 		%TODO change NVIDIA to authors name of reviewed paper Mara et al. something
 		NVIDIA proposes two ways of generating a 2-layer deep g-buffer. The naive approach would be to apply traditional depth-peeling in two passes over the scene geometry while enforcing minimum-depth-separation. \\\\
 		In the first pass we simply collect g-buffers (albedo-buffer, normal-buffer and z-buffer). To attain the second layer of g-buffers we pass over the geometry once more, but this time we use the previous layers z-buffer for peeling. If a fragment $f_1$'s distance to the camera is smaller or equal to its entry in the previous z-buffer $Z_{f_{1,x},f_{1,y}} + \Delta z$, then that fragment $f_1$ is discarded, else kept (minimum-separation-test). Additionally, if a closer such fragment $f_2$ at the same position was already found, then $f_1$ gets discarded in that case as well. \\\\
-		This approach is called "Strawman Two-Pass Generation Algorithm" and is displayed in algorithm \ref{alg:two_pass_strawman}. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection and skinning-transformations). Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$, the minimum-depth-seperation constraint is met. \\\\
-		Two passes over the scene geometry can be inefficent depending on scene complexity. To resolve this issue we can use an oracle that recycles/predicts the first-layer-z-buffer of the previous/next frame and peels it away in a single pass. Note that this works because with games or animations we always have some physics simulation running in the background. Position and velocity changes of objects are computed per time-step, meaning we have full knowledge of their update values. Furthermore, positions will usually not change that much per time-step, which allows us to use previous frames z-buffers as an approximation for the current frames z-buffer. This approach is displayed in algorithm \ref{alg:one_pass_strawman}. In total, there are four variants to go about this. $t$ is the index of the frame.%
+		This approach is called "Strawman Two-Pass Generation Algorithm" and is displayed in algorithm 1. $Z$ is the 2-layer z-buffer, $S(x, y, z)$ returns other g-buffers needed for shading and $T(tri)$ applies the transformation $T$ to triangle $tri$ (model-view-projection and skinning-transformations). Since fragments get discarded if their distance to the previous fragment is smaller than $\Delta z$, the minimum-depth-seperation constraint is met. \\\\
+		Two passes over the scene geometry can be inefficent depending on scene complexity. To resolve this issue we can use an oracle that recycles/predicts the first-layer-z-buffer of the previous/next frame and peels it away in a single pass. Note that this works because with games or animations we always have some physics simulation running in the background. Position and velocity changes of objects are computed per time-step, meaning we have full knowledge of their update values. Furthermore, positions will usually not change that much per time-step, which allows us to use previous frames z-buffers as an approximation for the current frames z-buffer. This approach is displayed in algorithm 2. In total, there are four variants to go about this. $t$ is the index of the frame.%
 		%
 		\begin{enumerate}
 			\item \textbf{DELAY VARIANT} manages to predict the first layers z-buffer by adding a frame of latency, meaning that what is happening in the scene (animations, object movements and such) and what is being rendered on the screen is out of sync by one frame. This way, the next frames transformation $T_{t+1}$ is known at render time, enabling us to predict first layer z-buffers perfectly (since we do not really predict it anyway). The downside to this is, obviously, the frame latency.
@@ -277,7 +277,7 @@ G-buffers can be used to efficiently render images with large amounts of light s
 			\item \textbf{REPROJECT VARIANT} performs the minimum-separation-test against the first layer z-buffer of the previous frame. The visibility test is done using screen coordinates and z-values computed using the vertices of the previous frame, meaning the visibility test is done in the "past". Like with \textit{PREDICT VARIANT}, moving objects are a source of error, but the velocities computed in this case are perfect, which means the errors are not as bad. Benchmarks suggest that compared to all the other variants, this delivers the most stable performance at the greatest speed.
 		\end{enumerate} 
 %%%%%%%%%
-		\begin{algorithm} \label{alg:two_pass_strawman} \caption{Strawman two-pass generation algorithm for generating 2-layer deep g-buffers}
+		\begin{algorithm} \label{two_pass_strawman} \caption{Strawman two-pass generation algorithm for generating 2-layer deep g-buffers}
 		\begin{lstlisting}[frame=single]
 //1st pass
 submit geometry with:
@@ -300,7 +300,7 @@ submit geometry with:
 		\end{lstlisting}
 		\end{algorithm}
 		%
-		\begin{algorithm} \label{alg:one_pass_strawman} \caption{An improved one-pass algorithm for generating 2-layer deep g-buffers}
+		\begin{algorithm} \label{one_pass_strawman} \caption{An improved one-pass algorithm for generating 2-layer deep g-buffers}
 		%
 		\begin{lstlisting}[frame=single]
 submit geometry with:
@@ -443,5 +443,4 @@ submit geometry with:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
 \printbibliography
-
 \end{document}
