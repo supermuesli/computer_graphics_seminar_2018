@@ -365,7 +365,7 @@ submit geometry with:
 		With the 2-layer deep g-buffers accounted for, SAO now produces a less noisy $AO$ factor with more plausible shading-falloff \cite{Mara2016DeepGBuffer}. If only a single layer g-buffer was used, then objects of a rendered scene would be prune containing so-called "halos" around their edges (see figure \ref{fig:halos}). This happens because only a single z-buffer is used as an approximation of the scene, which leads to information about objects in further depth being lost (see figure \ref{fig:depth_discontinuity}).
 		
 	\subsubsection{Double screen space radiosity using 2-layer deep g-buffer}
-		We extend screen space radiosity \cite{RTAII} to 2-layer deep g-buffers. We have 
+		Screen space radiosity \cite{RTAII} is extended to work with 2-layer deep g-buffers. We have 
 		$$ E(X) = \int_{\Omega} \frac{B(Y)}{\pi} max(n_X \cdot \omega, 0) d\omega$$
 		for the incident irradiance at $X$ caused by the outgoing diffuse radiance $B(Y)$ from the closest point $Y$ in direction $\omega = Y - X$. This can be \textbf{numerically estimated} by
 		$$ E(X) = \frac{2\pi}{M} \sum_{samples} B(Y) max(\omega \cdot n_X, 0)$$
@@ -385,7 +385,7 @@ submit geometry with:
 		where $\lambda$ is the wavelength or color channel. Choosing $boost(p) = 1$, for instance, will conserve energy. Else it can be used to boost the scattering of radiance of a saturated surface, which will cause a stronger color bleed. \\\\
 		\begin{floatingfigure}[r]{.5\textwidth}%
 			\includegraphics[width=.5\textwidth]{img/radiosity_two.png}
-			\caption{Screen space radiosity using a two layer deep g-buffer.}%
+			\caption{Double screen space radiosity using a two layer deep g-buffer.}%
 			\label{fig:radiosity_two}%
 		\end{floatingfigure}%
 		Since not all points in the deep g-buffer produce robust approximations for indirect shading, we compute a confidence value $0 \leq M/N \leq 1$ that indicates how many samples contribute to the final result, with a larger confidence value implying stronger influence. According to the confidence value, we linearly interpolate between a precomuted lighting solution and indirect deep g-buffer illumination. \\\\
